@@ -110,7 +110,7 @@ paths:
         - name: booking_date
           in: query
           required: false
-          example: '2019-03-10T00:00:00'
+          example: '2019-03-10'
           schema:
             type: string
             format: date
@@ -211,7 +211,7 @@ paths:
             given preference IDs will be returned.
         - name: opted_in_date
           in: query
-          example: '2017-01-05T00:00:00'
+          example: '2017-01-05'
           required: false
           schema:
             type: string
@@ -222,7 +222,7 @@ paths:
             parameter.
         - name: opted_in_from
           in: query
-          example: '2017-01-05T00:00:00'
+          example: '2017-01-05'
           required: false
           schema:
             type: string
@@ -234,7 +234,7 @@ paths:
         - name: opted_in_to
           in: query
           required: false
-          example: '2017-01-14T00:00:00'
+          example: '2017-01-14'
           schema:
             type: string
             format: date
@@ -399,7 +399,7 @@ components:
         dob:
           type: string
           description: The customer's date of birth
-          example: '1995-01-13 00:00:00'
+          example: '1995-01-13'
         custom_field_value:
           type: string
           description: The value given for the custom field
