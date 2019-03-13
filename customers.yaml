@@ -1,0 +1,575 @@
+openapi: 3.0.0
+servers:
+  - url: 'https://api.collinsbookings.com/api'
+    variables: {}
+info:
+  version: 1.0.0
+  title: Collins API
+  description: |
+    This site provides details on the various ways that you can integrate with Collins.
+
+    Not sure you want to be here after all? Check out what’s new on the [London Bar Scene](https://www.designmynight.com/london/new-bar-spy) instead.
+  x-logo:
+    url: "http://static.designmynight.com/uploads/2017/01/DesignMyNight-Logo.png"
+    altText: "DesignMyNight"
+tags:
+  - name: URL
+    description: |
+      The API is accessible through the domain `api.collinsbookings.com`. All requests should be made over HTTPS.
+    x-traitTag: true
+  - name: Authorisation
+    description: |
+        You must provide your bearer token with every request that you make to the API. To do this, set an HTTP
+        `Authorization` header on your request that consists of the prefix `Bearer` and the token.
+
+        To obtain a bearer token, please speak to your account manager.
+
+        ```shell
+        $ curl -H "Authorization: Bearer 1234567890" https://api.collinsbookings.com/api/customers
+        ```
+  - name: Request format
+    description: |
+      Data may be sent to the server either through parameters appended to the URL, or as a JSON object included in the request body.
+
+      Where JSON is used, you should also include a header specifying the content type as `application/json`.
+
+      ```shell
+      $ curl -X PUT -H "Content-Type: application/json" -d '{\"first_name\": \"Dan\"}' https://api.collinsbookings.com/api/customers/12345
+      ```
+  - name: Response format
+    description: |
+      API responses are in JSON format. When there are exceptions to this rule, the documentation for the endpoint will make this clear.
+  - name: Status codes
+    description: |
+      The following HTTP status codes may be set for an API response:
+
+        Status Code | Explanation
+        --- | ---
+        200 | The request was successful
+        201 | The request was successful and a new resource was created
+        400 | The server cannot process the request due to a client error
+        401 | Authorization credentials were required but not found
+        403 | The request cannot be carried out using the given credentials
+        404 | The requested resource was not found
+        405 | The HTTP method used was not allowed in this context
+        422 | The request cannot be carried out due to a validation error
+        429 | The request rate limit was exceeded
+        501 | The requested method is not implemented
+        503 | A general server error occurred
+  - name: Rate limits
+    description: |
+      All requests to the API are rate limited based on your credentials. You should check the headers for the current
+      status of any rate limits:
+      
+      Header Name | Description
+      --- | ---
+      `X-RateLimit-Limit` | The maximum number of requests that the consumer is permitted to make per hour
+      `X-RateLimit-Remaining` | The number of requests remaining in the current rate limit window
+      `X-RateLimit-Reset` | The time at which the current rate limit window resets, in ISO 8601 format
+
+      If you go over the rate limit, you will receive an error response with the status code `429`.
+  - name: Customers
+    description: This endpoint is used for managing customer data
+x-tagGroups:
+  - name: API Basics
+    tags:
+      - URL
+      - Authorisation
+      - Request format
+      - Response format
+      - Status Codes
+      - Rate limits
+  - name: Reference
+    tags:
+      - Customers
+paths:
+  /customers:
+    get:
+      summary: Get customers
+      tags:
+        - Customers
+      description: >-
+        Returns an array of all customers which the authenticated user is
+        authorised to view.
+      parameters:
+        - name: associated_venues
+          in: query
+          required: false
+          explode: false
+          example:
+            - 5c80155a86bb06bc1401ea1e
+            - 5c8015884e68d55f12c7ec9d
+          schema:
+            type: array
+            items:
+              type: string
+          description: >-
+            Filters on associated venue IDs. If a comma-separated list is
+            passed, customers associated with any of the given venue IDs will be
+            returned.
+        - name: booking_date
+          in: query
+          required: false
+          example: '2019-03-10T00:00:00'
+          schema:
+            type: string
+            format: date
+          description: >-
+            Filters on customers who had a booking booked within the specified
+            dates.
+        - name: booking_date_from
+          in: query
+          required: false
+          example: '2017-01-05'
+          schema:
+            type: string
+            format: date
+          description: >-
+            Filters on customers who had a booking booked on or later than the
+            given date.
+        - name: booking_date_to
+          in: query
+          required: false
+          example: '2018-01-05'
+          schema:
+            type: string
+            format: date
+          description: >-
+            Filters on customers who had a booking booked on or before the given
+            date.
+        - name: dob_month
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: >-
+            Filter on month of birth. If a comma-separated list is passed,
+            customers with any of the specified birth months will be returned
+          examples:
+            january:
+              summary: Filters by customers born in January
+              value:
+                - 1
+            endMonths:
+              summary: 'Filters by customers born in Sept, Oct, Nov or Dec'
+              value:
+                - 9
+                - 10
+                - 11
+                - 12
+        - name: email
+          in: query
+          required: false
+          explode: false
+          example: test@example.com
+          schema:
+            type: array
+            items:
+              type: string
+              format: email
+          description: Filter on a customer's email address
+        - name: full_name
+          in: query
+          example: John Doe
+          required: false
+          schema:
+            type: string
+          description: Filter on a full name
+        - name: labels
+          in: query
+          example:
+            - VIP
+            - Regular Customer
+          required: false
+          explode: false
+          schema:
+            type: array
+            items:
+              type: string
+          description: >-
+            Filter on labels attached to a customer. If a comma-separated list
+            is passed, customers with any of the given labels will be returned.
+        - name: last_updated
+          in: query
+          required: false
+          schema:
+            type: string
+          example: '2019-03-10T00:00:00'
+          description: Filter on the date the customer was last updated
+        - name: opted_in
+          in: query
+          required: false
+          explode: false
+          example: 5c8015f15dbf3bec42c4c66f
+          schema:
+            type: array
+            items:
+              type: string
+          description: >-
+            Filter by customers who have opted into the specified preference ID.
+            If a comma-separated list is passed, customers opted into any of the
+            given preference IDs will be returned.
+        - name: opted_in_date
+          in: query
+          example: '2017-01-05T00:00:00'
+          required: false
+          schema:
+            type: string
+            format: date
+          description: >-
+            Filter by customers who opted into the specified preference ID on
+            the given date. Must be used in conjunction with the `opted_in`
+            parameter.
+        - name: opted_in_from
+          in: query
+          example: '2017-01-05T00:00:00'
+          required: false
+          schema:
+            type: string
+            format: date
+          description: >-
+            Filter by customers who opted into the specified preference ID on or
+            after the given date. Must be used in conjunction with the
+            `opted_in` parameter.
+        - name: opted_in_to
+          in: query
+          required: false
+          example: '2017-01-14T00:00:00'
+          schema:
+            type: string
+            format: date
+          description: >-
+            Filter by customers who opted into the specified preference ID on or
+            before the given date. Must be used in conjunction with the
+            `opted_in` parameter.
+        - name: query
+          in: query
+          example: '@example.com'
+          required: false
+          schema:
+            type: string
+          description: >-
+            Filter by customers which have a `full_name`, `email`, `company` or
+            `phone` similar to the search query.
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 30
+            maximum: 30
+            minimum: 1
+          example: '30'
+          description: Limit the response to the specified number of records.
+        - name: sort
+          in: query
+          required: false
+          explode: false
+          example: '-last_updated'
+          schema:
+            type: array
+            items:
+              type: string
+          description: >-
+            The fields which the results should be sorted by. If this value is
+            not specified, the records will be sorted in order of relevance to
+            the `query` parameter. If the `query` parameter is not specified,
+            records will be sorted in order of their `created_date`. To sort in
+            decending order, prefix the field name with a '-' character.
+      operationId: /
+      responses:
+        '200':
+          description: Customers were successfully retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ViewCustomer'
+    post:
+      tags:
+        - Customers
+      summary: Create customer
+      description: Creates a new customer
+      requestBody:
+        description: Data for the customer you wish to create
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewCustomer'
+      responses:
+        '201':
+          description: Successfully added a customer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ViewCustomer'
+  '/customers/:customerId':
+    put:
+      tags:
+        - Customers
+      summary: Update a customer
+      description: Updates an existing customer
+      parameters:
+        - in: path
+          name: customerId
+          required: true
+          description: The ID of the customer you want to update
+          schema:
+            type: string
+      requestBody:
+        description: Data the customer should be updated with
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewCustomer'
+      responses:
+        '200':
+          description: The customer was successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ViewCustomer'
+    delete:
+      tags:
+        - Customers
+      summary: Delete a customer
+      description: Deletes an existing customer
+      parameters:
+        - in: path
+          name: customerId
+          required: true
+          description: The ID of the customer you want to delete
+          schema:
+            type: string
+      responses:
+        '204':
+          description: The customer was successfully deleted
+components:
+  schemas:
+    ViewCustomer:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The customer's ID
+          example: 5314491e0a8efb6d7c19c39c
+        email:
+          type: string
+          format: email
+          description: The customer's email address
+          example: test@example.com
+        first_name:
+          type: string
+          description: The customer's first name
+          example: John
+        last_name:
+          type: string
+          description: The customer's last name
+          example: Doe
+        phone:
+          type: string
+          description: The customer's phone number
+          example: '+447912345678'
+        company:
+          type: string
+          description: The name of the customer's company
+          example: The Access Group
+        company_address:
+          type: object
+          description: The address of the customer's company
+          properties:
+            street:
+              type: string
+              description: The street name of the company
+              example: Penn Street
+            city:
+              type: string
+              description: The city which the company is located
+              example: London
+            post_code:
+              type: string
+              description: The post code of the company
+              example: 'N1 5DL'
+        dob:
+          type: string
+          description: The customer's date of birth
+          example: '1995-01-13 00:00:00'
+        custom_field_value:
+          type: string
+          description: The value given for the custom field
+          example: '12345'
+        associated_venues:
+          type: array
+          description: An array of associated venue IDs
+          example:
+            - 5c80155a86bb06bc1401ea1e
+            - 5c8015884e68d55f12c7ec9d
+          items:
+            type: string
+        marketing_preferences:
+          type: array
+          description: >-
+            An array of marketing preferences this user has given or revoked
+            consent to
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: The ID of the marketing preference
+                example: 5c8015f15dbf3bec42c4c66f
+              opt_in_date:
+                type: string
+                description: The date the customer last opted into this preference
+                format: date-time
+                example: '2017-01-05 00:00:00'
+              opt_out_date:
+                type: string
+                description: The date the customer last opted out of this preference
+                format: date-time
+                example: '2017-01-14 00:00:00'
+              opted_in:
+                type: boolean
+                description: >-
+                  Whether or not the customer is currently opted into this
+                  preference
+        bookings:
+          type: array
+          description: An array of bookings this customer has made
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: The ID of the booking
+                example: 5c8015d346acc0fb47f1d900
+              date:
+                type: string
+                description: The date of the booking
+                example: '2019-03-10 00:00:00'
+                format: date-time
+              venue_id:
+                type: string
+                description: The venue ID this booking is for
+                example: 5c8015e1739381c2e6caac2f
+              num_people:
+                type: integer
+                description: The number of people the booking is for
+                example: 2
+              status:
+                type: string
+                description: The status of the booking
+                example: 'complete'
+          example:
+            - id: '5c8015d346acc0fb47f1d900'
+              date: '2019-01-01 00:00:00'
+              venue_id: '5c8015e1739381c2e6caac2f'
+        labels:
+          type: array
+          description: An array of labels that have been applied to the customer
+          example:
+            - VIP
+            - Regular Customer
+          items:
+            type: string
+        notes:
+          type: string
+          description: Any notes that have been applied to the customer
+          example: 'This guy loves our house white wine'
+        created_date:
+          type: string
+          description: The date and time the customer was created
+          example: '2019-03-06 17:00:00'
+          format: date-time
+        last_updated:
+          type: string
+          description: The date and time the customer was last updated
+          example: '2019-03-08 17:00:00'
+          format: date-time
+    NewCustomer:
+      type: object
+      properties:
+        associated_venues:
+          type: array
+          description: An array of venue IDs this customer should be associated with
+          example:
+            - 5c80155a86bb06bc1401ea1e
+            - 5c8015884e68d55f12c7ec9d
+          items:
+            type: string
+        dob:
+          description: The customer's date of birth in the YYYY-MM-DD format
+          example: '1995-01-13'
+          type: string
+          format: date
+        email:
+          description: The customer's email address
+          example: test@example.com
+          type: string
+          format: email
+        first_name:
+          description: The customer's first name
+          example: John
+          type: string
+        last_name:
+          description: The customer's last name
+          example: Doe
+          type: string
+        phone:
+          description: The customer's phone number
+          example: '+441234567890'
+          type: string
+        company:
+          description: The name of the customer's company
+          example: The Access Group
+          type: string
+        company_address:
+          description: The address of the customer's company
+          example: 123 Fake Street
+          type: string
+        notes:
+          description: Any additional notes to make about the customer
+          example: This guy loves our house white wine
+          type: string
+        labels:
+          description: An array of labels which should be set on the customer
+          example:
+            - VIP
+            - Regular Customer
+          type: array
+          items:
+            type: string
+        marketing_preference_ids:
+          description: >-
+            An array of marketing preference IDs which the user should be opted
+            in to.
+          example:
+            - 5c80155a86bb06bc1401ea1e
+            - 5c8015884e68d55f12c7ec9d
+          type: array
+          items:
+            type: string
+        marketing_preferences:
+          type: object
+          description: >-
+            An object of marketing preference IDs as the key, and whether or not
+            the user should be opted in or out of as the value.
+          example:
+            5c80155a86bb06bc1401ea1e: true
+            5c8015884e68d55f12c7ec9d: false
+  securitySchemes:
+    BearerAuth:
+      type: http
+      in: header
+      scheme: bearer
+      bearerFormat: Bearer <token>
+  links: {}
+  callbacks: {}
+security:
+  - BearerAuth: []
