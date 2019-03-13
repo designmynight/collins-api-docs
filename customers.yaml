@@ -541,19 +541,6 @@ components:
     NewCustomer:
       type: object
       properties:
-        associated_venues:
-          type: array
-          description: An array of venue IDs this customer should be associated with
-          example:
-            - 5c80155a86bb06bc1401ea1e
-            - 5c8015884e68d55f12c7ec9d
-          items:
-            type: string
-        dob:
-          description: The customer's date of birth in the YYYY-MM-DD format
-          example: '1995-01-13'
-          type: string
-          format: date
         email:
           description: The customer's email address
           example: test@example.com
@@ -577,18 +564,31 @@ components:
           type: string
         company_address:
           description: The address of the customer's company
-          example: 123 Fake Street
+          type: object
+          properties:
+            street:
+              description: The street name of the customer's company
+              example: 23 Penn Street
+            city:
+              description: The city of the customer's company
+              example: London
+            post_code:
+              description: The post code of the customer's company
+              example: N1 5DL
+        dob:
+          description: The customer's date of birth in the YYYY-MM-DD format
+          example: '1995-01-13'
           type: string
-        notes:
-          description: Any additional notes to make about the customer
-          example: This guy loves our house white wine
-          type: string
-        labels:
-          description: An array of labels which should be set on the customer
-          example:
-            - VIP
-            - Regular Customer
+          format: date
+        custom_field_value:
+          description: The value given for the custom field
+          example: '12345'
+        associated_venues:
           type: array
+          description: An array of venue IDs this customer should be associated with
+          example:
+            - 5c80155a86bb06bc1401ea1e
+            - 5c8015884e68d55f12c7ec9d
           items:
             type: string
         marketing_preference_ids:
@@ -609,6 +609,18 @@ components:
           example:
             5c80155a86bb06bc1401ea1e: true
             5c8015884e68d55f12c7ec9d: false
+        labels:
+          description: An array of labels which should be set on the customer
+          example:
+            - VIP
+            - Regular Customer
+          type: array
+          items:
+            type: string
+        notes:
+          description: Any additional notes to make about the customer
+          example: This guy loves our house white wine
+          type: string
   securitySchemes:
     BearerAuth:
       type: http
