@@ -1,6 +1,6 @@
 openapi: 3.0.0
 servers:
-  - url: 'https://api.collinsbookings.com/api'
+  - url: 'https://api.collinsbookings.com'
     variables: {}
 info:
   version: 1.0.0
@@ -25,7 +25,7 @@ tags:
         To obtain a bearer token, please speak to your account manager.
 
         ```shell
-        $ curl -H "Authorization: Bearer 1234567890" https://api.collinsbookings.com/api/customers
+        $ curl -H "Authorization: Bearer 1234567890" https://api.collinsbookings.com/customers
         ```
   - name: Request format
     description: |
@@ -34,7 +34,7 @@ tags:
       Where JSON is used, you should also include a header specifying the content type as `application/json`.
 
       ```shell
-      $ curl -X PUT -H "Content-Type: application/json" -d '{\"first_name\": \"Dan\"}' https://api.collinsbookings.com/api/customers/12345
+      $ curl -X PUT -H "Content-Type: application/json" -d '{\"first_name\": \"Dan\"}' https://api.collinsbookings.com/customers/12345
       ```
   - name: Response format
     description: |
