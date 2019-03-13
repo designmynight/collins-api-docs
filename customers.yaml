@@ -39,23 +39,6 @@ tags:
   - name: Response format
     description: |
       API responses are in JSON format. When there are exceptions to this rule, the documentation for the endpoint will make this clear.
-  - name: Status codes
-    description: |
-      The following HTTP status codes may be set for an API response:
-
-        Status Code | Explanation
-        --- | ---
-        200 | The request was successful
-        201 | The request was successful and a new resource was created
-        400 | The server cannot process the request due to a client error
-        401 | Authorization credentials were required but not found
-        403 | The request cannot be carried out using the given credentials
-        404 | The requested resource was not found
-        405 | The HTTP method used was not allowed in this context
-        422 | The request cannot be carried out due to a validation error
-        429 | The request rate limit was exceeded
-        501 | The requested method is not implemented
-        503 | A general server error occurred
   - name: Rate limits
     description: |
       All requests to the API are rate limited based on your credentials. You should check the headers for the current
@@ -331,10 +314,18 @@ paths:
               schema:
                 type: object
                 properties:
-                  data:
+                  customers:
                     type: array
                     items:
                       $ref: '#/components/schemas/ViewCustomer'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
     post:
       tags:
         - Customers
@@ -353,7 +344,20 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ViewCustomer'
+                type: object
+                properties:
+                  customer:
+                    $ref: '#/components/schemas/ViewCustomer'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '422':
+          $ref: '#/components/responses/422'
+        '429':
+          $ref: '#/components/responses/429'
   '/customers/:customerId':
     put:
       tags:
@@ -380,7 +384,20 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ViewCustomer'
+                type: object
+                properties:
+                  customer:
+                    $ref: '#/components/schemas/ViewCustomer'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '422':
+          $ref: '#/components/responses/422'
+        '429':
+          $ref: '#/components/responses/429'
     delete:
       tags:
         - Customers
@@ -396,7 +413,22 @@ paths:
       responses:
         '204':
           description: The customer was successfully deleted
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
 components:
+  responses:
+    '401':
+      description: Authorization credentials were required but not found
+    '403':
+      description: The request cannot be carried out using the given credentials
+    '429':
+      description: The number of requests remaining in the current rate limit window has been exceeded
+    '422':
+      description: The request could not be processed because it did not pass validation
+    '404':
+      description: The requested resource could not be found
   schemas:
     ViewCustomer:
       type: object
