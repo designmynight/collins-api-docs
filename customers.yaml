@@ -242,6 +242,52 @@ paths:
             Filter by customers who opted into the specified preference ID on or
             before the given date. Must be used in conjunction with the
             `opted_in` parameter.
+        - name: opted_out
+          in: query
+          required: false
+          explode: false
+          example: 5c8015f15dbf3bec42c4c66f
+          schema:
+            type: array
+            items:
+              type: string
+          description: >-
+            Filter by customers who have opted out of the specified preference ID.
+            If a comma-separated list is passed, customers who have opted out any of the
+            given preference IDs will be returned.
+        - name: opted_out_date
+          in: query
+          example: '2017-01-05'
+          required: false
+          schema:
+            type: string
+            format: date
+          description: >-
+            Filter by customers who opted out of the specified preference ID on
+            the given date. Must be used in conjunction with the `opted_out`
+            parameter.
+        - name: opted_out_from
+          in: query
+          example: '2017-01-05'
+          required: false
+          schema:
+            type: string
+            format: date
+          description: >-
+            Filter by customers who opted out of the specified preference ID on or
+            after the given date. Must be used in conjunction with the
+            `opted_out` parameter.
+        - name: opted_out_to
+          in: query
+          required: false
+          example: '2017-01-14'
+          schema:
+            type: string
+            format: date
+          description: >-
+            Filter by customers who opted out of the specified preference ID on or
+            before the given date. Must be used in conjunction with the
+            `opted_out` parameter.
         - name: query
           in: query
           example: '@example.com'
