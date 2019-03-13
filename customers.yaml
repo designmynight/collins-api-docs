@@ -65,7 +65,91 @@ x-tagGroups:
   - name: Reference
     tags:
       - Customers
+      - Venue
+      - Venue Group
 paths:
+  /venues/:venueId/marketing-preferences:
+    get:
+      tags:
+        - Venue
+      summary: Get active marketing preferences
+      description: |
+        Returns an array of active marketing preferences for the given venue. An active marketing preference is one which
+        has been set up on the venue group level and activated on the individual venue.
+      parameters:
+        - in: path
+          name: venueId
+          required: true
+          description: The venue ID to retrieve marketing preferences for
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The active marketing preferences were successfully retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: The ID of this marketing preference
+                      example: 5b0743f00000000000000000
+                    name:
+                      type: string
+                      description: The name of this marketing preference
+                      example: SMS
+                    description:
+                      type: string
+                      description: A description of this marketing preference
+                      example: I am happy for Test Venue to contact me over SMS for exclusive offers
+                    created_date:
+                      type: string
+                      format: date
+                      description: The date when this marketing preference was created
+                      example: 2019-03-13 22:09:30
+  /venue-groups/:venueGroupId/marketing-preferences:
+    get:
+      tags:
+        - Venue Group
+      summary: Get marketing preferences
+      description: Returns an array of marketing preferences which have been set up for the given venue group.
+      parameters:
+        - in: path
+          name: venueGroupId
+          required: true
+          description: The venue group ID to retrieve marketing preferences for
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The marketing preferences were successfully retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: The ID of this marketing preference
+                      example: 5b0743f00000000000000000
+                    name:
+                      type: string
+                      description: The name of this marketing preference
+                      example: SMS
+                    description:
+                      type: string
+                      description: A description of this marketing preference
+                      example: I am happy for Test Venue to contact me over SMS for exclusive offers
+                    created_date:
+                      type: string
+                      format: date
+                      description: The date when this marketing preference was created
+                      example: 2019-03-13 22:09:30
   /customers:
     get:
       summary: Get customers
