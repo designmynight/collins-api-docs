@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ReDoc</title>
+    <!-- needed for adaptive design -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--
+    ReDoc doesn't change outer page styles
+    -->
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      redoc .menu-content img {
+          margin: 1em auto;
+      }
+
+      @font-face {
+          font-family: 'Museo_Sans';
+          src: url('https://static.designmynight.com/fonts/museosans-300-webfont.woff2') format('woff');
+          font-weight: normal;
+      }
+
+      @font-face {
+          font-family: 'Museo_Sans';
+          src: url('https://static.designmynight.com/fonts/museosans_700-webfont.woff') format('woff');
+          font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <redoc></redoc>
+    <script src="https://cdn.jsdelivr.net/npm/redoc@next/bundles/redoc.standalone.js"> </script>
+
+    <script>
+        Redoc.init('customers.yaml', {
+            pathInMiddlePanel: true,
+            noAutoAuth: true,
+            theme: {
+                typography: {
+                    fontFamily: 'Museo_Sans',
+                    headings: {
+                        fontFamily: 'Museo_Sans'
+                    }
+                },
+                logo: {
+                    maxWidth: '200px'
+                },
+                colors: {
+                    primary: {
+                        main: '#009fa4'
+                    }
+                }
+            }
+        })
+    </script>
+  </body>
+</html>
