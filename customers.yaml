@@ -12,6 +12,9 @@ info:
   x-logo:
     url: "https://static.designmynight.com/uploads/2017/01/DesignMyNight-Logo.png"
     altText: "DesignMyNight"
+  contact:
+    name: DesignMyNight Tech Team
+    url: https://github.com/designmynight/collins-api-docs
 tags:
   - name: URL
     description: |
@@ -51,6 +54,46 @@ tags:
       `X-RateLimit-Reset` | The time at which the current rate limit window resets, in ISO 8601 format
 
       If you go over the rate limit, you will receive an error response with the status code `429`.
+  - name: Pagination
+    description: |
+      Some API responses are paginated. If a response contains paginated data, this will be clearly marked in these docs.
+
+      You should check the headers for details about the pagination:
+
+      Header Name | Description
+      --- | ---
+      `X-Pagination-Page` | The page number for the current set of results
+      `X-Pagination-Per-Page` | The total number of resources that will be returned per page
+      `X-Pagination-Total-Pages` | The total number of pages
+      `X-Pagination-Total-Results` | The total number of resources that the search query returned
+
+      To specify the page you want to retrieve results for, you should use the `page` URL parameter.
+
+      For example, if you made the following request:
+
+      ```shell
+      $ curl https://api.collinsbookings.com/customers?query=@designmynight.com
+      ```
+
+      and the following headers were sent back:
+
+      ```
+      X-Pagination-Page           1
+      X-Pagination-Per-Page       30
+      X-Pagination-Total-Pages    4
+      X-Pagination-Total-Results  100
+      ```
+
+      The query returned 100 results, but each request will only show 30 at a time. To grab the next 30, you will need
+      to make an additional request with the `page` URL parameter and increment this for the number of pages (`X-Pagination-Total-Pages`),
+      like so:
+
+      ```shell
+      $ curl https://api.collinsbookings.com/customers?query=@designmynight.com&page=2
+      $ curl https://api.collinsbookings.com/customers?query=@designmynight.com&page=3
+      $ curl https://api.collinsbookings.com/customers?query=@designmynight.com&page=4
+      ```
+
   - name: Customers
     description: This endpoint is used for managing customer data
 x-tagGroups:
@@ -62,10 +105,95 @@ x-tagGroups:
       - Response format
       - Status Codes
       - Rate limits
+      - Pagination
   - name: Reference
     tags:
       - Customers
+      - Venue
+      - Venue Group
 paths:
+  /venues/:venueId/marketing-preferences:
+    get:
+      tags:
+        - Venue
+      summary: Get active marketing preferences
+      description: |
+        Returns an array of active marketing preferences for the given venue. An active marketing preference is one which
+        has been set up on the venue group level and activated on the individual venue.
+      parameters:
+        - in: path
+          name: venueId
+          required: true
+          description: The venue ID to retrieve marketing preferences for
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The active marketing preferences were successfully retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: The ID of this marketing preference
+                      example: 5b0743f00000000000000000
+                    name:
+                      type: string
+                      description: The name of this marketing preference
+                      example: SMS
+                    description:
+                      type: string
+                      description: A description of this marketing preference
+                      example: I am happy for Test Venue to contact me over SMS for exclusive offers
+                    created_date:
+                      type: string
+                      format: date
+                      description: The date when this marketing preference was created
+                      example: 2019-03-13 22:09:30
+  /venue-groups/:venueGroupId/marketing-preferences:
+    get:
+      tags:
+        - Venue Group
+      summary: Get marketing preferences
+      description: Returns an array of marketing preferences which have been set up for the given venue group.
+      parameters:
+        - in: path
+          name: venueGroupId
+          required: true
+          description: The venue group ID to retrieve marketing preferences for
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The marketing preferences were successfully retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: The ID of this marketing preference
+                      example: 5b0743f00000000000000000
+                    name:
+                      type: string
+                      description: The name of this marketing preference
+                      example: SMS
+                    description:
+                      type: string
+                      description: A description of this marketing preference
+                      example: I am happy for Test Venue to contact me over SMS for exclusive offers
+                    created_date:
+                      type: string
+                      format: date
+                      description: The date when this marketing preference was created
+                      example: 2019-03-13 22:09:30
   /customers:
     get:
       summary: Get customers
@@ -73,7 +201,7 @@ paths:
         - Customers
       description: >-
         Returns an array of all customers which the authenticated user is
-        authorised to view.
+        authorised to view. The response will be [paginated](/#tag/Pagination).
       parameters:
         - name: associated_venues
           in: query
@@ -305,6 +433,14 @@ paths:
             the `query` parameter. If the `query` parameter is not specified,
             records will be sorted in order of their `created_date`. To sort in
             decending order, prefix the field name with a '-' character.
+        - name: page
+          in: query
+          required: false
+          example: 2
+          default: 1
+          schema:
+            type: string
+          description: The page number to retrieve results for. [Learn more about pagination](/#tag/Pagination)
       operationId: /
       responses:
         '200':
