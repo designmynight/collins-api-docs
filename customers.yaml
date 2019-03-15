@@ -51,6 +51,46 @@ tags:
       `X-RateLimit-Reset` | The time at which the current rate limit window resets, in ISO 8601 format
 
       If you go over the rate limit, you will receive an error response with the status code `429`.
+  - name: Pagination
+    description: |
+      Some API responses are paginated. If a response contains paginated data, this will be clearly marked in these docs.
+
+      You should check the headers for details about the pagination:
+
+      Header Name | Description
+      --- | ---
+      `X-Pagination-Page` | The page number for the current set of results
+      `X-Pagination-Per-Page` | The total number of resources that will be returned per page
+      `X-Pagination-Total-Pages` | The total number of pages
+      `X-Pagination-Total-Results` | The total number of resources that the search query returned
+
+      To specify the page you want to retrieve results for, you should use the `page` URL parameter.
+
+      For example, if you made the following request:
+
+      ```shell
+      $ curl https://api.collinsbookings.com/customers?query=@designmynight.com
+      ```
+
+      and the following headers were sent back:
+
+      ```
+      X-Pagination-Page           1
+      X-Pagination-Per-Page       30
+      X-Pagination-Total-Pages    4
+      X-Pagination-Total-Results  100
+      ```
+
+      The query returned 100 results, but each request will only show 30 at a time. To grab the next 30, you will need
+      to make an additional request with the `page` URL parameter and increment this for the number of pages (`X-Pagination-Total-Pages`),
+      like so:
+
+      ```shell
+      $ curl https://api.collinsbookings.com/customers?query=@designmynight.com&page=2
+      $ curl https://api.collinsbookings.com/customers?query=@designmynight.com&page=3
+      $ curl https://api.collinsbookings.com/customers?query=@designmynight.com&page=4
+      ```
+
   - name: Customers
     description: This endpoint is used for managing customer data
 x-tagGroups:
@@ -62,6 +102,7 @@ x-tagGroups:
       - Response format
       - Status Codes
       - Rate limits
+      - Pagination
   - name: Reference
     tags:
       - Customers
@@ -157,7 +198,7 @@ paths:
         - Customers
       description: >-
         Returns an array of all customers which the authenticated user is
-        authorised to view.
+        authorised to view. The response will be [paginated](/#tag/Pagination).
       parameters:
         - name: associated_venues
           in: query
@@ -389,6 +430,14 @@ paths:
             the `query` parameter. If the `query` parameter is not specified,
             records will be sorted in order of their `created_date`. To sort in
             decending order, prefix the field name with a '-' character.
+        - name: page
+          in: query
+          required: false
+          example: 2
+          default: 1
+          schema:
+            type: string
+          description: The page number to retrieve results for. [Learn more about pagination](/#tag/Pagination)
       operationId: /
       responses:
         '200':
