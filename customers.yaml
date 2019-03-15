@@ -12,6 +12,9 @@ info:
   x-logo:
     url: "https://static.designmynight.com/uploads/2017/01/DesignMyNight-Logo.png"
     altText: "DesignMyNight"
+  contact:
+    name: DesignMyNight Tech Team
+    url: https://github.com/designmynight/collins-api-docs
 tags:
   - name: URL
     description: |
