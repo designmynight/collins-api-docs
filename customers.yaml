@@ -42,6 +42,11 @@ tags:
   - name: Response format
     description: |
       API responses are in JSON format. When there are exceptions to this rule, the documentation for the endpoint will make this clear.
+      You should include the `Accept` header with a value of `application/json` for requests which return a JSON response.
+
+      ```shell
+      $ curl -X GET -H "Accept: application/json" https://api.collinsbookings.com/api/customers
+      ```
   - name: Rate limits
     description: |
       All requests to the API are rate limited based on your credentials. You should check the headers for the current
