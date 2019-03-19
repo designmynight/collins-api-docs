@@ -1,6 +1,6 @@
 openapi: 3.0.0
 servers:
-  - url: 'https://api.collinsbookings.com'
+  - url: 'https://api.collinsbookings.com/api'
     variables: {}
 info:
   version: 1.0.0
@@ -18,7 +18,7 @@ info:
 tags:
   - name: URL
     description: |
-      The API is accessible through the domain `api.collinsbookings.com`. All requests should be made over HTTPS.
+      The API is accessible through the domain `api.collinsbookings.com`, and all API endpoints are prefixed with `/api`. All requests should be made over HTTPS.
     x-traitTag: true
   - name: Authorisation
     description: |
@@ -28,7 +28,7 @@ tags:
         To obtain a bearer token, please speak to your account manager.
 
         ```shell
-        $ curl -H "Authorization: Bearer 1234567890" https://api.collinsbookings.com/customers
+        $ curl -H "Authorization: Bearer 1234567890" https://api.collinsbookings.com/api/customers
         ```
   - name: Request format
     description: |
@@ -37,7 +37,7 @@ tags:
       Where JSON is used, you should also include a header specifying the content type as `application/json`.
 
       ```shell
-      $ curl -X PUT -H "Content-Type: application/json" -d '{\"first_name\": \"Dan\"}' https://api.collinsbookings.com/customers/12345
+      $ curl -X PUT -H "Content-Type: application/json" -d '{\"first_name\": \"Dan\"}' https://api.collinsbookings.com/api/customers/12345
       ```
   - name: Response format
     description: |
@@ -72,7 +72,7 @@ tags:
       For example, if you made the following request:
 
       ```shell
-      $ curl https://api.collinsbookings.com/customers?query=@designmynight.com
+      $ curl https://api.collinsbookings.com/api/customers?query=@designmynight.com
       ```
 
       and the following headers were sent back:
@@ -89,9 +89,9 @@ tags:
       like so:
 
       ```shell
-      $ curl https://api.collinsbookings.com/customers?query=@designmynight.com&page=2
-      $ curl https://api.collinsbookings.com/customers?query=@designmynight.com&page=3
-      $ curl https://api.collinsbookings.com/customers?query=@designmynight.com&page=4
+      $ curl https://api.collinsbookings.com/api/customers?query=@designmynight.com&page=2
+      $ curl https://api.collinsbookings.com/api/customers?query=@designmynight.com&page=3
+      $ curl https://api.collinsbookings.com/api/customers?query=@designmynight.com&page=4
       ```
 
   - name: Customers
