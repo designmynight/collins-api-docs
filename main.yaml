@@ -23,13 +23,13 @@ tags:
       $ref: 'content/authorisation.md'
   - name: Request format
     description:
-      $ref: 'content/request_format.md'
+      $ref: 'content/request-format.md'
   - name: Response format
     description:
-      $ref: 'content/response_format.md'
+      $ref: 'content/response-format.md'
   - name: Rate limits
     description:
-      $ref: 'content/rate_limits.md'
+      $ref: 'content/rate-limits.md'
   - name: Pagination
     description:
       $ref: 'content/pagination.md'
@@ -72,27 +72,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: string
-                      description: The ID of this marketing preference
-                      example: 5b0743f00000000000000000
-                    name:
-                      type: string
-                      description: The name of this marketing preference
-                      example: SMS
-                    description:
-                      type: string
-                      description: A description of this marketing preference
-                      example: I am happy for Test Venue to contact me over SMS for exclusive offers
-                    created_date:
-                      type: string
-                      format: date
-                      description: The date when this marketing preference was created
-                      example: 2019-03-13 22:09:30
+                $ref: 'marketing-preferences/preference-list-response.yaml#'
   /venue-groups/:venueGroupId/marketing-preferences:
     get:
       tags:
@@ -112,27 +92,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: string
-                      description: The ID of this marketing preference
-                      example: 5b0743f00000000000000000
-                    name:
-                      type: string
-                      description: The name of this marketing preference
-                      example: SMS
-                    description:
-                      type: string
-                      description: A description of this marketing preference
-                      example: I am happy for Test Venue to contact me over SMS for exclusive offers
-                    created_date:
-                      type: string
-                      format: date
-                      description: The date when this marketing preference was created
-                      example: 2019-03-13 22:09:30
+                $ref: 'marketing-preferences/preference-list-response.yaml#'
   /customers:
     get:
       summary: Get customers
