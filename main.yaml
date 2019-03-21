@@ -35,6 +35,10 @@ tags:
       $ref: 'content/pagination.md'
   - name: Customers
     description: This endpoint is used for managing customer data
+  - name: Venues
+    description: This endpoint is used for managing venue data
+  - name: Venue Groups
+    description: This endpoint is used for managing venue group data
 x-tagGroups:
   - name: API Basics
     tags:
