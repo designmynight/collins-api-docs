@@ -1,0 +1,74 @@
+openapi: 3.0.0
+servers:
+  - url: 'https://api.collinsbookings.com/api'
+    variables: {}
+info:
+  version: 1.0.0
+  title: Collins API
+  description:
+    $ref: 'content/introduction.md'
+  x-logo:
+    url: "https://static.designmynight.com/uploads/2017/01/DesignMyNight-Logo.png"
+    altText: "DesignMyNight"
+  contact:
+    name: DesignMyNight Tech Team
+    url: https://github.com/designmynight/collins-api-docs
+tags:
+  - name: URL
+    description: 
+      $ref: 'content/url.md'
+    x-traitTag: true
+  - name: Authorisation
+    description:
+      $ref: 'content/authorisation.md'
+  - name: Request format
+    description:
+      $ref: 'content/request-format.md'
+  - name: Response format
+    description:
+      $ref: 'content/response-format.md'
+  - name: Rate limits
+    description:
+      $ref: 'content/rate-limits.md'
+  - name: Pagination
+    description:
+      $ref: 'content/pagination.md'
+  - name: Customers
+    description: This endpoint is used for managing customer data
+  - name: Venues
+    description: This endpoint is used for managing venue data
+  - name: Venue Groups
+    description: This endpoint is used for managing venue group data
+x-tagGroups:
+  - name: API Basics
+    tags:
+      - URL
+      - Authorisation
+      - Request format
+      - Response format
+      - Status Codes
+      - Rate limits
+      - Pagination
+  - name: Reference
+    tags:
+      - Customers
+      - Venues
+      - Venue Groups
+paths:
+  /customers:
+    $ref: /customers/customers.yaml#/CustomersWithoutEntityId
+  /customers/{customerId}:
+    $ref: /customers/customers.yaml#/CustomersWithEntityId
+  /venues/{venueId}/marketing-preferences:
+    $ref: /venues/marketing-preferences.yaml#/ListActiveMarketingPreferences
+  /venue-groups/{venueGroupId}/marketing-preferences:
+    $ref: /venue-groups/marketing-preferences.yaml#/ListActiveMarketingPreferences
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      in: header
+      scheme: bearer
+      bearerFormat: Bearer <token>
+security:
+  - BearerAuth: []

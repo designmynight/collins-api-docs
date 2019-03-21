@@ -1,0 +1,250 @@
+associated_venues:
+  name: associated_venues
+  in: query
+  required: false
+  explode: false
+  example:
+    - 5c80155a86bb06bc1401ea1e
+    - 5c8015884e68d55f12c7ec9d
+  schema:
+    type: array
+    items:
+      type: string
+  description: >-
+    Filters on associated venue IDs. If a comma-separated list is
+    passed, customers associated with any of the given venue IDs will be
+    returned.
+booking_date:
+  name: booking_date
+  in: query
+  required: false
+  example: '2019-03-10'
+  schema:
+    type: string
+    format: date
+  description: >-
+    Filters on customers who had a booking booked within the specified
+    dates.
+booking_date_from:
+  name: booking_date_from
+  in: query
+  required: false
+  example: '2017-01-05'
+  schema:
+    type: string
+    format: date
+  description: >-
+    Filters on customers who had a booking booked on or later than the
+    given date.
+booking_date_to:
+  name: booking_date_to
+  in: query
+  required: false
+  example: '2018-01-05'
+  schema:
+    type: string
+    format: date
+  description: >-
+    Filters on customers who had a booking booked on or before the given
+    date.
+dob_month:
+  name: dob_month
+  in: query
+  required: false
+  schema:
+    type: integer
+  description: >-
+    Filter on month of birth. If a comma-separated list is passed,
+    customers with any of the specified birth months will be returned
+  examples:
+    january:
+      summary: Filters by customers born in January
+      value:
+        - 1
+    endMonths:
+      summary: 'Filters by customers born in Sept, Oct, Nov or Dec'
+      value:
+        - 9
+        - 10
+        - 11
+        - 12
+email:
+  name: email
+  in: query
+  required: false
+  explode: false
+  example: test@example.com
+  schema:
+    type: array
+    items:
+      type: string
+      format: email
+  description: Filter on a customer's email address
+full_name:
+  name: full_name
+  in: query
+  example: John Doe
+  required: false
+  schema:
+    type: string
+  description: Filter on a full name
+labels:
+  name: labels
+  in: query
+  example:
+    - VIP
+    - Regular Customer
+  required: false
+  explode: false
+  schema:
+    type: array
+    items:
+      type: string
+  description: >-
+    Filter on labels attached to a customer. If a comma-separated list
+    is passed, customers with any of the given labels will be returned.
+last_updated:
+  name: last_updated
+  in: query
+  required: false
+  schema:
+    type: string
+  example: '2019-03-10T00:00:00'
+  description: Filter on the date the customer was last updated
+opted_in:
+  name: opted_in
+  in: query
+  required: false
+  explode: false
+  example: 5c8015f15dbf3bec42c4c66f
+  schema:
+    type: array
+    items:
+      type: string
+  description: >-
+    Filter by customers who have opted into the specified preference ID.
+    If a comma-separated list is passed, customers opted into any of the
+    given preference IDs will be returned.
+opted_in_date:
+  name: opted_in_date
+  in: query
+  example: '2017-01-05'
+  required: false
+  schema:
+    type: string
+    format: date
+  description: >-
+    Filter by customers who opted into the specified preference ID on
+    the given date. Must be used in conjunction with the `opted_in`
+    parameter.
+opted_in_from:
+  name: opted_in_from
+  in: query
+  example: '2017-01-05'
+  required: false
+  schema:
+    type: string
+    format: date
+  description: >-
+    Filter by customers who opted into the specified preference ID on or
+    after the given date. Must be used in conjunction with the
+    `opted_in` parameter.
+opted_in_to:
+  name: opted_in_to
+  in: query
+  required: false
+  example: '2017-01-14'
+  schema:
+    type: string
+    format: date
+  description: >-
+    Filter by customers who opted into the specified preference ID on or
+    before the given date. Must be used in conjunction with the
+    `opted_in` parameter.
+opted_out:
+  name: opted_out
+  in: query
+  required: false
+  explode: false
+  example: 5c8015f15dbf3bec42c4c66f
+  schema:
+    type: array
+    items:
+      type: string
+  description: >-
+    Filter by customers who have opted out of the specified preference ID.
+    If a comma-separated list is passed, customers who have opted out any of the
+    given preference IDs will be returned.
+opted_out_date:
+  name: opted_out_date
+  in: query
+  example: '2017-01-05'
+  required: false
+  schema:
+    type: string
+    format: date
+  description: >-
+    Filter by customers who opted out of the specified preference ID on
+    the given date. Must be used in conjunction with the `opted_out`
+    parameter.
+opted_out_from:
+  name: opted_out_from
+  in: query
+  example: '2017-01-05'
+  required: false
+  schema:
+    type: string
+    format: date
+  description: >-
+    Filter by customers who opted out of the specified preference ID on or
+    after the given date. Must be used in conjunction with the
+    `opted_out` parameter.
+opted_out_to:
+  name: opted_out_to
+  in: query
+  required: false
+  example: '2017-01-14'
+  schema:
+    type: string
+    format: date
+  description: >-
+    Filter by customers who opted out of the specified preference ID on or
+    before the given date. Must be used in conjunction with the
+    `opted_out` parameter.
+query:
+  name: query
+  in: query
+  example: '@example.com'
+  required: false
+  schema:
+    type: string
+  description: >-
+    Filter by customers which have a `full_name`, `email`, `company` or
+    `phone` similar to the search query.
+limit:
+  name: limit
+  in: query
+  required: false
+  schema:
+    type: integer
+    default: 30
+    maximum: 30
+    minimum: 1
+  example: '30'
+  description: Limit the response to the specified number of records.
+sort:
+  name: sort
+  in: query
+  required: false
+  explode: false
+  example: '-last_updated'
+  schema:
+    type: array
+    items:
+      type: string
+  description: >-
+    The fields which the results should be sorted by. If this value is
+    not specified, the records will be sorted in order of relevance to
+    the `query` parameter. If the `query` parameter is not specified,
+    records will be sorted in order of their `created_date`. To sort in
+    decending order, prefix the field name with a '-' character.

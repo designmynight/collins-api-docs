@@ -1,0 +1,1 @@
+The API is accessible through the domain `api.collinsbookings.com`, and all API endpoints are prefixed with `/api`. All requests should be made over HTTPS.

@@ -1,0 +1,139 @@
+type: object
+properties:
+  id:
+    type: string
+    description: The customer's ID
+    example: 5314491e0a8efb6d7c19c39c
+  email:
+    type: string
+    format: email
+    description: The customer's email address
+    example: test@example.com
+  first_name:
+    type: string
+    description: The customer's first name
+    example: John
+  last_name:
+    type: string
+    description: The customer's last name
+    example: Doe
+  phone:
+    type: string
+    description: The customer's phone number
+    example: '+447912345678'
+  company:
+    type: string
+    description: The name of the customer's company
+    example: The Access Group
+  company_address:
+    type: object
+    description: The address of the customer's company
+    properties:
+      street:
+        type: string
+        description: The street name of the company
+        example: Penn Street
+      city:
+        type: string
+        description: The city which the company is located
+        example: London
+      post_code:
+        type: string
+        description: The post code of the company
+        example: 'N1 5DL'
+  dob:
+    type: string
+    description: The customer's date of birth
+    example: '1995-01-13'
+  custom_field_value:
+    type: string
+    description: The value given for the custom field
+    example: '12345'
+  associated_venues:
+    type: array
+    description: An array of associated venue IDs
+    example:
+      - 5c80155a86bb06bc1401ea1e
+      - 5c8015884e68d55f12c7ec9d
+    items:
+      type: string
+  marketing_preferences:
+    type: array
+    description: >-
+      An array of marketing preferences this user has given or revoked
+      consent to
+    items:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the marketing preference
+          example: 5c8015f15dbf3bec42c4c66f
+        opt_in_date:
+          type: string
+          description: The date the customer last opted into this preference
+          format: date-time
+          example: '2017-01-05 00:00:00'
+        opt_out_date:
+          type: string
+          description: The date the customer last opted out of this preference
+          format: date-time
+          example: '2017-01-14 00:00:00'
+        opted_in:
+          type: boolean
+          description: >-
+            Whether or not the customer is currently opted into this
+            preference
+  bookings:
+    type: array
+    description: An array of bookings this customer has made
+    items:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the booking
+          example: 5c8015d346acc0fb47f1d900
+        date:
+          type: string
+          description: The date of the booking
+          example: '2019-03-10 00:00:00'
+          format: date-time
+        venue_id:
+          type: string
+          description: The venue ID this booking is for
+          example: 5c8015e1739381c2e6caac2f
+        num_people:
+          type: integer
+          description: The number of people the booking is for
+          example: 2
+        status:
+          type: string
+          description: The status of the booking
+          example: 'complete'
+    example:
+      - id: '5c8015d346acc0fb47f1d900'
+        date: '2019-01-01 00:00:00'
+        venue_id: '5c8015e1739381c2e6caac2f'
+  labels:
+    type: array
+    description: An array of labels that have been applied to the customer
+    example:
+      - VIP
+      - Regular Customer
+    items:
+      type: string
+  notes:
+    type: string
+    description: Any notes that have been applied to the customer
+    example: 'This guy loves our house white wine'
+  created_date:
+    type: string
+    description: The date and time the customer was created
+    example: '2019-03-06 17:00:00'
+    format: date-time
+  last_updated:
+    type: string
+    description: The date and time the customer was last updated
+    example: '2019-03-08 17:00:00'
+    format: date-time

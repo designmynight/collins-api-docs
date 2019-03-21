@@ -1,0 +1,1 @@
+API responses are in JSON format. When there are exceptions to this rule, the documentation for the endpoint will make this clear.

@@ -1,0 +1,131 @@
+CustomersWithoutEntityId:
+  get:
+    summary: Get customers
+    tags:
+      - Customers
+    description: >-
+      Returns an array of all customers which the authenticated user is
+      authorised to view. The response will be [paginated](/#tag/Pagination).
+    parameters:
+      - $ref: '/customers/components/customer-filters.yaml#/associated_venues'
+      - $ref: '/customers/components/customer-filters.yaml#/booking_date'
+      - $ref: '/customers/components/customer-filters.yaml#/booking_date_from'
+      - $ref: '/customers/components/customer-filters.yaml#/booking_date_to'
+      - $ref: '/customers/components/customer-filters.yaml#/dob_month'
+      - $ref: '/customers/components/customer-filters.yaml#/email'
+      - $ref: '/customers/components/customer-filters.yaml#/full_name'
+      - $ref: '/customers/components/customer-filters.yaml#/labels'
+      - $ref: '/customers/components/customer-filters.yaml#/last_updated'
+      - $ref: '/customers/components/customer-filters.yaml#/opted_in'
+      - $ref: '/customers/components/customer-filters.yaml#/opted_in_date'
+      - $ref: '/customers/components/customer-filters.yaml#/opted_in_from'
+      - $ref: '/customers/components/customer-filters.yaml#/opted_in_to'
+      - $ref: '/customers/components/customer-filters.yaml#/opted_out'
+      - $ref: '/customers/components/customer-filters.yaml#/opted_out_date'
+      - $ref: '/customers/components/customer-filters.yaml#/opted_out_from'
+      - $ref: '/customers/components/customer-filters.yaml#/opted_out_to'
+      - $ref: '/customers/components/customer-filters.yaml#/query'
+      - $ref: '/customers/components/customer-filters.yaml#/limit'
+      - $ref: '/customers/components/customer-filters.yaml#/sort'
+      - $ref: '/shared/pagination-filters.yaml#/page'
+    operationId: /
+    responses:
+      '200':
+        description: Customers were successfully retrieved
+        content:
+          application/json:
+            schema:
+              $ref: '/customers/components/customer-list-response.yaml#'
+      '401':
+        $ref: '/shared/standard-responses.yaml#/401'
+      '403':
+        $ref: '/shared/standard-responses.yaml#/403'
+      '404':
+        $ref: '/shared/standard-responses.yaml#/404'
+      '429':
+        $ref: '/shared/standard-responses.yaml#/429'
+  post:
+    tags:
+      - Customers
+    summary: Create customer
+    description: Creates a new customer
+    requestBody:
+      description: Data for the customer you wish to create
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '/customers/components/new-customer-request.yaml#'
+    responses:
+      '201':
+        description: Successfully added a customer
+        content:
+          application/json:
+            schema:
+              $ref: '/customers/components/customer-response.yaml#'
+      '401':
+        $ref: '/shared/standard-responses.yaml#/401'
+      '403':
+        $ref: '/shared/standard-responses.yaml#/403'
+      '404':
+        $ref: '/shared/standard-responses.yaml#/404'
+      '422':
+        $ref: '/shared/standard-responses.yaml#/422'
+      '429':
+        $ref: '/shared/standard-responses.yaml#/429'
+CustomersWithEntityId:
+  put:
+    tags:
+      - Customers
+    summary: Update a customer
+    description: Updates an existing customer
+    parameters:
+      - in: path
+        name: customerId
+        required: true
+        description: The ID of the customer you want to update
+        schema:
+          type: string
+    requestBody:
+      description: Data the customer should be updated with
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '/customers/components/view-customer.yaml#'
+    responses:
+      '200':
+        description: The customer was successfully updated
+        content:
+          application/json:
+            schema:
+              $ref: '/customers/components/customer-response.yaml#'
+      '401':
+        $ref: '/shared/standard-responses.yaml#/401'
+      '403':
+        $ref: '/shared/standard-responses.yaml#/403'
+      '404':
+        $ref: '/shared/standard-responses.yaml#/404'
+      '422':
+        $ref: '/shared/standard-responses.yaml#/422'
+      '429':
+        $ref: '/shared/standard-responses.yaml#/429'
+  delete:
+    tags:
+      - Customers
+    summary: Delete a customer
+    description: Deletes an existing customer
+    parameters:
+      - in: path
+        name: customerId
+        required: true
+        description: The ID of the customer you want to delete
+        schema:
+          type: string
+    responses:
+      '204':
+        description: The customer was successfully deleted
+      '404':
+        $ref: '/shared/standard-responses.yaml#/404'
+      '429':
+        $ref: '/shared/standard-responses.yaml#/429'
