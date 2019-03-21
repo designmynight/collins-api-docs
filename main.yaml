@@ -142,27 +142,27 @@ paths:
         Returns an array of all customers which the authenticated user is
         authorised to view. The response will be [paginated](/#tag/Pagination).
       parameters:
-        - $ref: 'customers/components/CustomerFilters.yaml#/associated_venues'
-        - $ref: 'customers/components/CustomerFilters.yaml#/booking_date'
-        - $ref: 'customers/components/CustomerFilters.yaml#/booking_date_from'
-        - $ref: 'customers/components/CustomerFilters.yaml#/booking_date_to'
-        - $ref: 'customers/components/CustomerFilters.yaml#/dob_month'
-        - $ref: 'customers/components/CustomerFilters.yaml#/email'
-        - $ref: 'customers/components/CustomerFilters.yaml#/full_name'
-        - $ref: 'customers/components/CustomerFilters.yaml#/labels'
-        - $ref: 'customers/components/CustomerFilters.yaml#/last_updated'
-        - $ref: 'customers/components/CustomerFilters.yaml#/opted_in'
-        - $ref: 'customers/components/CustomerFilters.yaml#/opted_in_date'
-        - $ref: 'customers/components/CustomerFilters.yaml#/opted_in_from'
-        - $ref: 'customers/components/CustomerFilters.yaml#/opted_in_to'
-        - $ref: 'customers/components/CustomerFilters.yaml#/opted_out'
-        - $ref: 'customers/components/CustomerFilters.yaml#/opted_out_date'
-        - $ref: 'customers/components/CustomerFilters.yaml#/opted_out_from'
-        - $ref: 'customers/components/CustomerFilters.yaml#/opted_out_to'
-        - $ref: 'customers/components/CustomerFilters.yaml#/query'
-        - $ref: 'customers/components/CustomerFilters.yaml#/limit'
-        - $ref: 'customers/components/CustomerFilters.yaml#/sort'
-        - $ref: 'customers/components/CustomerFilters.yaml#/page'
+        - $ref: 'customers/components/customer-filters.yaml#/associated_venues'
+        - $ref: 'customers/components/customer-filters.yaml#/booking_date'
+        - $ref: 'customers/components/customer-filters.yaml#/booking_date_from'
+        - $ref: 'customers/components/customer-filters.yaml#/booking_date_to'
+        - $ref: 'customers/components/customer-filters.yaml#/dob_month'
+        - $ref: 'customers/components/customer-filters.yaml#/email'
+        - $ref: 'customers/components/customer-filters.yaml#/full_name'
+        - $ref: 'customers/components/customer-filters.yaml#/labels'
+        - $ref: 'customers/components/customer-filters.yaml#/last_updated'
+        - $ref: 'customers/components/customer-filters.yaml#/opted_in'
+        - $ref: 'customers/components/customer-filters.yaml#/opted_in_date'
+        - $ref: 'customers/components/customer-filters.yaml#/opted_in_from'
+        - $ref: 'customers/components/customer-filters.yaml#/opted_in_to'
+        - $ref: 'customers/components/customer-filters.yaml#/opted_out'
+        - $ref: 'customers/components/customer-filters.yaml#/opted_out_date'
+        - $ref: 'customers/components/customer-filters.yaml#/opted_out_from'
+        - $ref: 'customers/components/customer-filters.yaml#/opted_out_to'
+        - $ref: 'customers/components/customer-filters.yaml#/query'
+        - $ref: 'customers/components/customer-filters.yaml#/limit'
+        - $ref: 'customers/components/customer-filters.yaml#/sort'
+        - $ref: 'customers/components/customer-filters.yaml#/page'
       operationId: /
       responses:
         '200':
@@ -170,7 +170,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: 'customers/components/CustomerListResponse.yaml#'
+                $ref: 'customers/components/customer-list-response.yaml#'
         '401':
           $ref: '#/components/responses/401'
         '403':
@@ -190,14 +190,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: 'customers/components/NewCustomerRequest.yaml#'
+              $ref: 'customers/components/new-customer-request.yaml#'
       responses:
         '201':
           description: Successfully added a customer
           content:
             application/json:
               schema:
-                $ref: 'customers/components/CustomerResponse.yaml#'
+                $ref: 'customers/components/customer-response.yaml#'
         '401':
           $ref: '#/components/responses/401'
         '403':
@@ -227,14 +227,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: 'customers/components/ViewCustomer.yaml#'
+              $ref: 'customers/components/view-customer.yaml#'
       responses:
         '200':
           description: The customer was successfully updated
           content:
             application/json:
               schema:
-                $ref: 'customers/components/CustomerResponse.yaml#'
+                $ref: 'customers/components/customer-response.yaml#'
         '401':
           $ref: '#/components/responses/401'
         '403':
