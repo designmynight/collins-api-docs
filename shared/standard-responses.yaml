@@ -1,0 +1,10 @@
+401:
+  description: Authorization credentials were required but not found
+403:
+  description: The request cannot be carried out using the given credentials
+429:
+  description: The number of requests remaining in the current rate limit window has been exceeded
+422:
+  description: The request could not be processed because it did not pass validation
+404:
+  description: The requested resource could not be found
