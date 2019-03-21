@@ -1,0 +1,214 @@
+actual_guests:
+  name: actual_guests
+  in: query
+  required: false
+  description: >-
+    Filter by the number of "actual" guests. An actual guest is one that has been checked into
+    the booking on arrival. For no-shows, actual_guests will be zero.
+
+    You can filter by a range of actual guests, eg `1-10` for any bookings with an `actual_guest`
+    between 1 and 10. You can also pass through more than one ranges, for example, `1-4,10-15` will 
+    bring back bookings between 1 to 4 *and* between 10 to 15.
+affiliate_customer_id:
+  name: affiliate_customer_id
+  in: query
+  required: false
+  description: >-
+    Filter bookings by the affiliate customer ID.
+assigned_area:
+  name: assigned_area
+  in: query
+  required: false
+  
+assigned_to:
+  name: assigned_to
+  in: query
+  required: false
+booking_id:
+  name: booking_id
+  in: query
+  required: false
+compare_date_from:
+  name: compare_date_from
+  in: query
+  required: false
+compare_date_to:
+  name: compare_date_to
+  in: query
+  required: false
+concierge:
+  name: concierge
+  in: query
+  required: false
+created_date:
+  name: created_date
+  in: query
+  required: false
+created_from:
+  name: created_from
+  in: query
+  required: false
+created_to:
+  name: created_to
+  in: query
+  required: false
+current_stage:
+  name: current_stage
+  in: query
+  required: false
+date_from:
+  name: date_from
+  in: query
+  required: false
+date_to:
+  name: date_to
+  in: query
+  required: false
+date:
+  name: date
+  in: query
+  required: false
+dmn_booking:
+  name: dmn_booking
+  in: query
+  required: false
+email:
+  name: email
+  in: query
+  required: false
+exclude_auto_confirmed:
+  name: exclude_auto_confirmed
+  in: query
+  required: false
+exclude_walk_ins:
+  name: exclude_walk_ins
+  in: query
+  required: false
+follow_up:
+  name: follow_up
+  in: query
+  required: false
+has_complete_preorders:
+  name: has_complete_preorders
+  in: query
+  required: false
+has_party_plan:
+  name: has_party_plan
+  in: query
+  required: false
+has_preorders:
+  name: has_preorders
+  in: query
+  required: false
+invoice_as_private_hire:
+  name: invoice_as_private_hire
+  in: query
+  required: false
+invoiced:
+  name: invoiced
+  in: query
+  required: false
+labels:
+  name: labels
+  in: query
+  required: false
+last_updated:
+  name: last_updated
+  in: query
+  required: false
+notifications:
+  name: notifications
+  in: query
+  required: false
+num_people:
+  name: num_people
+  in: query
+  required: false
+offer:
+  name: offer
+  in: query
+  required: false
+partner_source:
+  name: partner_source
+  in: query
+  required: false
+pending_deposits:
+  name: pending_deposits
+  in: query
+  required: false
+phone:
+  name: phone
+  in: query
+  required: false
+preorders_open:
+  name: preorders_open
+  in: query
+  required: false
+preorders_status:
+  name: preorders_status
+  in: query
+  required: false
+private_hire:
+  name: private_hire
+  in: query
+  required: false
+query:
+  name: query
+  in: query
+  required: false
+reconciled:
+  name: reconciled
+  in: query
+  required: false
+start_time:
+  name: start_time
+  in: query
+  required: false
+status_changed_date:
+  name: status_changed_date
+  in: query
+  required: false
+status:
+  name: status
+  in: query
+  required: false
+time:
+  name: time
+  in: query
+  required: false
+type:
+  name: type
+  in: query
+  required: false
+user_id:
+  name: user_id
+  in: query
+  required: false
+venue_group:
+  name: venue_group
+  in: query
+  required: false
+venue_id:
+  name: venue_id
+  in: query
+  required: false
+waitlisted:
+  name: waitlisted
+  in: query
+  required: false
+zone:
+  name: zone
+  in: query
+  required: false
+limit:
+  name: limit
+  in: query
+  required: false
+sort:
+  name: sort
+  in: query
+  required: false
+start:
+  name: start
+  in: query
+  required: false
