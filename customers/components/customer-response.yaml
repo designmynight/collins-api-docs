@@ -1,4 +1,4 @@
 type: object
 properties:
   customer:
-    $ref: 'ViewCustomer.yaml'
+    $ref: 'view-customer.yaml'

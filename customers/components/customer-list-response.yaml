@@ -3,4 +3,4 @@ properties:
   customers:
     type: array
     items:
-      $ref: 'ViewCustomer.yaml#'
+      $ref: 'view-customer.yaml#'
