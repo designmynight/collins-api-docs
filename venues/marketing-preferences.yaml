@@ -1,0 +1,22 @@
+ListActiveMarketingPreferences:
+  get:
+    tags:
+      - Venues
+    summary: Get active marketing preferences
+    description: |
+      Returns an array of active marketing preferences for the given venue. An active marketing preference is one which
+      has been set up on the venue group level and activated on the individual venue.
+    parameters:
+      - in: path
+        name: venueId
+        required: true
+        description: The venue ID to retrieve marketing preferences for
+        schema:
+          type: string
+    responses:
+      '200':
+        description: The active marketing preferences were successfully retrieved
+        content:
+          application/json:
+            schema:
+              $ref: '/marketing-preferences/components/preference-list-response.yaml#'

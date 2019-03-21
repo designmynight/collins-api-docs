@@ -1,0 +1,20 @@
+ListActiveMarketingPreferences:
+  get:
+    tags:
+      - Venue Groups
+    summary: Get marketing preferences
+    description: Returns an array of marketing preferences which have been set up for the given venue group.
+    parameters:
+      - in: path
+        name: venueGroupId
+        required: true
+        description: The venue group ID to retrieve marketing preferences for
+        schema:
+          type: string
+    responses:
+      '200':
+        description: The marketing preferences were successfully retrieved
+        content:
+          application/json:
+            schema:
+              $ref: '/marketing-preferences/components/preference-list-response.yaml#'
