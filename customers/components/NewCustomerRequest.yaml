@@ -1,0 +1,92 @@
+type: object
+properties:
+  email:
+    description: The customer's email address
+    example: test@example.com
+    maxLength: 255
+    type: string
+    format: email
+  first_name:
+    description: The customer's first name
+    example: John
+    maxLength: 255
+    type: string
+  last_name:
+    description: The customer's last name
+    example: Doe
+    maxLength: 255
+    type: string
+  phone:
+    description: The customer's phone number
+    example: '+441234567890'
+    maxLength: 20
+    type: string
+  company:
+    description: The name of the customer's company
+    example: The Access Group
+    maxLength: 255
+    type: string
+  company_address:
+    description: The address of the customer's company
+    type: object
+    properties:
+      street:
+        description: The street name of the customer's company
+        example: 23 Penn Street
+        maxLength: 255
+      city:
+        description: The city of the customer's company
+        example: London
+        maxLength: 50
+      post_code:
+        description: The post code of the customer's company
+        example: N1 5DL
+        maxLength: 10
+  dob:
+    description: The customer's date of birth in the YYYY-MM-DD format
+    example: '1995-01-13'
+    type: string
+    format: date
+  custom_field_value:
+    description: The value given for the custom field
+    example: '12345'
+    maxLength: 255
+  associated_venues:
+    type: array
+    description: An array of venue IDs this customer should be associated with
+    example:
+      - 5c80155a86bb06bc1401ea1e
+      - 5c8015884e68d55f12c7ec9d
+    items:
+      type: string
+  marketing_preference_ids:
+    description: >-
+      An array of marketing preference IDs which the user should be opted
+      in to.
+    example:
+      - 5c80155a86bb06bc1401ea1e
+      - 5c8015884e68d55f12c7ec9d
+    type: array
+    items:
+      type: string
+  marketing_preferences:
+    type: object
+    description: >-
+      An object of marketing preference IDs as the key, and whether or not
+      the user should be opted in or out of as the value.
+    example:
+      5c80155a86bb06bc1401ea1e: true
+      5c8015884e68d55f12c7ec9d: false
+  labels:
+    description: An array of labels which should be set on the customer
+    example:
+      - VIP
+      - Regular Customer
+    type: array
+    items:
+      type: string
+  notes:
+    description: Any additional notes to make about the customer
+    example: This guy loves our house white wine
+    type: string
+    maxLength: 1000

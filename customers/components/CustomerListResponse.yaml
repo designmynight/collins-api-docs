@@ -1,0 +1,6 @@
+type: object
+properties:
+  customers:
+    type: array
+    items:
+      $ref: 'ViewCustomer.yaml#'

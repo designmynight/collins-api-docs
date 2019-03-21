@@ -1,0 +1,288 @@
+openapi: 3.0.0
+servers:
+  - url: 'https://api.collinsbookings.com/api'
+    variables: {}
+info:
+  version: 1.0.0
+  title: Collins API
+  description:
+    $ref: 'content/introduction.md'
+  x-logo:
+    url: "https://static.designmynight.com/uploads/2017/01/DesignMyNight-Logo.png"
+    altText: "DesignMyNight"
+  contact:
+    name: DesignMyNight Tech Team
+    url: https://github.com/designmynight/collins-api-docs
+tags:
+  - name: URL
+    description: 
+      $ref: 'content/url.md'
+    x-traitTag: true
+  - name: Authorisation
+    description:
+      $ref: 'content/authorisation.md'
+  - name: Request format
+    description:
+      $ref: 'content/request_format.md'
+  - name: Response format
+    description:
+      $ref: 'content/response_format.md'
+  - name: Rate limits
+    description:
+      $ref: 'content/rate_limits.md'
+  - name: Pagination
+    description:
+      $ref: 'content/pagination.md'
+  - name: Customers
+    description: This endpoint is used for managing customer data
+x-tagGroups:
+  - name: API Basics
+    tags:
+      - URL
+      - Authorisation
+      - Request format
+      - Response format
+      - Status Codes
+      - Rate limits
+      - Pagination
+  - name: Reference
+    tags:
+      - Customers
+      - Venue
+      - Venue Group
+paths:
+  /venues/:venueId/marketing-preferences:
+    get:
+      tags:
+        - Venue
+      summary: Get active marketing preferences
+      description: |
+        Returns an array of active marketing preferences for the given venue. An active marketing preference is one which
+        has been set up on the venue group level and activated on the individual venue.
+      parameters:
+        - in: path
+          name: venueId
+          required: true
+          description: The venue ID to retrieve marketing preferences for
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The active marketing preferences were successfully retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: The ID of this marketing preference
+                      example: 5b0743f00000000000000000
+                    name:
+                      type: string
+                      description: The name of this marketing preference
+                      example: SMS
+                    description:
+                      type: string
+                      description: A description of this marketing preference
+                      example: I am happy for Test Venue to contact me over SMS for exclusive offers
+                    created_date:
+                      type: string
+                      format: date
+                      description: The date when this marketing preference was created
+                      example: 2019-03-13 22:09:30
+  /venue-groups/:venueGroupId/marketing-preferences:
+    get:
+      tags:
+        - Venue Group
+      summary: Get marketing preferences
+      description: Returns an array of marketing preferences which have been set up for the given venue group.
+      parameters:
+        - in: path
+          name: venueGroupId
+          required: true
+          description: The venue group ID to retrieve marketing preferences for
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The marketing preferences were successfully retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: The ID of this marketing preference
+                      example: 5b0743f00000000000000000
+                    name:
+                      type: string
+                      description: The name of this marketing preference
+                      example: SMS
+                    description:
+                      type: string
+                      description: A description of this marketing preference
+                      example: I am happy for Test Venue to contact me over SMS for exclusive offers
+                    created_date:
+                      type: string
+                      format: date
+                      description: The date when this marketing preference was created
+                      example: 2019-03-13 22:09:30
+  /customers:
+    get:
+      summary: Get customers
+      tags:
+        - Customers
+      description: >-
+        Returns an array of all customers which the authenticated user is
+        authorised to view. The response will be [paginated](/#tag/Pagination).
+      parameters:
+        - $ref: 'customers/components/CustomerFilters.yaml#/associated_venues'
+        - $ref: 'customers/components/CustomerFilters.yaml#/booking_date'
+        - $ref: 'customers/components/CustomerFilters.yaml#/booking_date_from'
+        - $ref: 'customers/components/CustomerFilters.yaml#/booking_date_to'
+        - $ref: 'customers/components/CustomerFilters.yaml#/dob_month'
+        - $ref: 'customers/components/CustomerFilters.yaml#/email'
+        - $ref: 'customers/components/CustomerFilters.yaml#/full_name'
+        - $ref: 'customers/components/CustomerFilters.yaml#/labels'
+        - $ref: 'customers/components/CustomerFilters.yaml#/last_updated'
+        - $ref: 'customers/components/CustomerFilters.yaml#/opted_in'
+        - $ref: 'customers/components/CustomerFilters.yaml#/opted_in_date'
+        - $ref: 'customers/components/CustomerFilters.yaml#/opted_in_from'
+        - $ref: 'customers/components/CustomerFilters.yaml#/opted_in_to'
+        - $ref: 'customers/components/CustomerFilters.yaml#/opted_out'
+        - $ref: 'customers/components/CustomerFilters.yaml#/opted_out_date'
+        - $ref: 'customers/components/CustomerFilters.yaml#/opted_out_from'
+        - $ref: 'customers/components/CustomerFilters.yaml#/opted_out_to'
+        - $ref: 'customers/components/CustomerFilters.yaml#/query'
+        - $ref: 'customers/components/CustomerFilters.yaml#/limit'
+        - $ref: 'customers/components/CustomerFilters.yaml#/sort'
+        - $ref: 'customers/components/CustomerFilters.yaml#/page'
+      operationId: /
+      responses:
+        '200':
+          description: Customers were successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: 'customers/components/CustomerListResponse.yaml#'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+    post:
+      tags:
+        - Customers
+      summary: Create customer
+      description: Creates a new customer
+      requestBody:
+        description: Data for the customer you wish to create
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'customers/components/NewCustomerRequest.yaml#'
+      responses:
+        '201':
+          description: Successfully added a customer
+          content:
+            application/json:
+              schema:
+                $ref: 'customers/components/CustomerResponse.yaml#'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '422':
+          $ref: '#/components/responses/422'
+        '429':
+          $ref: '#/components/responses/429'
+  '/customers/:customerId':
+    put:
+      tags:
+        - Customers
+      summary: Update a customer
+      description: Updates an existing customer
+      parameters:
+        - in: path
+          name: customerId
+          required: true
+          description: The ID of the customer you want to update
+          schema:
+            type: string
+      requestBody:
+        description: Data the customer should be updated with
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'customers/components/ViewCustomer.yaml#'
+      responses:
+        '200':
+          description: The customer was successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: 'customers/components/CustomerResponse.yaml#'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '422':
+          $ref: '#/components/responses/422'
+        '429':
+          $ref: '#/components/responses/429'
+    delete:
+      tags:
+        - Customers
+      summary: Delete a customer
+      description: Deletes an existing customer
+      parameters:
+        - in: path
+          name: customerId
+          required: true
+          description: The ID of the customer you want to delete
+          schema:
+            type: string
+      responses:
+        '204':
+          description: The customer was successfully deleted
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+components:
+  responses:
+    '401':
+      description: Authorization credentials were required but not found
+    '403':
+      description: The request cannot be carried out using the given credentials
+    '429':
+      description: The number of requests remaining in the current rate limit window has been exceeded
+    '422':
+      description: The request could not be processed because it did not pass validation
+    '404':
+      description: The requested resource could not be found
+  securitySchemes:
+    BearerAuth:
+      type: http
+      in: header
+      scheme: bearer
+      bearerFormat: Bearer <token>
+  links: {}
+  callbacks: {}
+security:
+  - BearerAuth: []
