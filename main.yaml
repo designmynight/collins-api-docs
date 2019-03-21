@@ -63,5 +63,12 @@ paths:
     $ref: /venues/marketing-preferences.yaml#/ListActiveMarketingPreferences
   /venue-groups/{venueGroupId}/marketing-preferences:
     $ref: /venue-groups/marketing-preferences.yaml#/ListActiveMarketingPreferences
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      in: header
+      scheme: bearer
+      bearerFormat: Bearer <token>
 security:
   - BearerAuth: []
