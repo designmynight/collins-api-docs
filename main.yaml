@@ -132,13 +132,13 @@ paths:
               schema:
                 $ref: 'customers/components/customer-list-response.yaml#'
         '401':
-          $ref: '#/components/responses/401'
+          $ref: 'shared/standard-responses.yaml#/401'
         '403':
-          $ref: '#/components/responses/403'
+          $ref: 'shared/standard-responses.yaml#/403'
         '404':
-          $ref: '#/components/responses/404'
+          $ref: 'shared/standard-responses.yaml#/404'
         '429':
-          $ref: '#/components/responses/429'
+          $ref: 'shared/standard-responses.yaml#/429'
     post:
       tags:
         - Customers
@@ -159,15 +159,15 @@ paths:
               schema:
                 $ref: 'customers/components/customer-response.yaml#'
         '401':
-          $ref: '#/components/responses/401'
+          $ref: 'shared/standard-responses.yaml#/401'
         '403':
-          $ref: '#/components/responses/403'
+          $ref: 'shared/standard-responses.yaml#/403'
         '404':
-          $ref: '#/components/responses/404'
+          $ref: 'shared/standard-responses.yaml#/404'
         '422':
-          $ref: '#/components/responses/422'
+          $ref: 'shared/standard-responses.yaml#/422'
         '429':
-          $ref: '#/components/responses/429'
+          $ref: 'shared/standard-responses.yaml#/429'
   '/customers/:customerId':
     put:
       tags:
@@ -196,15 +196,15 @@ paths:
               schema:
                 $ref: 'customers/components/customer-response.yaml#'
         '401':
-          $ref: '#/components/responses/401'
+          $ref: 'shared/standard-responses.yaml#/401'
         '403':
-          $ref: '#/components/responses/403'
+          $ref: 'shared/standard-responses.yaml#/403'
         '404':
-          $ref: '#/components/responses/404'
+          $ref: 'shared/standard-responses.yaml#/404'
         '422':
-          $ref: '#/components/responses/422'
+          $ref: 'shared/standard-responses.yaml#/422'
         '429':
-          $ref: '#/components/responses/429'
+          $ref: 'shared/standard-responses.yaml#/429'
     delete:
       tags:
         - Customers
@@ -221,21 +221,9 @@ paths:
         '204':
           description: The customer was successfully deleted
         '404':
-          $ref: '#/components/responses/404'
+          $ref: 'shared/standard-responses.yaml#/404'
         '429':
-          $ref: '#/components/responses/429'
-components:
-  responses:
-    '401':
-      description: Authorization credentials were required but not found
-    '403':
-      description: The request cannot be carried out using the given credentials
-    '429':
-      description: The number of requests remaining in the current rate limit window has been exceeded
-    '422':
-      description: The request could not be processed because it did not pass validation
-    '404':
-      description: The requested resource could not be found
+          $ref: 'shared/standard-responses.yaml#/429'
   securitySchemes:
     BearerAuth:
       type: http
