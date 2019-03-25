@@ -109,8 +109,26 @@ last_updated:
   required: false
   schema:
     type: string
-  example: '2019-03-10T00:00:00'
+  example: '2019-03-10'
   description: Filter on the date the customer was last updated
+last_updated_from:
+  name: last_updated_from
+  in: query
+  required: false
+  schema:
+    type: string
+  example: '2019-01-01'
+  description: >-
+    Filter on customers who were last updated on or after the given date.
+last_updated_to:
+  name: last_updated_to
+  in: query
+  required: false
+  schema:
+    type: string
+  example: '2019-02-01'
+  description: >-
+    Filter on customers who were last updated on or before the given date.
 opted_in:
   name: opted_in
   in: query
