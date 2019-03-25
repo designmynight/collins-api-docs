@@ -109,6 +109,7 @@ last_updated:
   required: false
   schema:
     type: string
+    format: date
   example: '2019-03-10'
   description: Filter on the date the customer was last updated
 last_updated_from:
@@ -117,6 +118,7 @@ last_updated_from:
   required: false
   schema:
     type: string
+    format: date
   example: '2019-01-01'
   description: >-
     Filter on customers who were last updated on or after the given date.
@@ -126,6 +128,7 @@ last_updated_to:
   required: false
   schema:
     type: string
+    format: date
   example: '2019-02-01'
   description: >-
     Filter on customers who were last updated on or before the given date.
