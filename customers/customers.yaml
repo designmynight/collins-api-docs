@@ -16,6 +16,8 @@ CustomersWithoutEntityId:
       - $ref: '/customers/components/customer-filters.yaml#/full_name'
       - $ref: '/customers/components/customer-filters.yaml#/labels'
       - $ref: '/customers/components/customer-filters.yaml#/last_updated'
+      - $ref: '/customers/components/customer-filters.yaml#/last_updated_from'
+      - $ref: '/customers/components/customer-filters.yaml#/last_updated_to'
       - $ref: '/customers/components/customer-filters.yaml#/opted_in'
       - $ref: '/customers/components/customer-filters.yaml#/opted_in_date'
       - $ref: '/customers/components/customer-filters.yaml#/opted_in_from'
