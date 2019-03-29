@@ -2,6 +2,8 @@ actual_guests:
   name: actual_guests
   in: query
   required: false
+  schema:
+    type: string
   description: >-
     Filter by the number of "actual" guests. An actual guest is one that has been checked into
     the booking on arrival. For no-shows, actual_guests will be zero.
@@ -9,6 +11,7 @@ actual_guests:
     You can filter by a range of actual guests, eg `1-10` for any bookings with an `actual_guest`
     between 1 and 10. You can also pass through more than one ranges, for example, `1-4,10-15` will 
     bring back bookings between 1 to 4 *and* between 10 to 15.
+  example: 1-10
 affiliate_customer_id:
   name: affiliate_customer_id
   in: query
@@ -19,39 +22,55 @@ assigned_area:
   name: assigned_area
   in: query
   required: false
-  
+  description: >-
+    Filters bookings that are assigned to the given area ID. If a comma-separated list is passed, 
+    bookings assigned to any of the given area IDs will be returned.
 assigned_to:
   name: assigned_to
   in: query
   required: false
+  description: >-
+    Filters bookings that are assigned to the given user ID. If a comma-separated list is passed, 
+    bookings assigned to any of the given user IDs will be returned.
 booking_id:
   name: booking_id
   in: query
   required: false
-compare_date_from:
-  name: compare_date_from
-  in: query
-  required: false
-compare_date_to:
-  name: compare_date_to
-  in: query
-  required: false
-concierge:
-  name: concierge
-  in: query
-  required: false
+  schema:
+    type: integer
+  example: 12345
+  description: >-
+    Filters bookings that have the given booking ID.
 created_date:
   name: created_date
   in: query
   required: false
+  schema:
+    type: string
+    format: date
+  example: '2019-01-01'
+  description: >-
+    Filters bookings that were created on the given date.
 created_from:
   name: created_from
   in: query
   required: false
+  schema:
+    type: string
+    format: date
+  example: '2019-01-01'
+  description: >-
+    Filters bookings that were created on or after the given date.
 created_to:
   name: created_to
   in: query
   required: false
+  schema:
+    type: string
+    format: date
+  example: '2019-03-01'
+  description: >-
+    Filters bookings that were created on or before the given date
 current_stage:
   name: current_stage
   in: query
