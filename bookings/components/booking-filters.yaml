@@ -17,20 +17,20 @@ affiliate_customer_id:
   in: query
   required: false
   description: >-
-    Filter bookings by the affiliate customer ID.
+    Filter on bookings by the affiliate customer ID.
 assigned_area:
   name: assigned_area
   in: query
   required: false
   description: >-
-    Filters bookings that are assigned to the given area ID. If a comma-separated list is passed, 
+    Filters on bookings that are assigned to the given area ID. If a comma-separated list is passed, 
     bookings assigned to any of the given area IDs will be returned.
 assigned_to:
   name: assigned_to
   in: query
   required: false
   description: >-
-    Filters bookings that are assigned to the given user ID. If a comma-separated list is passed, 
+    Filters on bookings that are assigned to the given user ID. If a comma-separated list is passed, 
     bookings assigned to any of the given user IDs will be returned.
 booking_id:
   name: booking_id
@@ -40,7 +40,7 @@ booking_id:
     type: integer
   example: 12345
   description: >-
-    Filters bookings that have the given booking ID.
+    Filters on bookings that have the given booking ID.
 created_date:
   name: created_date
   in: query
@@ -50,7 +50,7 @@ created_date:
     format: date
   example: '2019-01-01'
   description: >-
-    Filters bookings that were created on the given date.
+    Filters on bookings that were created on the given date.
 created_from:
   name: created_from
   in: query
@@ -60,7 +60,7 @@ created_from:
     format: date
   example: '2019-01-01'
   description: >-
-    Filters bookings that were created on or after the given date.
+    Filters on bookings that were created on or after the given date.
 created_to:
   name: created_to
   in: query
@@ -70,127 +70,284 @@ created_to:
     format: date
   example: '2019-03-01'
   description: >-
-    Filters bookings that were created on or before the given date
+    Filters on bookings that were created on or before the given date
 current_stage:
   name: current_stage
   in: query
   required: false
-date_from:
-  name: date_from
-  in: query
-  required: false
-date_to:
-  name: date_to
-  in: query
-  required: false
+  schema:
+    type: string
+  example: Arrived
+  description: >-
+    Filters on bookings that have the given current_stage.
 date:
   name: date
   in: query
   required: false
-dmn_booking:
-  name: dmn_booking
+  schema:
+    type: string
+    format: date
+  example: '2019-01-01'
+  description: >-
+    Filters on bookings that take place on the given date.
+date_from:
+  name: date_from
   in: query
   required: false
+  schema:
+    type: string
+    format: date
+  example: '2019-01-01'
+  description: >-
+    Filters on bookings that take place on or after the given date.
+date_to:
+  name: date_to
+  in: query
+  required: false
+  schema:
+    type: string
+    format: date
+  example: '2019-01-01'
+  description: >-
+    Filters on bookings that take place on or before the given date.
 email:
   name: email
   in: query
   required: false
+  schema:
+    type: string
+  example: test@example.com
 exclude_auto_confirmed:
   name: exclude_auto_confirmed
   in: query
   required: false
+  schema:
+    type: boolean
+  example: false
+  description: >-
+    Filters on bookings that were not auto-confirmed.
 exclude_walk_ins:
   name: exclude_walk_ins
   in: query
   required: false
+  schema:
+    type: boolean
+  example: false
+  description: >-
+    Filters on bookings that were not walk-ins.
 follow_up:
   name: follow_up
   in: query
   required: false
+  schema:
+    type: string
+    format: date
+  example: '2019-01-01'
+  description: >-
+    Filters on bookings by the date that the follow up email is scheduled to be sent.
 has_complete_preorders:
   name: has_complete_preorders
   in: query
   required: false
-has_party_plan:
-  name: has_party_plan
-  in: query
-  required: false
+  schema:
+    type: boolean
+  example: false
+  description: >-
+    Filters on bookings that have completed preorders.
 has_preorders:
   name: has_preorders
   in: query
   required: false
-invoice_as_private_hire:
-  name: invoice_as_private_hire
-  in: query
-  required: false
-invoiced:
-  name: invoiced
-  in: query
-  required: false
+  schema:
+    type: boolean
+  example: false
+  description: >-
+    Filters on bookings that have preorders.
 labels:
   name: labels
   in: query
   required: false
+  explode: false
+  schema:
+    type: array
+    items:
+      type: string
+  example:
+    - Need to call
+  descrition: >-
+    Filters on bookings that have the given labels. If a comma-separated list is 
+    passed, bookings which have all of the given labels will be returned.
 last_updated:
   name: last_updated
   in: query
   required: false
+  schema:
+    type: string
+    format: date
+  example: '2019-01-01'
+  description: >-
+    Filters on bookings which were last updated on the given date.
+last_updated_from:
+  name: last_updated_from
+  in: query
+  required: false
+  schema:
+    type: string
+    format: date
+  example: '2019-01-01'
+  description: >-
+    Filters on bookings which were last updated on or after the given date.
+last_updated_to:
+  name: last_updated_to
+  in: query
+  required: false
+  schema:
+    type: string
+    format: date
+  example: '2019-01-03'
+  description: >-
+    Filters on bookings which were last updated on or before the given date.
 notifications:
   name: notifications
   in: query
   required: false
+  explode: false
+  schema:
+    type: array
+    items:
+      type: string
+  example:
+    - new_messages
+  description: >-
+    Filters on bookings which have the given notification. If a comma-separated list is 
+    passed, bookings which have all of the given notifications will be returned.
 num_people:
   name: num_people
   in: query
   required: false
+  schema:
+    type: string
+  description: >-
+    Filters on bookings which have the given number of guests. You can optionally pass through 
+    a range, for example `6 TO 10` would filter on bookings containing between 6 and 10 guests.
+  example: 10
 offer:
   name: offer
   in: query
   required: false
+  schema:
+    type: string
+  description: >-
+    Filters on bookings which have the given offer. This filter accepts a single offer ID, or multiple 
+    offer IDs separated by a comma to filter on bookings containing any of the given offers. To filter 
+    on bookings with *no* offer, use "none".
 partner_source:
   name: partner_source
   in: query
   required: false
+  schema:
+    type: string
+  example: 'christmas_page'
+  description: >-
+    Filters on bookings which have the given `partner_source`.
 pending_deposits:
   name: pending_deposits
   in: query
   required: false
+  description: >-
+    Filters on bookings which have a pending deposit of the given type.
 phone:
   name: phone
   in: query
   required: false
+  schema:
+    type: string
+  example: '01234567890'
+  description: >-
+    Filters on bookings which have the given telephone number.
 preorders_open:
   name: preorders_open
   in: query
   required: false
+  schema:
+    type: boolean
+  example: false
+  description: >-
+    Filters on bookings which have preorders open.
 preorders_status:
   name: preorders_status
   in: query
   required: false
+  example: 'complete'
+  schema:
+    type: string
+  description: >-
+    Filters on bookings which have the given status for preorders.
 private_hire:
   name: private_hire
   in: query
   required: false
+  example: false
+  schema:
+    type: boolean
+  description: >-
+    Filters on bookings which are private hire.
 query:
   name: query
   in: query
   required: false
-reconciled:
-  name: reconciled
-  in: query
-  required: false
+  example: '@example.com'
+  schema:
+    type: string
+  description: >-
+    Filter on bookings which have a `full_name`, `email`, `company` or
+    `phone` similar to the search query.
 start_time:
   name: start_time
   in: query
   required: false
+  schema:
+    type: string
+  example: '13:15'
+  description: >-
+    Filters on bookings which have the given start time. This filter can also 
+    accept a range of times, for example `12:00 TO 15:30` will filter bookings 
+    starting between 12pm and 3:30pm.
 status_changed_date:
   name: status_changed_date
   in: query
   required: false
+  schema:
+    type: string
+    format: date
+  example: '2019-01-01'
+  description: >-
+    Filters on bookings where the status was changed on the given date.
+status_changed_date_from:
+  name: status_changed_date_from
+  in: query
+  required: false
+  schema:
+    type: string
+    format: date
+  example: '2019-01-01'
+  description: >-
+    Filters on bookings where the status was changed on or after the given date.
+status_changed_date_to:
+  name: status_changed_date_to
+  in: query
+  required: false
+  schema:
+    type: string
+    format: date
+  example: '2019-03-01'
+  description: >-
+    Filters on bookings where the status was changed on or before the given date.
 status:
   name: status
   in: query
   required: false
+  
 time:
   name: time
   in: query
