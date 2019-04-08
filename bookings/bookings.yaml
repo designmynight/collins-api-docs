@@ -10,7 +10,7 @@ BookingsWithoutEntityId:
       - $ref: '/bookings/components/booking-filters.yaml#/actual_guests'
       - $ref: '/bookings/components/booking-filters.yaml#/assigned_area'
       - $ref: '/bookings/components/booking-filters.yaml#/assigned_to'
-      - $ref: '/bookings/components/booking-filters.yaml#/booking_id'
+      - $ref: '/bookings/components/booking-filters.yaml#/reference'
       - $ref: '/bookings/components/booking-filters.yaml#/created_date'
       - $ref: '/bookings/components/booking-filters.yaml#/created_date_from'
       - $ref: '/bookings/components/booking-filters.yaml#/created_date_to'
@@ -51,3 +51,50 @@ BookingsWithoutEntityId:
       - $ref: '/shared/pagination-filters.yaml#/limit'
       - $ref: '/shared/pagination-filters.yaml#/sort'
       - $ref: '/shared/pagination-filters.yaml#/page'
+    operationId: getBookings
+    responses:
+      200:
+        description: Bookings were successfully retrieved.
+        content:
+          application/json:
+            schema:
+              $ref: '/bookings/components/booking-list-response.yaml#'
+      401:
+        $ref: '/shared/standard-responses.yaml#/401'
+      403:
+        $ref: '/shared/standard-responses.yaml#/403'
+      404:
+        $ref: '/shared/standard-responses.yaml#/404'
+      429:
+        $ref: '/shared/standard-responses.yaml#/429'
+BookingsWithEntityId:
+  get:
+    summary: Gets details about a specific booking
+    tags:
+      - Bookings
+    description: >-
+      Returns details about a specific booking
+    parameters:
+      - in: path
+        name: bookingId
+        required: true
+        description: The ID of the booking you want to retrieve info for
+        schema:
+          type: string
+    responses:
+      200:
+        description: The booking was successfully retrieved.
+        content:
+          application/json:
+            schema:
+              $ref: '/bookings/components/booking-response.yaml#'
+      401:
+        $ref: '/shared/standard-responses.yaml#/401'
+      403:
+        $ref: '/shared/standard-responses.yaml#/403'
+      404:
+        $ref: '/shared/standard-responses.yaml#/404'
+      422:
+        $ref: '/shared/standard-responses.yaml#/422'
+      429:
+        $ref: '/shared/standard-responses.yaml#/429'

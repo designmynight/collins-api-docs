@@ -39,15 +39,15 @@ assigned_to:
     bookings assigned to any of the given user IDs will be returned. To filter on bookings that are 
     not assigned to a user, use `none`.
   example: 5cab111386510d011b597b3f
-booking_id:
-  name: booking_id
+reference:
+  name: reference
   in: query
   required: false
   schema:
     type: integer
   example: 12345
   description: >-
-    Filters on bookings that have the given booking ID.
+    Filters on bookings that have the given booking reference ID.
 created_date:
   name: created_date
   in: query

@@ -60,6 +60,8 @@ x-tagGroups:
 paths:
   /bookings:
     $ref: /bookings/bookings.yaml#/BookingsWithoutEntityId
+  /bookings/{bookingId}:
+    $ref: /bookings/bookings.yaml#/BookingsWithEntityId
   /customers:
     $ref: /customers/customers.yaml#/CustomersWithoutEntityId
   /customers/{customerId}:
