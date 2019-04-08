@@ -221,30 +221,3 @@ query:
   description: >-
     Filter by customers which have a `full_name`, `email`, `company` or
     `phone` similar to the search query.
-limit:
-  name: limit
-  in: query
-  required: false
-  schema:
-    type: integer
-    default: 30
-    maximum: 30
-    minimum: 1
-  example: '30'
-  description: Limit the response to the specified number of records.
-sort:
-  name: sort
-  in: query
-  required: false
-  explode: false
-  example: '-last_updated'
-  schema:
-    type: array
-    items:
-      type: string
-  description: >-
-    The fields which the results should be sorted by. If this value is
-    not specified, the records will be sorted in order of relevance to
-    the `query` parameter. If the `query` parameter is not specified,
-    records will be sorted in order of their `created_date`. To sort in
-    decending order, prefix the field name with a '-' character.

@@ -25,8 +25,8 @@ CustomersWithoutEntityId:
       - $ref: '/customers/components/customer-filters.yaml#/opted_out_from'
       - $ref: '/customers/components/customer-filters.yaml#/opted_out_to'
       - $ref: '/customers/components/customer-filters.yaml#/query'
-      - $ref: '/customers/components/customer-filters.yaml#/limit'
-      - $ref: '/customers/components/customer-filters.yaml#/sort'
+      - $ref: '/shared/pagination-filters.yaml#/limit'
+      - $ref: '/shared/pagination-filters.yaml#/sort'
       - $ref: '/shared/pagination-filters.yaml#/page'
     operationId: /
     responses:
