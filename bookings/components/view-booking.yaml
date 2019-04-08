@@ -28,13 +28,13 @@ properties:
     type: string
     format: date-time
     description: The date and time the status was last changed.
-    example: 2019-01-01T13:30:00
+    example: 2019-01-01 13:30:00
     nullable: true
   follow_up:
     type: string
     format: date-time
     description: The date and time the follow up email should be sent.
-    example: 2019-01-02T13:13:00
+    example: 2019-01-02 13:13:00
     nullable: true
   reference:
     type: integer
@@ -211,12 +211,12 @@ properties:
   created_date:
     type: string
     format: date-time
-    example: 2019-01-01T13:30:00
+    example: 2019-01-01 13:30:00
     description: The date and time the booking was created.
   last_updated:
     type: string
     format: date-time
-    example: 2019-01-01T13:30:00
+    example: 2019-01-01 13:30:00
     description: The date and time the booking was last updated.
 
   
