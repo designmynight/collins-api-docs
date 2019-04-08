@@ -1,0 +1,6 @@
+type: object
+properties:
+  bookings:
+    type: array
+    items:
+      $ref: 'view-booking.yaml#'
