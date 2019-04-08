@@ -40,6 +40,8 @@ BookingsWithoutEntityId:
       - $ref: '/bookings/components/booking-filters.yaml#/query'
       - $ref: '/bookings/components/booking-filters.yaml#/start_time'
       - $ref: '/bookings/components/booking-filters.yaml#/status_changed_date'
+      - $ref: '/bookings/components/booking-filters.yaml#/status_changed_date_from'
+      - $ref: '/bookings/components/booking-filters.yaml#/status_changed_date_to'
       - $ref: '/bookings/components/booking-filters.yaml#/status'
       - $ref: '/bookings/components/booking-filters.yaml#/time'
       - $ref: '/bookings/components/booking-filters.yaml#/type'
