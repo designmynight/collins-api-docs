@@ -7,8 +7,8 @@ actual_guests:
   description: >-
     Filter by the number of `actual_guests`.
 
-    You can filter by a range of actual guests, eg `1-10` for any bookings with an `actual_guest`
-    between 1 and 10. You can also pass through more than one ranges, for example, `1-4,10-15` will 
+    You can filter by a range of actual guests, eg `1-10` for any bookings with an `actual_guests`
+    between 1 and 10. You can also pass through more than one range, for example, `1-4,10-15` will 
     bring back bookings between 1 to 4 *and* between 10 to 15.
   example: 1-10
 assigned_area:
@@ -151,7 +151,7 @@ follow_up:
     format: date
   example: '2019-01-01'
   description: >-
-    Filters on bookings by the date that the follow up email is scheduled to be sent.
+    Filters on bookings that have a follow up of the given date.
 follow_up_from:
   name: follow_up_from
   in: query
