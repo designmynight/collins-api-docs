@@ -281,6 +281,12 @@ pending_deposits:
     type: array
     items:
       type: string
+      enum:
+        - request_auth
+        - manual_auth
+        - request_payment
+        - manual_payment
+        - customer_preorder
   description: >-
     Filters on bookings which have a pending deposit of the given type. If a comma-separated 
     list is passed, bookings with any of the given pending deposit types will be returned.
