@@ -126,22 +126,22 @@ email:
   example: test@example.com
   description: >-
     Filters on bookings that have the given email address.
-exclude_auto_confirmed:
-  name: exclude_auto_confirmed
+auto_confirmed:
+  name: auto_confirmed
   in: query
   required: false
   schema:
     type: boolean
   description: >-
-    Filters on bookings that were not auto-confirmed.
-exclude_walk_ins:
-  name: exclude_walk_ins
+    Filters on bookings that were auto-confirmed.
+walk_in:
+  name: walk_in
   in: query
   required: false
   schema:
     type: boolean
   description: >-
-    Filters on bookings that were not walk-ins.
+    Filters on bookings that were walk-ins.
 follow_up:
   name: follow_up
   in: query
