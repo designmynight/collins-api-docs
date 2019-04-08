@@ -420,15 +420,6 @@ customer_id:
   description: >-
     Filters on bookings that are associated with the given customer ID. If a comma-separated 
     list is passed, bookings associated with any of the given customer IDs will be returned.
-venue_group:
-  name: venue_group
-  in: query
-  required: false
-  description: >-
-    Filters on bookings that belong to the given venue group ID.
-  schema:
-    type: string
-  example: 5cab0c245ca3d2d984a4b938
 venue_id:
   name: venue_id
   in: query

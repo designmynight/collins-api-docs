@@ -44,7 +44,6 @@ BookingsWithoutEntityId:
       - $ref: '/bookings/components/booking-filters.yaml#/time'
       - $ref: '/bookings/components/booking-filters.yaml#/type'
       - $ref: '/bookings/components/booking-filters.yaml#/customer_id'
-      - $ref: '/bookings/components/booking-filters.yaml#/venue_group'
       - $ref: '/bookings/components/booking-filters.yaml#/venue_id'
       - $ref: '/bookings/components/booking-filters.yaml#/waitlisted'
       - $ref: '/bookings/components/booking-filters.yaml#/zone'
