@@ -438,7 +438,7 @@ venue_id:
   description: >-
     Filters on bookings that are for the given venue ID. If a comma-separated list is passed, 
     bookings for any of the given venue IDs will be returned. To filter bookings with _no_ 
-    assigned venue ID, use `none`. 
+    assigned venue, use `none`. 
   example: 5cab0c7ba7a3f443a918f1b7
 waitlisted:
   name: waitlisted
