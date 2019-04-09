@@ -124,6 +124,11 @@ properties:
     description: The total value of this booking.
     example: 120.00
     nullable: true
+  customer_id:
+    type: string
+    description: The customer ID associated with the booking
+    example: 5314491e0a8efb6d7c19c39c
+    nullable: true
   first_name:
     type: string
     description: The first name for the booking.
