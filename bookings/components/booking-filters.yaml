@@ -1,0 +1,462 @@
+actual_guests:
+  name: actual_guests
+  in: query
+  required: false
+  schema:
+    type: string
+  description: >-
+    Filter by the number of `actual_guests`.
+
+    You can filter by a range of actual guests, eg `1-10` for any bookings with an `actual_guests`
+    between 1 and 10. You can also pass through more than one range, for example, `1-4,10-15` will 
+    bring back bookings between 1 to 4 *and* between 10 to 15.
+  example: 1-10
+assigned_area:
+  name: assigned_area
+  in: query
+  required: false
+  explode: false
+  schema:
+    type: array
+    items:
+      type: string
+  description: >-
+    Filters on bookings that are assigned to the given area ID. If a comma-separated list is passed, 
+    bookings assigned to any of the given area IDs will be returned. Alternatively, to filter on 
+    whether bookings have an assigned area or not, use `true` or `false`. 
+  example: 5cab10d8f44d3861c8c3819d
+assigned_to:
+  name: assigned_to
+  in: query
+  required: false
+  explode: false
+  schema:
+    type: array
+    items:
+      type: string
+  description: >-
+    Filters on bookings that are assigned to the given user ID. If a comma-separated list is passed, 
+    bookings assigned to any of the given user IDs will be returned. To filter on bookings that are 
+    not assigned to a user, use `none`.
+  example: 5cab111386510d011b597b3f
+reference:
+  name: reference
+  in: query
+  required: false
+  schema:
+    type: integer
+  example: 12345
+  description: >-
+    Filters on bookings that have the given booking reference ID.
+created_date:
+  name: created_date
+  in: query
+  required: false
+  schema:
+    type: string
+    format: date
+  example: '2019-01-01'
+  description: >-
+    Filters on bookings that were created on the given date.
+created_date_from:
+  name: created_date_from
+  in: query
+  required: false
+  schema:
+    type: string
+    format: date
+  example: '2019-01-01'
+  description: >-
+    Filters on bookings that were created on or after the given date.
+created_date_to:
+  name: created_date_to
+  in: query
+  required: false
+  schema:
+    type: string
+    format: date
+  example: '2019-03-01'
+  description: >-
+    Filters on bookings that were created on or before the given date
+current_stage:
+  name: current_stage
+  in: query
+  required: false
+  schema:
+    type: string
+  example: Arrived
+  description: >-
+    Filters on bookings that have the given `current_stage`.
+date:
+  name: date
+  in: query
+  required: false
+  schema:
+    type: string
+    format: date
+  example: '2019-01-01'
+  description: >-
+    Filters on bookings that take place on the given date.
+date_from:
+  name: date_from
+  in: query
+  required: false
+  schema:
+    type: string
+    format: date
+  example: '2019-01-01'
+  description: >-
+    Filters on bookings that take place on or after the given date.
+date_to:
+  name: date_to
+  in: query
+  required: false
+  schema:
+    type: string
+    format: date
+  example: '2019-01-01'
+  description: >-
+    Filters on bookings that take place on or before the given date.
+email:
+  name: email
+  in: query
+  required: false
+  schema:
+    type: string
+  example: test@example.com
+  description: >-
+    Filters on bookings that have the given email address.
+auto_confirmed:
+  name: auto_confirmed
+  in: query
+  required: false
+  schema:
+    type: boolean
+  description: >-
+    Filters on bookings that were auto-confirmed.
+walk_in:
+  name: walk_in
+  in: query
+  required: false
+  schema:
+    type: boolean
+  description: >-
+    Filters on bookings that were walk-ins.
+follow_up:
+  name: follow_up
+  in: query
+  required: false
+  schema:
+    type: string
+    format: date
+  example: '2019-01-01'
+  description: >-
+    Filters on bookings that have a follow up of the given date.
+follow_up_from:
+  name: follow_up_from
+  in: query
+  required: false
+  schema:
+    type: string
+    format: date
+  example: '2019-01-01'
+  description: >-
+    Filters on bookings that have a follow up email scheduled to be sent on or after 
+    the given date.
+follow_up_to:
+  name: follow_up_to
+  in: query
+  required: false
+  schema:
+    type: string
+    format: date
+  example: '2019-03-01'
+  description: >-
+    Filters on bookings that have a follow up email scheduled to be sent on or before 
+    the given date.
+has_preorders:
+  name: has_preorders
+  in: query
+  required: false
+  schema:
+    type: boolean
+  description: >-
+    Filters on bookings that have preorders.
+labels:
+  name: labels
+  in: query
+  required: false
+  explode: false
+  schema:
+    type: array
+    items:
+      type: string
+  example:
+    - Need to call
+  description: >-
+    Filters on bookings that have the given labels. If a comma-separated list is 
+    passed, bookings which have any of the given labels will be returned.
+last_updated:
+  name: last_updated
+  in: query
+  required: false
+  schema:
+    type: string
+    format: date
+  example: '2019-01-01'
+  description: >-
+    Filters on bookings which were last updated on the given date.
+last_updated_from:
+  name: last_updated_from
+  in: query
+  required: false
+  schema:
+    type: string
+    format: date
+  example: '2019-01-01'
+  description: >-
+    Filters on bookings which were last updated on or after the given date.
+last_updated_to:
+  name: last_updated_to
+  in: query
+  required: false
+  schema:
+    type: string
+    format: date
+  example: '2019-01-03'
+  description: >-
+    Filters on bookings which were last updated on or before the given date.
+notifications:
+  name: notifications
+  in: query
+  required: false
+  explode: false
+  schema:
+    type: array
+    items:
+      type: string
+  example:
+    - new_messages
+  description: >-
+    Filters on bookings which have the given notification. If a comma-separated list is 
+    passed, bookings which have all of the given notifications will be returned.
+num_people:
+  name: num_people
+  in: query
+  required: false
+  schema:
+    type: string
+  description: >-
+    Filters on bookings which have the given number of guests. You can optionally pass through 
+    a range, for example `6 TO 10` would filter on bookings containing between 6 and 10 guests.
+  example: 10
+offer:
+  name: offer
+  in: query
+  required: false
+  explode: false
+  schema:
+    type: array
+    items:
+      type: string
+  description: >-
+    Filters on bookings which have the given offer. This filter accepts a single offer ID, or multiple 
+    offer IDs separated by a comma to filter on bookings containing any of the given offers. To filter 
+    on bookings with *no* offer, use `none`.
+partner_source:
+  name: partner_source
+  in: query
+  required: false
+  schema:
+    type: string
+  example: 'christmas_page'
+  description: >-
+    Filters on bookings which have the given `partner_source`.
+pending_deposits:
+  name: pending_deposits
+  in: query
+  required: false
+  explode: false
+  schema:
+    type: array
+    items:
+      type: string
+      enum:
+        - request_auth
+        - manual_auth
+        - request_payment
+        - manual_payment
+        - customer_preorder
+        - paid
+  description: >-
+    Filters on bookings which have a pending deposit of the given type. If a comma-separated 
+    list is passed, bookings with any of the given pending deposit types will be returned.
+phone:
+  name: phone
+  in: query
+  required: false
+  schema:
+    type: string
+  example: '01234567890'
+  description: >-
+    Filters on bookings which have the given telephone number.
+preorders_status:
+  name: preorders_status
+  in: query
+  required: false
+  example: 'complete'
+  schema:
+    type: string
+    enum:
+      - open
+      - complete
+  description: >-
+    Filters on bookings which have the given status for preorders.
+private_hire:
+  name: private_hire
+  in: query
+  required: false
+  schema:
+    type: boolean
+  description: >-
+    Filters on bookings which are private hire.
+query:
+  name: query
+  in: query
+  required: false
+  example: '@example.com'
+  schema:
+    type: string
+  description: >-
+    Filter on bookings which have a `full_name`, `email`, `company` or
+    `phone` similar to the search query.
+start_time:
+  name: start_time
+  in: query
+  required: false
+  schema:
+    type: string
+  example: '13:15'
+  description: >-
+    Filters on bookings which have the given start time. This filter can also 
+    accept a range of times, for example `12:00 TO 15:30` will filter bookings 
+    starting between 12pm and 3:30pm.
+status_changed_date:
+  name: status_changed_date
+  in: query
+  required: false
+  schema:
+    type: string
+    format: date
+  example: '2019-01-01'
+  description: >-
+    Filters on bookings where the status was changed on the given date.
+status_changed_date_from:
+  name: status_changed_date_from
+  in: query
+  required: false
+  schema:
+    type: string
+    format: date
+  example: '2019-01-01'
+  description: >-
+    Filters on bookings where the status was changed on or after the given date.
+status_changed_date_to:
+  name: status_changed_date_to
+  in: query
+  required: false
+  schema:
+    type: string
+    format: date
+  example: '2019-03-01'
+  description: >-
+    Filters on bookings where the status was changed on or before the given date.
+status:
+  name: status
+  in: query
+  required: false
+  explode: false
+  example: in_progress
+  description: >-
+    Filters on bookings that have the given status. If a comma-separated list is 
+    passed, bookings that have any of the given statuses will be returned.
+  schema:
+    type: array
+    items:
+      type: string
+      enum:
+        - new
+        - in_progress
+        - complete
+        - rejected
+        - deleted
+        - lost
+time:
+  name: time
+  in: query
+  required: false
+  description: >-
+    Filters on bookings that take place between the given time range, taking into 
+    account both the start time and the end time of the booking.
+  example: '12:00 TO 13:00'
+  schema:
+    type: string
+type:
+  name: type
+  in: query
+  required: false
+  explode: false
+  description: >-
+    Filters on bookings that have the given booking type ID. If a comma-separated 
+    list is passed, bookings with any of the given booking type IDs will be returned.
+  example: 5cab0bcbfcf59f7fd26bedd9
+  schema:
+    type: array
+    items:
+      type: string
+customer_id:
+  name: customer_id
+  in: query
+  required: false
+  explode: false
+  example: 5cab0c245ca3d2d984a4b938
+  schema:
+    type: array
+    items:
+      type: string
+  description: >-
+    Filters on bookings that are associated with the given customer ID. If a comma-separated 
+    list is passed, bookings associated with any of the given customer IDs will be returned.
+venue_id:
+  name: venue_id
+  in: query
+  required: false
+  explode: false
+  schema:
+    type: array
+    items:
+      type: string
+  description: >-
+    Filters on bookings that are for the given venue ID. If a comma-separated list is passed, 
+    bookings for any of the given venue IDs will be returned. To filter bookings with _no_ 
+    assigned venue, use `none`. 
+  example: 5cab0c7ba7a3f443a918f1b7
+waitlisted:
+  name: waitlisted
+  in: query
+  required: false
+  schema:
+    type: boolean
+  description: >-
+    Filters on bookings that have been waitlisted.
+zone:
+  name: zone
+  in: query
+  required: false
+  schema:
+    type: string
+  description: >-
+    Filters on bookings that have been assigned to an area in the given zone ID.
+    If a comma-separated list is passed, bookings assigned to an area in any of
+    the given zone IDs will be returned.
+  example: 5cab0cd477dd1224215c668a

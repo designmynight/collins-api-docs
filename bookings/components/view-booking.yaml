@@ -1,0 +1,227 @@
+type: object
+properties:
+  id:
+    type: string
+    description: The ID of the booking.
+    example: 5cab15dbff3b7aae0090ad44
+  assigned_to:
+    type: string
+    description: The user ID which the booking is assigned to.
+    example: 5cab162d8589744d72dbbc2b
+    nullable: true
+  created_by:
+    type: string
+    description: The user ID which the booking was created by.
+    example: 5cab162d8589744d72dbbc2b
+    nullable: true
+  status:
+    type: string
+    description: The status of the booking
+    enum:
+      - new
+      - in_progress
+      - complete
+      - rejected
+      - deleted
+      - lost
+  status_changed_date:
+    type: string
+    format: date-time
+    description: The date and time the status was last changed.
+    example: 2019-01-01 13:30:00
+    nullable: true
+  follow_up:
+    type: string
+    format: date-time
+    description: The date and time the follow up email should be sent.
+    example: 2019-01-02 13:13:00
+    nullable: true
+  reference:
+    type: integer
+    description: The booking reference ID.
+    example: 12345678
+    nullable: true
+  venue_id:
+    type: string
+    example: 5c80155a86bb06bc1401ea1e
+    nullable: true
+    description: The venue ID which the booking is associated with.
+  venue_group:
+    type: string
+    example: 5c8015884e68d55f12c7ec9d
+    description: The venue group ID which the booking is associated with.
+  assigned_areas:
+    type: array
+    description: An array of areas the booking is assigned to.
+    items:
+      type: object
+      properties:
+        id:
+          description: The ID of the area.
+          example: 525588460df6906334ca1ed7
+        name:
+          description: The name of the area.
+          example: Table 1
+        zone:
+          description: The ID of the zone this area belongs to.
+          example: 533d59f80df690746c714614
+          nullable: true
+  assigned_area_locked:
+    type: boolean
+    description: Whether the assigned areas have been locked.
+  assigned_area_locked_by:
+    type: string
+    description: The user ID of the user who locked the assigned areas.
+    nullable: true
+    example: 5cab162d8589744d72dbbc2b
+  num_people:
+    type: integer
+    description: The number of people the booking is for.
+    nullable: true
+    example: 2
+  date:
+    type: string
+    format: date
+    description: The date the booking takes place.
+    example: '2019-04-08'
+    nullable: true
+  time:
+    type: string
+    description: The time the booking starts in a 24 hour format.
+    example: '13:30'
+    nullable: true
+  duration:
+    type: integer
+    description: The duration of the booking in minutes.
+    example: 60
+    nullable: true
+  type:
+    type: object
+    nullable: true
+    description: Details about the booking type this booking is for.
+    properties:
+      id:
+        type: string
+        description: The ID of the booking type.
+        example: 5cab175756a18dbcd8156ab1
+      name:
+        type: string
+        description: The name of the booking type.
+        example: Brunch
+      guestlist:
+        type: boolean
+        description: Whether this booking type is a guestlist type.
+      private_hire:
+        type: boolean
+        description: Whether this booking type is a private hire type.
+      value:
+        type: float
+        description: The value of this booking type.
+        example: 60
+        nullable: true
+  value:
+    type: float
+    description: The total value of this booking.
+    example: 120.00
+    nullable: true
+  customer_id:
+    type: string
+    description: The customer ID associated with the booking
+    example: 5314491e0a8efb6d7c19c39c
+    nullable: true
+  first_name:
+    type: string
+    description: The first name for the booking.
+    example: John
+    nullable: true
+  last_name:
+    type: string
+    description: The last name for the booking.
+    example: Doe
+    nullable: true
+  email:
+    type: string
+    description: The email address for the booking.
+    example: test@example.com
+    nullable: true
+  additional_emails:
+    type: array
+    description: An array of additional email addresses for the booking.
+    items:
+      type: string
+      example: additional@example.com
+  phone:
+    type: string
+    description: The phone number for the booking.
+    example: 01234567890
+    nullable: true
+  alternative_phone:
+    type: string
+    description: An alternative phone number for the booking.
+    example: 01234567891
+    nullable: true
+  company:
+    type: string
+    description: The name of the company for the booking.
+    nullable: true
+    example: The Access Group
+  company_address:
+    type: object
+    description: The address of the company for the booking.
+    properties:
+      street:
+        type: string
+        description: The street name of the company
+        example: Penn Street
+      city:
+        type: string
+        description: The city which the company is located
+        example: London
+      post_code:
+        type: string
+        description: The post code of the company
+        example: 'N1 5DL'
+  lost:
+    type: boolean
+    description: Whether the booking has been lost
+    example: false
+  actual_guests:
+    type: integer
+    description: The number of guests who arrived at the booking. For no-shows, this will be `0`.
+    nullable: true
+  current_stage:
+    type: string
+    description: The current stage of the booking.
+    nullable: true
+    example: arrived_seated
+  labels:
+    type: array
+    description: An array of labels attached to the booking.
+    items:
+      type: string
+      example: 'Birthday'
+  walk_in:
+    type: boolean
+    description: Whether the booking was a walk-in.
+    example: false
+  auto_confirmed:
+    type: boolean
+    description: Whether the booking was auto-confirmed.
+    example: true
+  partner_source:
+    type: string
+    description: The partner defined source where this booking came from.
+    example: Facebook
+    nullable: true
+  created_date:
+    type: string
+    format: date-time
+    example: 2019-01-01 13:30:00
+    description: The date and time the booking was created.
+  last_updated:
+    type: string
+    format: date-time
+    example: 2019-01-01 13:30:00
+    description: The date and time the booking was last updated.
+
+  

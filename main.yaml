@@ -33,6 +33,8 @@ tags:
   - name: Pagination
     description:
       $ref: 'content/pagination.md'
+  - name: Bookings
+    description: This endpoint is used for managing bookings
   - name: Customers
     description: This endpoint is used for managing customer data
   - name: Venues
@@ -50,10 +52,15 @@ x-tagGroups:
       - Pagination
   - name: Reference
     tags:
+      - Bookings
       - Customers
       - Venues
       - Venue Groups
 paths:
+  /bookings:
+    $ref: /bookings/bookings.yaml#/BookingsWithoutEntityId
+  /bookings/{bookingId}:
+    $ref: /bookings/bookings.yaml#/BookingsWithEntityId
   /customers:
     $ref: /customers/customers.yaml#/CustomersWithoutEntityId
   /customers/{customerId}:

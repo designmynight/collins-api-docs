@@ -1,0 +1,101 @@
+BookingsWithoutEntityId:
+  get:
+    summary: Gets a list of bookings
+    tags:
+      - Bookings
+    description: >-
+      Returns an array of all bookings which the authenticated user is
+      authorised to view. The response will be [paginated](/#tag/Pagination).
+    parameters:
+      - $ref: '/bookings/components/booking-filters.yaml#/actual_guests'
+      - $ref: '/bookings/components/booking-filters.yaml#/assigned_area'
+      - $ref: '/bookings/components/booking-filters.yaml#/assigned_to'
+      - $ref: '/bookings/components/booking-filters.yaml#/reference'
+      - $ref: '/bookings/components/booking-filters.yaml#/created_date'
+      - $ref: '/bookings/components/booking-filters.yaml#/created_date_from'
+      - $ref: '/bookings/components/booking-filters.yaml#/created_date_to'
+      - $ref: '/bookings/components/booking-filters.yaml#/current_stage'
+      - $ref: '/bookings/components/booking-filters.yaml#/date'
+      - $ref: '/bookings/components/booking-filters.yaml#/date_from'
+      - $ref: '/bookings/components/booking-filters.yaml#/date_to'
+      - $ref: '/bookings/components/booking-filters.yaml#/email'
+      - $ref: '/bookings/components/booking-filters.yaml#/auto_confirmed'
+      - $ref: '/bookings/components/booking-filters.yaml#/walk_in'
+      - $ref: '/bookings/components/booking-filters.yaml#/follow_up'
+      - $ref: '/bookings/components/booking-filters.yaml#/follow_up_from'
+      - $ref: '/bookings/components/booking-filters.yaml#/follow_up_to'
+      - $ref: '/bookings/components/booking-filters.yaml#/has_preorders'
+      - $ref: '/bookings/components/booking-filters.yaml#/labels'
+      - $ref: '/bookings/components/booking-filters.yaml#/last_updated'
+      - $ref: '/bookings/components/booking-filters.yaml#/last_updated_from'
+      - $ref: '/bookings/components/booking-filters.yaml#/last_updated_to'
+      - $ref: '/bookings/components/booking-filters.yaml#/notifications'
+      - $ref: '/bookings/components/booking-filters.yaml#/num_people'
+      - $ref: '/bookings/components/booking-filters.yaml#/offer'
+      - $ref: '/bookings/components/booking-filters.yaml#/partner_source'
+      - $ref: '/bookings/components/booking-filters.yaml#/pending_deposits'
+      - $ref: '/bookings/components/booking-filters.yaml#/phone'
+      - $ref: '/bookings/components/booking-filters.yaml#/preorders_status'
+      - $ref: '/bookings/components/booking-filters.yaml#/private_hire'
+      - $ref: '/bookings/components/booking-filters.yaml#/query'
+      - $ref: '/bookings/components/booking-filters.yaml#/start_time'
+      - $ref: '/bookings/components/booking-filters.yaml#/status_changed_date'
+      - $ref: '/bookings/components/booking-filters.yaml#/status_changed_date_from'
+      - $ref: '/bookings/components/booking-filters.yaml#/status_changed_date_to'
+      - $ref: '/bookings/components/booking-filters.yaml#/status'
+      - $ref: '/bookings/components/booking-filters.yaml#/time'
+      - $ref: '/bookings/components/booking-filters.yaml#/type'
+      - $ref: '/bookings/components/booking-filters.yaml#/customer_id'
+      - $ref: '/bookings/components/booking-filters.yaml#/venue_id'
+      - $ref: '/bookings/components/booking-filters.yaml#/waitlisted'
+      - $ref: '/bookings/components/booking-filters.yaml#/zone'
+      - $ref: '/shared/pagination-filters.yaml#/limit'
+      - $ref: '/shared/pagination-filters.yaml#/sort'
+      - $ref: '/shared/pagination-filters.yaml#/page'
+    operationId: getBookings
+    responses:
+      200:
+        description: Bookings were successfully retrieved.
+        content:
+          application/json:
+            schema:
+              $ref: '/bookings/components/booking-list-response.yaml#'
+      401:
+        $ref: '/shared/standard-responses.yaml#/401'
+      403:
+        $ref: '/shared/standard-responses.yaml#/403'
+      404:
+        $ref: '/shared/standard-responses.yaml#/404'
+      429:
+        $ref: '/shared/standard-responses.yaml#/429'
+BookingsWithEntityId:
+  get:
+    summary: Gets details about a specific booking
+    tags:
+      - Bookings
+    description: >-
+      Returns details about a specific booking
+    parameters:
+      - in: path
+        name: bookingId
+        required: true
+        description: The ID of the booking you want to retrieve info for
+        schema:
+          type: string
+    responses:
+      200:
+        description: The booking was successfully retrieved.
+        content:
+          application/json:
+            schema:
+              $ref: '/bookings/components/booking-response.yaml#'
+      401:
+        $ref: '/shared/standard-responses.yaml#/401'
+      403:
+        $ref: '/shared/standard-responses.yaml#/403'
+      404:
+        $ref: '/shared/standard-responses.yaml#/404'
+      422:
+        $ref: '/shared/standard-responses.yaml#/422'
+      429:
+        $ref: '/shared/standard-responses.yaml#/429'
