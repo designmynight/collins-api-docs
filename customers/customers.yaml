@@ -52,7 +52,7 @@ CustomersWithoutEntityId:
   post:
     tags:
       - Customers
-    summary: Create customer
+    summary: Create a customer
     description: Creates a new customer
     requestBody:
       description: Data for the customer you wish to create

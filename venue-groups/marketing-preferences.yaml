@@ -11,6 +11,7 @@ ListActiveMarketingPreferences:
         description: The venue group ID to retrieve marketing preferences for
         schema:
           type: string
+    operationId: GetVenueGroupMarketingPreferences
     responses:
       '200':
         description: The marketing preferences were successfully retrieved

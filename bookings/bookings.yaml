@@ -1,6 +1,6 @@
 BookingsWithoutEntityId:
   get:
-    summary: Gets a list of bookings
+    summary: Get bookings
     tags:
       - Bookings
     description: >-
