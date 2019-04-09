@@ -79,6 +79,33 @@ CustomersWithoutEntityId:
       '429':
         $ref: '/shared/standard-responses.yaml#/429'
 CustomersWithEntityId:
+  get:
+    tags:
+      - Customers
+    summary: Get a customer
+    description: Returns details about a specific customer
+    parameters:
+      - in: path
+        name: customerId
+        required: true
+        description: The ID of the customer you want to retreive
+        schema:
+          type: string
+    responses:
+      200:
+        description: The customer was successfully retrieved
+        content:
+          application/json:
+            schema:
+              $ref: '/customers/components/customer-response.yaml#'
+      401:
+        $ref: '/shared/standard-responses.yaml#/401'
+      403:
+        $ref: '/shared/standard-responses.yaml#/403'
+      404:
+        $ref: '/shared/standard-responses.yaml#/404'
+      429:
+        $ref: '/shared/standard-responses.yaml#/429'
   put:
     tags:
       - Customers
