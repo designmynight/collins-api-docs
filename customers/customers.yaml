@@ -33,7 +33,7 @@ CustomersWithoutEntityId:
       - $ref: '/shared/pagination-filters.yaml#/limit'
       - $ref: '/shared/pagination-filters.yaml#/sort'
       - $ref: '/shared/pagination-filters.yaml#/page'
-    operationId: /
+    operationId: GetAllCustomers
     responses:
       '200':
         description: Customers were successfully retrieved
@@ -61,6 +61,7 @@ CustomersWithoutEntityId:
         application/json:
           schema:
             $ref: '/customers/components/new-customer-request.yaml#'
+    operationId: CreateCustomer
     responses:
       '201':
         description: Successfully added a customer
@@ -91,6 +92,7 @@ CustomersWithEntityId:
         description: The ID of the customer you want to retreive
         schema:
           type: string
+    operationId: GetCustomer
     responses:
       200:
         description: The customer was successfully retrieved
@@ -125,6 +127,7 @@ CustomersWithEntityId:
         application/json:
           schema:
             $ref: '/customers/components/view-customer.yaml#'
+    operationId: UpdateCustomer
     responses:
       '200':
         description: The customer was successfully updated
@@ -154,6 +157,7 @@ CustomersWithEntityId:
         description: The ID of the customer you want to delete
         schema:
           type: string
+    operationId: DeleteCustomer
     responses:
       '204':
         description: The customer was successfully deleted

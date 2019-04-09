@@ -52,7 +52,7 @@ BookingsWithoutEntityId:
       - $ref: '/shared/pagination-filters.yaml#/limit'
       - $ref: '/shared/pagination-filters.yaml#/sort'
       - $ref: '/shared/pagination-filters.yaml#/page'
-    operationId: getBookings
+    operationId: GetAllBookings
     responses:
       200:
         description: Bookings were successfully retrieved.
@@ -75,6 +75,7 @@ BookingsWithEntityId:
       - Bookings
     description: >-
       Returns details about a specific booking
+    operationId: GetBooking
     parameters:
       - in: path
         name: bookingId
