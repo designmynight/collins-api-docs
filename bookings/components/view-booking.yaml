@@ -186,6 +186,11 @@ properties:
     description: An array of any deposits or payments made or requested against this booking.
     items:
       $ref: view-deposit.yaml
+  refunds:
+    type: array
+    description: An array of any refunds made against this booking.
+    items:
+      $ref: view-refund.yaml
   lost:
     type: boolean
     description: Whether the booking has been lost
