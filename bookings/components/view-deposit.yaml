@@ -50,3 +50,10 @@ properties:
     example: 2019-01-01 13:30:00
     type: string
     format: date-time
+  refund_ids:
+    name: refund_ids
+    description: An array of refund IDs relating to this deposit. These IDs relate to the `refunds` array within a booking.
+    type: array
+    items:
+      type: string
+      example: 5ca1de0628e7ff2356267753
