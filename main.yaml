@@ -48,7 +48,6 @@ x-tagGroups:
       - Authorisation
       - Request format
       - Response format
-      - Status Codes
       - Rate limits
       - Pagination
   - name: Reference

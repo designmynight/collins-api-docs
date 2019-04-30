@@ -1,10 +1,37 @@
 401:
   description: Authorization credentials were required but not found
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          error:
+            type: string
+            description: A description of the error
+            example: Unauthenticated.
 403:
   description: The request cannot be carried out using the given credentials
-429:
-  description: The number of requests remaining in the current rate limit window has been exceeded
 422:
   description: The request could not be processed because it did not pass validation
+429:
+  description: The number of requests remaining in the current rate limit window has been exceeded
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          message:
+            type: string
+            description: A description of the error
+            example: Too Many Attempts.
 404:
   description: The requested resource could not be found
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          message:
+            type: string
+            description: A description of the error
+            example: The requested resource was not found

@@ -11,11 +11,16 @@ CustomersWithoutEntityId:
       - $ref: '/customers/components/customer-filters.yaml#/booking_date'
       - $ref: '/customers/components/customer-filters.yaml#/booking_date_from'
       - $ref: '/customers/components/customer-filters.yaml#/booking_date_to'
+      - $ref: '/customers/components/customer-filters.yaml#/created_date'
+      - $ref: '/customers/components/customer-filters.yaml#/created_date_from'
+      - $ref: '/customers/components/customer-filters.yaml#/created_date_to'
       - $ref: '/customers/components/customer-filters.yaml#/dob_month'
       - $ref: '/customers/components/customer-filters.yaml#/email'
       - $ref: '/customers/components/customer-filters.yaml#/full_name'
       - $ref: '/customers/components/customer-filters.yaml#/labels'
       - $ref: '/customers/components/customer-filters.yaml#/last_updated'
+      - $ref: '/customers/components/customer-filters.yaml#/last_updated_from'
+      - $ref: '/customers/components/customer-filters.yaml#/last_updated_to'
       - $ref: '/customers/components/customer-filters.yaml#/opted_in'
       - $ref: '/customers/components/customer-filters.yaml#/opted_in_date'
       - $ref: '/customers/components/customer-filters.yaml#/opted_in_from'
@@ -28,7 +33,7 @@ CustomersWithoutEntityId:
       - $ref: '/shared/pagination-filters.yaml#/limit'
       - $ref: '/shared/pagination-filters.yaml#/sort'
       - $ref: '/shared/pagination-filters.yaml#/page'
-    operationId: /
+    operationId: GetAllCustomers
     responses:
       '200':
         description: Customers were successfully retrieved
@@ -47,7 +52,7 @@ CustomersWithoutEntityId:
   post:
     tags:
       - Customers
-    summary: Create customer
+    summary: Create a customer
     description: Creates a new customer
     requestBody:
       description: Data for the customer you wish to create
@@ -56,6 +61,7 @@ CustomersWithoutEntityId:
         application/json:
           schema:
             $ref: '/customers/components/new-customer-request.yaml#'
+    operationId: CreateCustomer
     responses:
       '201':
         description: Successfully added a customer
@@ -74,6 +80,34 @@ CustomersWithoutEntityId:
       '429':
         $ref: '/shared/standard-responses.yaml#/429'
 CustomersWithEntityId:
+  get:
+    tags:
+      - Customers
+    summary: Get a customer
+    description: Returns details about a specific customer
+    parameters:
+      - in: path
+        name: customerId
+        required: true
+        description: The ID of the customer you want to retreive
+        schema:
+          type: string
+    operationId: GetCustomer
+    responses:
+      200:
+        description: The customer was successfully retrieved
+        content:
+          application/json:
+            schema:
+              $ref: '/customers/components/customer-response.yaml#'
+      401:
+        $ref: '/shared/standard-responses.yaml#/401'
+      403:
+        $ref: '/shared/standard-responses.yaml#/403'
+      404:
+        $ref: '/shared/standard-responses.yaml#/404'
+      429:
+        $ref: '/shared/standard-responses.yaml#/429'
   put:
     tags:
       - Customers
@@ -93,6 +127,7 @@ CustomersWithEntityId:
         application/json:
           schema:
             $ref: '/customers/components/view-customer.yaml#'
+    operationId: UpdateCustomer
     responses:
       '200':
         description: The customer was successfully updated
@@ -122,6 +157,7 @@ CustomersWithEntityId:
         description: The ID of the customer you want to delete
         schema:
           type: string
+    operationId: DeleteCustomer
     responses:
       '204':
         description: The customer was successfully deleted

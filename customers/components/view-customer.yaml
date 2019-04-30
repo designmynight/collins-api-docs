@@ -129,7 +129,13 @@ properties:
     example: 'This guy loves our house white wine'
   created_date:
     type: string
-    description: The date and time the customer was created
+    nullable: true
+    description: |
+      The date and time the customer was created.
+
+      <small>Prior to February 2019, we did not keep 
+      a record of the created date, except for some situations such as data imports. If we don't have 
+      the created date for a customer, `null` will be returned instead.</small>
     example: '2019-03-06 17:00:00'
     format: date-time
   last_updated:
