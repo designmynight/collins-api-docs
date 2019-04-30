@@ -4,51 +4,49 @@ properties:
     name: id
     description: The ID of the deposit.
     example: 5ca1de0628e7ff2356267752
-    schema:
-      type: string
-  currency:
-    name: currency
-    description: The currency which this payment is in.
-    example: GBP
-    schema:
-      type: string
+    type: string
   amount:
-    name: amount
-    description: The amount the deposit is for in pence.
-    example: 1000
-    schema:
-      type: integer
+    $ref: /shared/money-response.yaml
   paid_type:
     name: paid_type
     description: Describes how the deposit was paid for.
     example: Soda voucher
-    schema:
-      type: string
+    type: string
+    nullable: true
   status:
     name: status
     description: The status which the deposit is in.
     example: paid
-    schema:
-      type: string
-      enum:
-        - pending
-        - paid
+    type: string
+    enum:
+      - pending
+      - paid
   type:
     name: type
     description: The type of deposit.
     example: manual_payment
-    schema:
-      type: string
-      enum:
-        - request_auth
-        - manual_auth
-        - request_payment
-        - manual_payment
-        - customer_preorder
+    type: string
+    enum:
+      - request_auth
+      - manual_auth
+      - request_payment
+      - manual_payment
+      - customer_preorder
   notes:
     name: notes
     description: Any notes that are attached to this deposit.
     example: Customer called up over the phone to make this payment
-    schema:
-      type: string
+    type: string
     nullable: true
+  payment_ref:
+    name: payment_ref
+    description: The Stripe payment reference for this deposit.
+    example: ch_1DTmw4DK5dphsmtEbSLGj6Wt
+    type: string
+    nullable: true
+  date:
+    name: date
+    description: The date when the deposit was created.
+    example: 2019-01-01 13:30:00
+    type: string
+    format: date-time
