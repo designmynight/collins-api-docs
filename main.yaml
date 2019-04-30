@@ -61,8 +61,6 @@ paths:
     $ref: /bookings/bookings.yaml#/BookingsWithoutEntityId
   /bookings/{bookingId}:
     $ref: /bookings/bookings.yaml#/BookingsWithEntityId
-  /bookings/{bookingId}/deposits:
-    $ref: /bookings/deposits.yaml#/DepositsWithoutEntityId
   /customers:
     $ref: /customers/customers.yaml#/CustomersWithoutEntityId
   /customers/{customerId}:
