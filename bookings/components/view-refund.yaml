@@ -1,0 +1,21 @@
+type: object
+properties:
+  id:
+    name: id
+    description: The ID of the refund.
+    example: 5ca1de0628e7ff2356267752
+    type: string
+  amount:
+    $ref: /shared/money-response.yaml
+  notes:
+    name: notes
+    description: Any notes that are attached to this refund.
+    example: A guest dropped out so we've refunded them 10%.
+    type: string
+    nullable: true
+  created_date:
+    name: created_date
+    description: The date when the deposit was created.
+    example: 2019-01-01 13:30:00
+    type: string
+    format: date-time

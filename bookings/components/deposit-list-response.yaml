@@ -1,0 +1,6 @@
+type: object
+properties:
+  deposits:
+    type: array
+    items:
+      $ref: 'view-deposit.yaml#'

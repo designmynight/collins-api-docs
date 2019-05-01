@@ -1,0 +1,12 @@
+type: object
+properties:
+  currency:
+    name: currency
+    description: The currency which this is in, in ISO-4217 format.
+    example: GBP
+    type: string
+  amount:
+    name: amount
+    description: The amount in pence.
+    example: 1000
+    type: string
