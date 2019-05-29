@@ -1,0 +1,24 @@
+DepositsWithoutEntityId:
+  get:
+    summary: Get deposits
+    tags:
+      - Bookings
+    description: >-
+      Returns an array of all payments, deposits, authentications and refunds 
+      associated with this booking.
+    operationId: GetAllDeposits
+    responses:
+      200:
+        description: Deposits were successfully retrieved.
+        content:
+          application/json:
+            schema:
+              $ref: '/bookings/components/deposit-list-response.yaml'
+      401:
+        $ref: '/shared/standard-responses.yaml#/401'
+      403:
+        $ref: '/shared/standard-responses.yaml#/403'
+      404:
+        $ref: '/shared/standard-responses.yaml#/404'
+      429:
+        $ref: '/shared/standard-responses.yaml#/429'
