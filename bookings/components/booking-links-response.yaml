@@ -1,0 +1,30 @@
+type: object
+properties:
+  calendar:
+    type: string
+    description: Link to download a calendar (.ics) attachment for a booking
+    example: https://api.designmynight.com/v4/bookings/5d445200a3605e2bb7495514/calendar
+  cancel:
+    type: string
+    description: Link for a customer to cancel their booking
+    example: https://bookings.designmynight.com/cancel-booking?booking_id=5d445200a3605e2bb7495514&access_key=ACCESS_KEY_KERE
+  change:
+    type: string
+    description: Link for a customer to change their booking
+    example: https://bookings.designmynight.com/change-your-booking?booking_id=5d445200a3605e2bb7495514&access_key=ACCESS_KEY_KERE
+  preorder:
+    type: string
+    description: Link for a customer to pre-order for their booking (if enabled)
+    example: https://bookings.designmynight.com/place-your-order?booking_id=5d445200a3605e2bb7495514
+  manage_preorder:
+    type: string
+    description: Link for a customer to manage pre-orders for their booking (if enabled)
+    example: https://bookings.designmynight.com/manage-your-order?booking_id=5d445200a3605e2bb7495514
+  payment:
+    type: string
+    description: Link for a customer to pay any outstanding deposits for their booking
+    example: https://bookings.designmynight.com/secure-your-booking?booking_id=5d445200a3605e2bb7495514
+  sign_contract:
+    type: string
+    description: Link for a customer to sign the contract attached to their booking
+    example: https://collins-customer.designmynight.com/sign-contract/5d445200a3605e2bb7495514?signature=URL_SIGNATURE_HERE

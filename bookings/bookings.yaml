@@ -70,7 +70,7 @@ BookingsWithoutEntityId:
         $ref: '/shared/standard-responses.yaml#/429'
 BookingsWithEntityId:
   get:
-    summary: Gets details about a specific booking
+    summary: Get a booking
     tags:
       - Bookings
     description: >-
@@ -80,7 +80,7 @@ BookingsWithEntityId:
       - in: path
         name: bookingId
         required: true
-        description: The ID of the booking you want to retrieve info for
+        description: The ID of the booking you want to retrieve
         schema:
           type: string
     responses:
@@ -90,6 +90,38 @@ BookingsWithEntityId:
           application/json:
             schema:
               $ref: '/bookings/components/booking-response.yaml#'
+      401:
+        $ref: '/shared/standard-responses.yaml#/401'
+      403:
+        $ref: '/shared/standard-responses.yaml#/403'
+      404:
+        $ref: '/shared/standard-responses.yaml#/404'
+      422:
+        $ref: '/shared/standard-responses.yaml#/422'
+      429:
+        $ref: '/shared/standard-responses.yaml#/429'
+BookingEntityLinks:
+  get:
+    summary: Get links for a booking
+    tags:
+      - Bookings
+    description: >-
+      Returns an array of URLs for customer-facing actions relating to a booking
+    operationId: GetBookingLinks
+    parameters:
+      - in: path
+        name: bookingId
+        required: true
+        description: The ID of the booking you want to retrieve links for
+        schema:
+          type: string
+    responses:
+      200:
+        description: The booking links were successfully retrieved.
+        content:
+          application/json:
+            schema:
+              $ref: '/bookings/components/booking-links-response.yaml#'
       401:
         $ref: '/shared/standard-responses.yaml#/401'
       403:
