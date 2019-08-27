@@ -1,0 +1,18 @@
+type: object
+properties:
+  id:
+    name: id
+    description: The ID of the area.
+    example: 55243ccd787279304031501d
+    type: string
+  name:
+    name: name
+    description: The name of the area.
+    example: Table 1
+    type: string
+  zone:
+    name: zone
+    description: The ID of the zone which this area belongs to, or `null` if it doesn't belong to a zone.
+    example: 55243d292b588f381e7fac23
+    type: string
+    nullable: true
