@@ -128,7 +128,5 @@ BookingEntityLinks:
         $ref: '/shared/standard-responses.yaml#/403'
       404:
         $ref: '/shared/standard-responses.yaml#/404'
-      422:
-        $ref: '/shared/standard-responses.yaml#/422'
       429:
         $ref: '/shared/standard-responses.yaml#/429'
