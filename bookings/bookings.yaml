@@ -134,7 +134,7 @@ BookingEntityLinks:
         $ref: '/shared/standard-responses.yaml#/429'
 BookingEntityAssignedAreas:
   get:
-    summary: Get assigned areas for a booking
+    summary: Get assigned areas (tables) for a booking
     tags:
       - Bookings
     description: >-
