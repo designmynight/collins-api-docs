@@ -70,7 +70,7 @@ BookingsWithoutEntityId:
         $ref: '/shared/standard-responses.yaml#/429'
 BookingsWithEntityId:
   get:
-    summary: Gets details about a specific booking
+    summary: Get a booking
     tags:
       - Bookings
     description: >-
@@ -80,7 +80,7 @@ BookingsWithEntityId:
       - in: path
         name: bookingId
         required: true
-        description: The ID of the booking you want to retrieve info for
+        description: The ID of the booking you want to retrieve
         schema:
           type: string
     responses:
@@ -90,6 +90,250 @@ BookingsWithEntityId:
           application/json:
             schema:
               $ref: '/bookings/components/booking-response.yaml#'
+      401:
+        $ref: '/shared/standard-responses.yaml#/401'
+      403:
+        $ref: '/shared/standard-responses.yaml#/403'
+      404:
+        $ref: '/shared/standard-responses.yaml#/404'
+      422:
+        $ref: '/shared/standard-responses.yaml#/422'
+      429:
+        $ref: '/shared/standard-responses.yaml#/429'
+BookingEntityLinks:
+  get:
+    summary: Get links for a booking
+    tags:
+      - Bookings
+    description: >-
+      Returns an array of URLs for customer-facing actions relating to a booking
+    operationId: GetBookingLinks
+    parameters:
+      - in: path
+        name: bookingId
+        required: true
+        description: The ID of the booking you want to retrieve links for
+        schema:
+          type: string
+    responses:
+      200:
+        description: The booking links were successfully retrieved.
+        content:
+          application/json:
+            schema:
+              $ref: '/bookings/components/booking-links-response.yaml#'
+      401:
+        $ref: '/shared/standard-responses.yaml#/401'
+      403:
+        $ref: '/shared/standard-responses.yaml#/403'
+      404:
+        $ref: '/shared/standard-responses.yaml#/404'
+      422:
+        $ref: '/shared/standard-responses.yaml#/422'
+      429:
+        $ref: '/shared/standard-responses.yaml#/429'
+BookingEntityAssignedAreas:
+  get:
+    summary: Get assigned areas (tables) for a booking
+    tags:
+      - Bookings
+    description: >-
+      Returns an array of areas which the booking is assigned to
+    operationId: GetAssignedAreas
+    parameters:
+      - in: path
+        name: bookingId
+        required: true
+        description: The ID of the booking you want to retrieve assigned areas for
+        schema:
+          type: string
+    responses:
+      200:
+        description: The assigned areas were successfully retrieved.
+        content:
+          application/json:
+            schema:
+              $ref: '/bookings/components/booking-assigned-areas-response.yaml#'
+      401:
+        $ref: '/shared/standard-responses.yaml#/401'
+      403:
+        $ref: '/shared/standard-responses.yaml#/403'
+      404:
+        $ref: '/shared/standard-responses.yaml#/404'
+      429:
+        $ref: '/shared/standard-responses.yaml#/429'
+  post:
+    summary: Replaces the assigned areas of the booking
+    tags:
+      - Bookings
+    description: |
+      Unassigns all areas from the booking and assigns the given ones.
+      This request accepts an array of bookable area IDs, which you can retrieve using the Venues endpoint.
+
+      A validation error will be returned if you attempt to assign area(s) to a booking which doesn't have a venue, 
+      or if you attempt to assign area(s) which don't belong to the attached venue. Keep in mind that the request 
+      *won't* return an error response if you attempt to assign an area which is already assigned to the booking.
+
+      If you're looking to append assigned areas rather than replace, see [Appending assigned areas](#operation/AppendAssignedAreas).
+    operationId: ReplaceAssignedAreas
+    parameters:
+      - in: path
+        name: bookingId
+        required: true
+        description: The ID of the booking you want to assign areas for
+        schema:
+          type: string
+    requestBody:
+      description: The areas which should be assigned
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              areas:
+                name: areas
+                type: array
+                description: Array of bookable area IDs
+                items:
+                  type: string
+                  example: 55243ccd787279304031501d
+
+    responses:
+      200:
+        description: The assigned areas for this booking were successfully replaced with the given areas.
+        content:
+          application/json:
+            schema:
+              $ref: '/bookings/components/booking-assigned-areas-response.yaml#'
+      401:
+        $ref: '/shared/standard-responses.yaml#/401'
+      403:
+        $ref: '/shared/standard-responses.yaml#/403'
+      404:
+        $ref: '/shared/standard-responses.yaml#/404'
+      422:
+        $ref: '/shared/standard-responses.yaml#/422'
+      429:
+        $ref: '/shared/standard-responses.yaml#/429'
+  put:
+    summary: Appends to the assigned areas of the booking
+    tags:
+      - Bookings
+    description: |
+      Assigns the given areas to the booking, whilst keeping the areas which are already assigned.
+
+      This request accepts an array of bookable area IDs, which you can retrieve using the Venues endpoint.
+
+      A validation error will be returned if you attempt to assign area(s) to a booking which doesn't have a venue, 
+      or if you attempt to assign area(s) which don't belong to the attached venue. Keep in mind that the request 
+      *won't* return an error response if you attempt to assign an area which is already assigned to the booking.
+    operationId: AppendAssignedAreas
+    parameters:
+      - in: path
+        name: bookingId
+        required: true
+        description: The ID of the booking you want to assign areas for
+        schema:
+          type: string
+    requestBody:
+      description: The areas which should be assigned
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              areas:
+                name: areas
+                type: array
+                description: Array of bookable area IDs
+                items:
+                  type: string
+                  example: 55243ccd787279304031501d
+
+    responses:
+      200:
+        description: The given areas were successfully assigned to the booking
+        content:
+          application/json:
+            schema:
+              $ref: '/bookings/components/booking-assigned-areas-response.yaml#'
+      401:
+        $ref: '/shared/standard-responses.yaml#/401'
+      403:
+        $ref: '/shared/standard-responses.yaml#/403'
+      404:
+        $ref: '/shared/standard-responses.yaml#/404'
+      422:
+        $ref: '/shared/standard-responses.yaml#/422'
+      429:
+        $ref: '/shared/standard-responses.yaml#/429'
+  delete:
+    summary: Unassigns all areas from the booking
+    tags:
+      - Bookings
+    description: |
+      Unassigns all areas from the booking. This request *won't* return an error response if the booking
+      doesn't have any assigned areas.
+
+      If you're looking to unassign a particular area, see [Unassigning an area](#operation/UnassignOneArea)
+    operationId: UnassignAllAreas
+    parameters:
+      - in: path
+        name: bookingId
+        required: true
+        description: The ID of the booking you want to unassign areas for
+        schema:
+          type: string
+    responses:
+      200:
+        description: All areas were successfully unassigned from the booking
+        content:
+          application/json:
+            schema:
+              $ref: '/bookings/components/booking-assigned-areas-response.yaml#'
+      401:
+        $ref: '/shared/standard-responses.yaml#/401'
+      403:
+        $ref: '/shared/standard-responses.yaml#/403'
+      404:
+        $ref: '/shared/standard-responses.yaml#/404'
+      429:
+        $ref: '/shared/standard-responses.yaml#/429'
+BookingEntityAssignedAreasWithEntityId:
+  delete:
+    summary: Unassigns an area from the booking
+    tags:
+      - Bookings
+    description: |
+      Unassigns the given area from the booking.
+
+      This request will return an error response if you attempt to unassign an area which is not assigned
+      to the booking.
+
+      If you're looking to unassign *all* areas, see [Unassigning all areas](#operation/UnassignAllAreas)
+    operationId: UnassignOneArea
+    parameters:
+      - in: path
+        name: bookingId
+        required: true
+        description: The ID of the booking you want to unassign an area for
+        schema:
+          type: string
+      - in: path
+        name: assignedAreaId
+        required: true
+        description: The ID of the area you want to unassign
+        schema:
+          type: string
+    responses:
+      200:
+        description: The given area was successfully unassigned from the booking
+        content:
+          application/json:
+            schema:
+              $ref: '/bookings/components/booking-assigned-areas-response.yaml#'
       401:
         $ref: '/shared/standard-responses.yaml#/401'
       403:
