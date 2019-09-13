@@ -68,6 +68,10 @@ paths:
     $ref: /bookings/bookings.yaml#/BookingEntityAssignedAreas
   /bookings/{bookingId}/assigned-areas/{assignedAreaId}:
     $ref: /bookings/bookings.yaml#/BookingEntityAssignedAreasWithEntityId
+  /bookings/{bookingId}/notifications:
+    $ref: /bookings/bookings.yaml#/BookingEntityNotifications
+  /bookings/{bookingId}/notifications/{notificationId}:
+    $ref: /bookings/bookings.yaml#/BookingEntityNotificationsWithEntityId
   /customers:
     $ref: /customers/customers.yaml#/CustomersWithoutEntityId
   /customers/{customerId}:
