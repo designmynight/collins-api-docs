@@ -344,3 +344,89 @@ BookingEntityAssignedAreasWithEntityId:
         $ref: '/shared/standard-responses.yaml#/422'
       429:
         $ref: '/shared/standard-responses.yaml#/429'
+BookingEntityNotifications:
+  get:
+    summary: Get notifications
+    tags:
+      - Bookings
+    description: >-
+      Returns an array of all notifications for this booking. This includes read notifications.
+      If you only want to see unread notifications, you can use the `status` filter.
+    parameters:
+      - $ref: '/bookings/components/notification-filters.yaml#/status'
+      - $ref: '/bookings/components/notification-filters.yaml#/type'
+    operationId: GetAllNotifications
+    responses:
+      200:
+        description: Notifications were successfully retrieved
+        content:
+          application/json:
+            schema:
+              $ref: '/bookings/components/notifications-list-response.yaml#'
+      401:
+        $ref: '/shared/standard-responses.yaml#/401'
+      403:
+        $ref: '/shared/standard-responses.yaml#/403'
+      404:
+        $ref: '/shared/standard-responses.yaml#/404'
+      429:
+        $ref: '/shared/standard-responses.yaml#/429'
+BookingEntityNotificationsWithEntityId:
+  get:
+    summary: Get a notification
+    tags:
+      - Bookings
+    description: >-
+      Returns the notification by the given ID.
+    operationId: GetNotification
+    responses:
+      200:
+        description: Notification was successfully retrieved
+        content:
+          application/json:
+            schema:
+              $ref: '/bookings/components/notification-response.yaml#'
+      401:
+        $ref: '/shared/standard-responses.yaml#/401'
+      403:
+        $ref: '/shared/standard-responses.yaml#/403'
+      404:
+        $ref: '/shared/standard-responses.yaml#/404'
+      429:
+        $ref: '/shared/standard-responses.yaml#/429'
+  put:
+    summary: Update a notification
+    tags:
+      - Bookings
+    description: >-
+      Updates the given booking notification
+    operation: UpdateNotification
+    parameters:
+      - status:
+        name: status
+        required: false
+        in: body
+        schema:
+          type: string
+          enum:
+            - new
+            - read
+        description: >-
+          The status of the message. Unread messages have the status `new` and read messages have the status `read`.
+    responses:
+      200:
+        description: Notification was successfully updated
+        content:
+          application/json:
+            schema:
+              $ref: '/bookings/components/notification-response.yaml#'
+      401:
+        $ref: '/shared/standard-responses.yaml#/401'
+      403:
+        $ref: '/shared/standard-responses.yaml#/403'
+      404:
+        $ref: '/shared/standard-responses.yaml#/404'
+      422:
+        $ref: '/shared/standard-responses.yaml#/422'
+      429:
+        $ref: '/shared/standard-responses.yaml#/429'
