@@ -400,19 +400,22 @@ BookingEntityNotificationsWithEntityId:
       - Bookings
     description: >-
       Updates the given booking notification
-    operation: UpdateNotification
-    parameters:
-      - status:
-        name: status
-        required: false
-        in: body
-        schema:
-          type: string
-          enum:
-            - new
-            - read
-        description: >-
-          The status of the message. Unread messages have the status `new` and read messages have the status `read`.
+    operationId: UpdateNotification
+    requestBody:
+      description: The data the notification should be updated with.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                name: status
+                type: string
+                enum:
+                  - new
+                  - read
+                description: >-
+                  The status of the message. Unread messages have the status `new` and read messages have the status `read`.
     responses:
       200:
         description: Notification was successfully updated
