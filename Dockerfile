@@ -5,6 +5,6 @@ VOLUME /app
 
 RUN npm install -g live-server
 
-EXPOSE 8080
+EXPOSE 5050
 
-ENTRYPOINT [ "live-server" ]
+ENTRYPOINT [ "live-server", "--port=5050" ]

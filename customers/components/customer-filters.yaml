@@ -188,8 +188,8 @@ opted_in_date:
     Filter by customers who opted into the specified preference ID on
     the given date. Must be used in conjunction with the `opted_in`
     parameter.
-opted_in_from:
-  name: opted_in_from
+opted_in_date_from:
+  name: opted_in_date_from
   in: query
   example: '2017-01-05'
   required: false
@@ -200,8 +200,8 @@ opted_in_from:
     Filter by customers who opted into the specified preference ID on or
     after the given date. Must be used in conjunction with the
     `opted_in` parameter.
-opted_in_to:
-  name: opted_in_to
+opted_in_date_to:
+  name: opted_in_date_to
   in: query
   required: false
   example: '2017-01-14'
@@ -238,8 +238,8 @@ opted_out_date:
     Filter by customers who opted out of the specified preference ID on
     the given date. Must be used in conjunction with the `opted_out`
     parameter.
-opted_out_from:
-  name: opted_out_from
+opted_out_date_from:
+  name: opted_out_date_from
   in: query
   example: '2017-01-05'
   required: false
@@ -250,8 +250,8 @@ opted_out_from:
     Filter by customers who opted out of the specified preference ID on or
     after the given date. Must be used in conjunction with the
     `opted_out` parameter.
-opted_out_to:
-  name: opted_out_to
+opted_out_date_to:
+  name: opted_out_date_to
   in: query
   required: false
   example: '2017-01-14'

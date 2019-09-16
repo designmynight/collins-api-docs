@@ -2,6 +2,7 @@ openapi: 3.0.0
 servers:
   - url: 'https://api.collinsbookings.com/api'
     variables: {}
+  - url: 'https://api-playpen.collinsbookings.com/api'
 info:
   version: 1.0.0
   title: Collins API
@@ -61,6 +62,16 @@ paths:
     $ref: /bookings/bookings.yaml#/BookingsWithoutEntityId
   /bookings/{bookingId}:
     $ref: /bookings/bookings.yaml#/BookingsWithEntityId
+  /bookings/{bookingId}/links:
+    $ref: /bookings/bookings.yaml#/BookingEntityLinks
+  /bookings/{bookingId}/assigned-areas:
+    $ref: /bookings/bookings.yaml#/BookingEntityAssignedAreas
+  /bookings/{bookingId}/assigned-areas/{assignedAreaId}:
+    $ref: /bookings/bookings.yaml#/BookingEntityAssignedAreasWithEntityId
+  /bookings/{bookingId}/notifications:
+    $ref: /bookings/bookings.yaml#/BookingEntityNotifications
+  /bookings/{bookingId}/notifications/{notificationId}:
+    $ref: /bookings/bookings.yaml#/BookingEntityNotificationsWithEntityId
   /customers:
     $ref: /customers/customers.yaml#/CustomersWithoutEntityId
   /customers/{customerId}:
