@@ -1,0 +1,18 @@
+status:
+  name: status
+  in: query
+  required: false
+  schema:
+    type: string
+  description: >-
+    Filter by the status of the booking. By default, both read and unread 
+    notifications will be returned. Use this filter to return only read 
+    or unread notifications.
+type:
+  name: type
+  in: query
+  required: false
+  schema:
+    type: string
+  description: >-
+    Filter by the type of notification.

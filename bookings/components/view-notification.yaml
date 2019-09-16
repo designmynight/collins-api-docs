@@ -1,0 +1,22 @@
+type: object
+properties:
+  id:
+    type: string
+    description: The ID of the notification.
+    example: 5cab15dbff3b7aae0090ad44
+  status:
+    type: string
+    description: The status of the notification
+    example: new
+    enum:
+      - new
+      - unread
+  type:
+    type: string
+    description: The type of notification
+    example: new_message
+    enum:
+      - email_delivery_failed
+      - contract_signed
+      - customer_cancelled
+      - customer_notes
