@@ -1,0 +1,32 @@
+status:
+  name: status
+  in: query
+  required: false
+  schema:
+    type: string
+    enum:
+      - public
+      - private
+      - inactive
+  description: >-
+    Filters by the status of the venue.
+  example: public
+title:
+  name: title
+  in: query
+  required: false
+  schema:
+    type: string
+  example: Bar Collins
+  description: >-
+    Filters by venues where the start of the title matches the venue's title.
+    For example, filtering by "Bar" will return "Bar Collins", but filtering by "Collins" will not return "Bar Collins".
+venue_group:
+  name: title
+  in: query
+  required: false
+  schema:
+    type: string
+  description: >-
+    Filters by venues which belong to the specified venue group.
+  example: 5cab162d8589744d72dbbc2b

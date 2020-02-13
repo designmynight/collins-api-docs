@@ -1,0 +1,68 @@
+type: object
+properties:
+  id:
+    type: string
+    description: The ID of the venue.
+    example: 5cab15dbff3b7aae0090ad44
+  title:
+    type: string
+    description: The name of the venue.
+    example: Bar Collins
+    nullable: true
+  venue_group:
+    type: string
+    description: The ID of the venue group which this venue belongs to.
+    example: 5cab162d8589744d72dbbc2b
+  manage_own_bookings:
+    type: boolean
+    description: Whether this venue is responsible for managing it's own bookings
+  status:
+    type: string
+    description: The visibility of this venue on the DesignMyNight website
+    example: public
+    enum:
+      - public
+      - private
+      - inactive
+  store_code:
+    type: string
+    description: A customisable venue identifier
+    example: "123"
+  address:
+    type: object
+    description: The address of the venue.
+    properties:
+      building_name:
+        name: building_name
+        example: 23-28
+        type: string
+      street:
+        name: street
+        example: Penn Street
+        type: string
+      city:
+        name: city
+        example: London
+        type: string
+      postcode:
+        name: postcode
+        example: N1 5DL
+        type: string
+  tags:
+    type: array
+    description: An array of tag IDs which this venue is associated with. Tag IDs correspond to tags defined on the venue group.
+    items:
+      type: string
+      example: 5d5acedb672f350a91796e05
+  created_date:
+    type: string
+    format: date-time
+    example: 2020-01-01 13:30:00
+    description: The date and time the venue was created.
+  last_updated:
+    type: string
+    format: date-time
+    example: 2020-01-01 13:30:00
+    description: The date and time the venue was last updated.
+
+  

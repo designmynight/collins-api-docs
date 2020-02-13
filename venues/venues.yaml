@@ -1,0 +1,61 @@
+VenuesWithoutEntityId:
+  get:
+    summary: Get venues
+    tags:
+      - Venues
+    description: >-
+      Returns an array of all venues which the authenticated user is
+      authorised to view. The response will be [paginated](/#tag/Pagination).
+    parameters:
+      - $ref: '/venues/components/venue-filters.yaml#/status'
+      - $ref: '/venues/components/venue-filters.yaml#/title'
+      - $ref: '/venues/components/venue-filters.yaml#/venue_group'
+      - $ref: '/shared/pagination-filters.yaml#/limit'
+      - $ref: '/shared/pagination-filters.yaml#/sort'
+      - $ref: '/shared/pagination-filters.yaml#/page'
+    operationId: GetAllBookings
+    responses:
+      200:
+        description: Venues were successfully retrieved.
+        content:
+          application/json:
+            schema:
+              $ref: '/venues/components/venue-list-response.yaml#'
+      401:
+        $ref: '/shared/standard-responses.yaml#/401'
+      403:
+        $ref: '/shared/standard-responses.yaml#/403'
+      404:
+        $ref: '/shared/standard-responses.yaml#/404'
+      429:
+        $ref: '/shared/standard-responses.yaml#/429'
+VenuesWithEntityId:
+  get:
+    summary: Get a venue
+    tags:
+      - Venues
+    description: >-
+      Returns details about a specific venue
+    operationId: GetVenue
+    parameters:
+      - in: path
+        name: venueId
+        required: true
+        description: The ID of the venue you want to retrieve
+        schema:
+          type: string
+    responses:
+      200:
+        description: The venue was successfully retrieved.
+        content:
+          application/json:
+            schema:
+              $ref: '/venues/components/venue-response.yaml#'
+      401:
+        $ref: '/shared/standard-responses.yaml#/401'
+      403:
+        $ref: '/shared/standard-responses.yaml#/403'
+      404:
+        $ref: '/shared/standard-responses.yaml#/404'
+      429:
+        $ref: '/shared/standard-responses.yaml#/429'
