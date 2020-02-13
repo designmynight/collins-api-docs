@@ -13,7 +13,7 @@ VenuesWithoutEntityId:
       - $ref: '/shared/pagination-filters.yaml#/limit'
       - $ref: '/shared/pagination-filters.yaml#/sort'
       - $ref: '/shared/pagination-filters.yaml#/page'
-    operationId: GetAllBookings
+    operationId: GetAllVenues
     responses:
       200:
         description: Venues were successfully retrieved.
