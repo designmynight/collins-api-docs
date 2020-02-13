@@ -76,6 +76,10 @@ paths:
     $ref: /customers/customers.yaml#/CustomersWithoutEntityId
   /customers/{customerId}:
     $ref: /customers/customers.yaml#/CustomersWithEntityId
+  /venues:
+    $ref: /venues/venues.yaml#/VenuesWithoutEntityId
+  /venues/{venueId}:
+    $ref: /venues/venues.yaml#/VenuesWithEntityId
   /venues/{venueId}/marketing-preferences:
     $ref: /venues/marketing-preferences.yaml#/ListActiveMarketingPreferences
   /venue-groups/{venueGroupId}/marketing-preferences:

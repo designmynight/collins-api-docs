@@ -1,0 +1,6 @@
+type: object
+properties:
+  venues:
+    type: array
+    items:
+      $ref: 'view-venue.yaml#'

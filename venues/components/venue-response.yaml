@@ -1,0 +1,4 @@
+type: object
+properties:
+  venue:
+    $ref: 'view-venue.yaml'
