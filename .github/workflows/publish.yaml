@@ -23,5 +23,5 @@ jobs:
         uses: triaxtec/openapitools-generator-action@v1.0.0
         with:
           generator: typescript-angular
-          config-file: main.yml
+          config-file: ./main.yml
 
