@@ -22,3 +22,4 @@ $ docker-compose up
 ```
 
 The documentation will be served on localhost at port 8080 - http://localhost:8080
+
