@@ -1,7 +1,9 @@
-name: Node.js Package
+name: Publish SDK
 on:
   release:
-    types: [created]
+    branches:
+      - master
+
 jobs:
   generate-angular-client:
     runs-on: ubuntu-latest
