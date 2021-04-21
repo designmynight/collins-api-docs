@@ -1,0 +1,23 @@
+name: Node.js Package
+on:
+  release:
+    types: [created]
+jobs:
+  generate-angular-client:
+    runs-on: ubuntu-latest
+    name: Create docs
+    steps:
+      # Checkout your code
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Generate your openapi document (if you don't write it manually)
+
+      # Use the action to generate a client package
+      # This uses the default path for the openapi document and thus assumes there is an openapi.json in the current workspace.
+      - name: Generate React Client
+        uses: triaxtec/openapitools-generator-action@v1.0.0
+        with:
+          generator: typescript-angular
+          config-file: main.yml
+

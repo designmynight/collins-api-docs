@@ -1,0 +1,18 @@
+{
+  "name": "collins-sdk",
+  "version": "1.0.0",
+  "description": "<p align=\"center\">   <img width=\"200px\" src=\"https://static.designmynight.com/uploads/2017/01/DesignMyNight-Logo.png\"> </p>",
+  "scripts": {
+    "create-docss" : "echo \"Creating Docs\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/designmynight/collins-api-docs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/designmynight/collins-api-docs/issues"
+  },
+  "homepage": "https://github.com/designmynight/collins-api-docs#readme"
+}
