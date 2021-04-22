@@ -13,7 +13,7 @@ jobs:
       with:
         node-version: '12.x'
         registry-url: 'https://registry.npmjs.org'
-    - docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate \
+    - run: docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate \
         -i /local/main.yaml \
         -g typescript-fetch \
         -o ./local/sdk
