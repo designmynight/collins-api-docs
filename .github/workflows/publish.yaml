@@ -8,10 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - run: docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate \
-        -i /local/main.yaml \
-        -g typescript-fetch \
-        -o ./local/sdk
+    - run: docker run --rm -v "${PWD}:/local" "openapitools/openapi-generator-cli generate -i /local/main.yaml -g typescript-fetch -o ./local/sdk"
     # Setup .npmrc file to publish to npm
     - uses: actions/setup-node@v2
       with:
