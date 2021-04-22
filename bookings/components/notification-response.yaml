@@ -1,4 +1,4 @@
 type: object
 properties:
   notification:
-    $ref: 'view-notification.yaml#'
+    $ref: 'view-notification.yaml'

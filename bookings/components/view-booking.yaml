@@ -28,18 +28,18 @@ properties:
     type: string
     format: date-time
     description: The date and time the status was last changed.
-    example: 2019-01-01 13:30:00
+    example: "2019-01-01 13:30:00"
     nullable: true
   follow_up:
     type: string
     format: date-time
     description: The date and time the follow up email should be sent.
-    example: 2019-01-02 13:13:00
+    example: "2019-01-02 13:13:00"
     nullable: true
   reference:
     type: integer
     description: The booking reference ID.
-    example: 12345678
+    example: "12345678"
     nullable: true
   venue_id:
     type: string
@@ -78,7 +78,7 @@ properties:
     type: integer
     description: The number of people the booking is for.
     nullable: true
-    example: 2
+    example: "2"
   date:
     type: string
     format: date
@@ -93,7 +93,7 @@ properties:
   duration:
     type: integer
     description: The duration of the booking in minutes.
-    example: 60
+    example: "60"
     nullable: true
   type:
     type: object
@@ -115,14 +115,14 @@ properties:
         type: boolean
         description: Whether this booking type is a private hire type.
       value:
-        type: float
+        type: number
         description: The value of this booking type.
-        example: 60
+        example: "60"
         nullable: true
   value:
-    type: float
+    type: number
     description: The total value of this booking.
-    example: 120.00
+    example: "120.00"
     nullable: true
   customer_id:
     type: string
@@ -142,14 +142,14 @@ properties:
   email:
     type: string
     description: The email address for the booking.
-    example: test@example.com
+    example: "test@example.com"
     nullable: true
   additional_emails:
     type: array
     description: An array of additional email addresses for the booking.
     items:
       type: string
-      example: additional@example.com
+      example: "additional@example.com"
   phone:
     type: string
     description: The phone number for the booking.
@@ -226,12 +226,12 @@ properties:
   created_date:
     type: string
     format: date-time
-    example: 2019-01-01 13:30:00
+    example: "2019-01-01 13:30:00"
     description: The date and time the booking was created.
   last_updated:
     type: string
     format: date-time
-    example: 2019-01-01 13:30:00
+    example: "2019-01-01 13:30:00"
     description: The date and time the booking was last updated.
 
-  
+

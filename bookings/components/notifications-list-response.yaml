@@ -3,4 +3,4 @@ properties:
   notifications:
     type: array
     items:
-      $ref: 'view-notification.yaml#'
+      $ref: 'view-notification.yaml'

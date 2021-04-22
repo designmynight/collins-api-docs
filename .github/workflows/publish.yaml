@@ -1,27 +1,21 @@
-name: Publish SDK
+name: Node.js Package
 on:
-  # Trigger the workflow on push or pull request,
-  # but only for the main branch
-  push:
-    branches:
-      - master
-
+  release:
+    types: [created]
 jobs:
-  generate-angular-client:
+  build:
     runs-on: ubuntu-latest
-    name: Create docs
     steps:
-      # Checkout your code
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      # Generate your openapi document (if you don't write it manually)
-
-      # Use the action to generate a client package
-      # This uses the default path for the openapi document and thus assumes there is an openapi.json in the current workspace.
-      - name: Generate React Client
-        uses: triaxtec/openapitools-generator-action@v1.0.0
-        with:
-          generator: typescript-angular
-          config-file: ./main.yml
-
+    - uses: actions/checkout@v2
+    # Setup .npmrc file to publish to npm
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '12.x'
+        registry-url: 'https://registry.npmjs.org'
+    - docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate \
+        -i /local/main.yaml \
+        -g typescript-fetch \
+        -o ./local/sdk
+    - run: npm publish sdk
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

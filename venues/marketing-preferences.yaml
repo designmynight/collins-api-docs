@@ -20,4 +20,4 @@ ListActiveMarketingPreferences:
         content:
           application/json:
             schema:
-              $ref: '/marketing-preferences/components/preference-list-response.yaml#'
+              $ref: '../marketing-preferences/components/preference-list-response.yaml'

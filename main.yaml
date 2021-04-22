@@ -1,13 +1,14 @@
 openapi: 3.0.0
 servers:
-  - url: 'https://api.collinsbookings.com/api'
+  - url: "https://api.collinsbookings.com/api"
     variables: {}
-  - url: 'https://api-playpen.collinsbookings.com/api'
+  - url: "https://api-playpen.collinsbookings.com/api"
 info:
   version: 1.0.0
   title: Collins API
-  description:
-    $ref: 'content/introduction.md'
+  description: |
+    This site provides details on the various ways that you can integrate with Collins.
+    Not sure you want to be here after all? Check out what’s new on the [London Bar Scene](https://www.designmynight.com/london/new-bar-spy) instead.
   x-logo:
     url: "https://static.designmynight.com/uploads/2017/01/DesignMyNight-Logo.png"
     altText: "DesignMyNight"
@@ -16,24 +17,86 @@ info:
     url: https://github.com/designmynight/collins-api-docs
 tags:
   - name: URL
-    description: 
-      $ref: 'content/url.md'
+    description: |
+      The API is accessible through the domain `api.collinsbookings.com`, and all API endpoints are prefixed with `/api`. All requests should be made over HTTPS.
+
+      Requests to the playpen environment can be made using the domain `api-playpen.collinsbookings.com`. You'll need separate credentials to connect to playpen which your account manager will be able to provide you with.
     x-traitTag: true
   - name: Authorisation
-    description:
-      $ref: 'content/authorisation.md'
+    description: |
+      You must provide your bearer token with every request that you make to the API. To do this, set an HTTP
+      `Authorization` header on your request that consists of the prefix `Bearer` and the token.
+
+      To obtain a bearer token, please speak to your account manager.
+
+      ```shell
+      $ curl -H "Authorization: Bearer 1234567890" https://api.collinsbookings.com/api/customers
+      ```
   - name: Request format
-    description:
-      $ref: 'content/request-format.md'
+    description: |
+      Data may be sent to the server either through parameters appended to the URL, or as a JSON object included in the request body.
+
+      Where JSON is used, you should also include a header specifying the content type as `application/json`.
+
+      ```shell
+      $ curl -X PUT -H "Content-Type: application/json" -d '{\"first_name\": \"Dan\"}' https://api.collinsbookings.com/api/customers/12345
+      ```
+
   - name: Response format
-    description:
-      $ref: 'content/response-format.md'
+    description: |
+      API responses are in JSON format. When there are exceptions to this rule, the documentation for the endpoint will make this clear.
   - name: Rate limits
-    description:
-      $ref: 'content/rate-limits.md'
+    description: |
+      All requests to the API are rate limited based on your credentials. You should check the headers for the current
+      status of any rate limits -
+
+      Header Name | Description
+      --- | ---
+      `X-RateLimit-Limit` | The maximum number of requests that the consumer is permitted to make per hour
+      `X-RateLimit-Remaining` | The number of requests remaining in the current rate limit window
+      `X-RateLimit-Reset` | The time at which the current rate limit window resets, in ISO 8601 format
+
+      If you go over the rate limit, you will receive an error response with the status code `429`.
   - name: Pagination
-    description:
-      $ref: 'content/pagination.md'
+    description: |
+      Some API responses are paginated. If a response contains paginated data, this will be clearly marked in these docs.
+
+        You should check the headers for details about the pagination:
+
+        Header Name | Description
+        --- | ---
+        `X-Pagination-Page` | The page number for the current set of results
+        `X-Pagination-Per-Page` | The total number of resources that will be returned per page
+        `X-Pagination-Total-Pages` | The total number of pages
+        `X-Pagination-Total-Results` | The total number of resources that the search query returned
+
+        To specify the page you want to retrieve results for, you should use the `page` URL parameter.
+
+        For example, if you made the following request:
+
+        ```shell
+        $ curl https://api.collinsbookings.com/api/customers?query=@designmynight.com
+        ```
+
+        and the following headers were sent back:
+
+        ```
+        X-Pagination-Page           1
+        X-Pagination-Per-Page       30
+        X-Pagination-Total-Pages    4
+        X-Pagination-Total-Results  100
+        ```
+
+        The query returned 100 results, but each request will only show 30 at a time. To grab the next 30, you will need
+        to make an additional request with the `page` URL parameter and increment this for the number of pages (`X-Pagination-Total-Pages`),
+        like so:
+
+        ```shell
+        $ curl https://api.collinsbookings.com/api/customers?query=@designmynight.com&page=2
+        $ curl https://api.collinsbookings.com/api/customers?query=@designmynight.com&page=3
+        $ curl https://api.collinsbookings.com/api/customers?query=@designmynight.com&page=4
+        ```
+
   - name: Bookings
     description: This endpoint is used for managing bookings
   - name: Customers
@@ -59,31 +122,31 @@ x-tagGroups:
       - Venue Groups
 paths:
   /bookings:
-    $ref: /bookings/bookings.yaml#/BookingsWithoutEntityId
+    $ref: "./bookings/bookings.yaml#/BookingsWithoutEntityId"
   /bookings/{bookingId}:
-    $ref: /bookings/bookings.yaml#/BookingsWithEntityId
+    $ref: "./bookings/bookings.yaml#/BookingsWithEntityId"
   /bookings/{bookingId}/links:
-    $ref: /bookings/bookings.yaml#/BookingEntityLinks
+    $ref: "./bookings/bookings.yaml#/BookingEntityLinks"
   /bookings/{bookingId}/assigned-areas:
-    $ref: /bookings/bookings.yaml#/BookingEntityAssignedAreas
+    $ref: "./bookings/bookings.yaml#/BookingEntityAssignedAreas"
   /bookings/{bookingId}/assigned-areas/{assignedAreaId}:
-    $ref: /bookings/bookings.yaml#/BookingEntityAssignedAreasWithEntityId
+    $ref: "./bookings/bookings.yaml#/BookingEntityAssignedAreasWithEntityId"
   /bookings/{bookingId}/notifications:
-    $ref: /bookings/bookings.yaml#/BookingEntityNotifications
+    $ref: "./bookings/bookings.yaml#/BookingEntityNotifications"
   /bookings/{bookingId}/notifications/{notificationId}:
-    $ref: /bookings/bookings.yaml#/BookingEntityNotificationsWithEntityId
+    $ref: "./bookings/bookings.yaml#/BookingEntityNotificationsWithEntityId"
   /customers:
-    $ref: /customers/customers.yaml#/CustomersWithoutEntityId
+    $ref: "./customers/customers.yaml#/CustomersWithoutEntityId"
   /customers/{customerId}:
-    $ref: /customers/customers.yaml#/CustomersWithEntityId
+    $ref: "./customers/customers.yaml#/CustomersWithEntityId"
   /venues:
-    $ref: /venues/venues.yaml#/VenuesWithoutEntityId
+    $ref: "./venues/venues.yaml#/VenuesWithoutEntityId"
   /venues/{venueId}:
-    $ref: /venues/venues.yaml#/VenuesWithEntityId
+    $ref: "./venues/venues.yaml#/VenuesWithEntityId"
   /venues/{venueId}/marketing-preferences:
-    $ref: /venues/marketing-preferences.yaml#/ListActiveMarketingPreferences
+    $ref: "./venues/marketing-preferences.yaml#/ListActiveMarketingPreferences"
   /venue-groups/{venueGroupId}/marketing-preferences:
-    $ref: /venue-groups/marketing-preferences.yaml#/ListActiveMarketingPreferences
+    $ref: "./venue-groups/marketing-preferences.yaml#/ListActiveMarketingPreferences"
 components:
   securitySchemes:
     BearerAuth:

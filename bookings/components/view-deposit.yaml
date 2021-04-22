@@ -6,7 +6,7 @@ properties:
     example: 5ca1de0628e7ff2356267752
     type: string
   amount:
-    $ref: /shared/money-response.yaml
+    $ref: "../../shared/money-response.yaml"
   paid_type:
     name: paid_type
     description: Describes how the deposit was paid for.

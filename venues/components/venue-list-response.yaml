@@ -3,4 +3,4 @@ properties:
   venues:
     type: array
     items:
-      $ref: 'view-venue.yaml#'
+      $ref: 'view-venue.yaml'

@@ -7,32 +7,32 @@ CustomersWithoutEntityId:
       Returns an array of all customers which the authenticated user is
       authorised to view. The response will be [paginated](/#tag/Pagination).
     parameters:
-      - $ref: '/customers/components/customer-filters.yaml#/associated_venues'
-      - $ref: '/customers/components/customer-filters.yaml#/booking_date'
-      - $ref: '/customers/components/customer-filters.yaml#/booking_date_from'
-      - $ref: '/customers/components/customer-filters.yaml#/booking_date_to'
-      - $ref: '/customers/components/customer-filters.yaml#/created_date'
-      - $ref: '/customers/components/customer-filters.yaml#/created_date_from'
-      - $ref: '/customers/components/customer-filters.yaml#/created_date_to'
-      - $ref: '/customers/components/customer-filters.yaml#/dob_month'
-      - $ref: '/customers/components/customer-filters.yaml#/email'
-      - $ref: '/customers/components/customer-filters.yaml#/full_name'
-      - $ref: '/customers/components/customer-filters.yaml#/labels'
-      - $ref: '/customers/components/customer-filters.yaml#/last_updated'
-      - $ref: '/customers/components/customer-filters.yaml#/last_updated_from'
-      - $ref: '/customers/components/customer-filters.yaml#/last_updated_to'
-      - $ref: '/customers/components/customer-filters.yaml#/opted_in'
-      - $ref: '/customers/components/customer-filters.yaml#/opted_in_date'
-      - $ref: '/customers/components/customer-filters.yaml#/opted_in_date_from'
-      - $ref: '/customers/components/customer-filters.yaml#/opted_in_date_to'
-      - $ref: '/customers/components/customer-filters.yaml#/opted_out'
-      - $ref: '/customers/components/customer-filters.yaml#/opted_out_date'
-      - $ref: '/customers/components/customer-filters.yaml#/opted_out_date_from'
-      - $ref: '/customers/components/customer-filters.yaml#/opted_out_date_to'
-      - $ref: '/customers/components/customer-filters.yaml#/query'
-      - $ref: '/shared/pagination-filters.yaml#/limit'
-      - $ref: '/shared/pagination-filters.yaml#/sort'
-      - $ref: '/shared/pagination-filters.yaml#/page'
+      - $ref: '../customers/components/customer-filters.yaml#/associated_venues'
+      - $ref: '../customers/components/customer-filters.yaml#/booking_date'
+      - $ref: '../customers/components/customer-filters.yaml#/booking_date_from'
+      - $ref: '../customers/components/customer-filters.yaml#/booking_date_to'
+      - $ref: '../customers/components/customer-filters.yaml#/created_date'
+      - $ref: '../customers/components/customer-filters.yaml#/created_date_from'
+      - $ref: '../customers/components/customer-filters.yaml#/created_date_to'
+      - $ref: '../customers/components/customer-filters.yaml#/dob_month'
+      - $ref: '../customers/components/customer-filters.yaml#/email'
+      - $ref: '../customers/components/customer-filters.yaml#/full_name'
+      - $ref: '../customers/components/customer-filters.yaml#/labels'
+      - $ref: '../customers/components/customer-filters.yaml#/last_updated'
+      - $ref: '../customers/components/customer-filters.yaml#/last_updated_from'
+      - $ref: '../customers/components/customer-filters.yaml#/last_updated_to'
+      - $ref: '../customers/components/customer-filters.yaml#/opted_in'
+      - $ref: '../customers/components/customer-filters.yaml#/opted_in_date'
+      - $ref: '../customers/components/customer-filters.yaml#/opted_in_date_from'
+      - $ref: '../customers/components/customer-filters.yaml#/opted_in_date_to'
+      - $ref: '../customers/components/customer-filters.yaml#/opted_out'
+      - $ref: '../customers/components/customer-filters.yaml#/opted_out_date'
+      - $ref: '../customers/components/customer-filters.yaml#/opted_out_date_from'
+      - $ref: '../customers/components/customer-filters.yaml#/opted_out_date_to'
+      - $ref: '../customers/components/customer-filters.yaml#/query'
+      - $ref: '../shared/pagination-filters.yaml#/limit'
+      - $ref: '../shared/pagination-filters.yaml#/sort'
+      - $ref: '../shared/pagination-filters.yaml#/page'
     operationId: GetAllCustomers
     responses:
       '200':
@@ -40,15 +40,15 @@ CustomersWithoutEntityId:
         content:
           application/json:
             schema:
-              $ref: '/customers/components/customer-list-response.yaml#'
+              $ref: 'components/customer-list-response.yaml'
       '401':
-        $ref: '/shared/standard-responses.yaml#/401'
+        $ref: '../shared/standard-responses.yaml#/401'
       '403':
-        $ref: '/shared/standard-responses.yaml#/403'
+        $ref: '../shared/standard-responses.yaml#/403'
       '404':
-        $ref: '/shared/standard-responses.yaml#/404'
+        $ref: '../shared/standard-responses.yaml#/404'
       '429':
-        $ref: '/shared/standard-responses.yaml#/429'
+        $ref: '../shared/standard-responses.yaml#/429'
   post:
     tags:
       - Customers
@@ -60,7 +60,7 @@ CustomersWithoutEntityId:
       content:
         application/json:
           schema:
-            $ref: '/customers/components/new-customer-request.yaml#'
+            $ref: '../customers/components/new-customer-request.yaml'
     operationId: CreateCustomer
     responses:
       '201':
@@ -68,17 +68,17 @@ CustomersWithoutEntityId:
         content:
           application/json:
             schema:
-              $ref: '/customers/components/customer-response.yaml#'
+              $ref: '../customers/components/customer-response.yaml'
       '401':
-        $ref: '/shared/standard-responses.yaml#/401'
+        $ref: '../shared/standard-responses.yaml#/401'
       '403':
-        $ref: '/shared/standard-responses.yaml#/403'
+        $ref: '../shared/standard-responses.yaml#/403'
       '404':
-        $ref: '/shared/standard-responses.yaml#/404'
+        $ref: '../shared/standard-responses.yaml#/404'
       '422':
-        $ref: '/shared/standard-responses.yaml#/422'
+        $ref: '../shared/standard-responses.yaml#/422'
       '429':
-        $ref: '/shared/standard-responses.yaml#/429'
+        $ref: '../shared/standard-responses.yaml#/429'
 CustomersWithEntityId:
   get:
     tags:
@@ -99,15 +99,15 @@ CustomersWithEntityId:
         content:
           application/json:
             schema:
-              $ref: '/customers/components/customer-response.yaml#'
+              $ref: '../customers/components/customer-response.yaml'
       401:
-        $ref: '/shared/standard-responses.yaml#/401'
+        $ref: './shared/standard-responses.yaml#/401'
       403:
-        $ref: '/shared/standard-responses.yaml#/403'
+        $ref: './shared/standard-responses.yaml#/403'
       404:
-        $ref: '/shared/standard-responses.yaml#/404'
+        $ref: './shared/standard-responses.yaml#/404'
       429:
-        $ref: '/shared/standard-responses.yaml#/429'
+        $ref: './shared/standard-responses.yaml#/429'
   put:
     tags:
       - Customers
@@ -126,7 +126,7 @@ CustomersWithEntityId:
       content:
         application/json:
           schema:
-            $ref: '/customers/components/view-customer.yaml#'
+            $ref: '../customers/components/view-customer.yaml'
     operationId: UpdateCustomer
     responses:
       '200':
@@ -134,17 +134,17 @@ CustomersWithEntityId:
         content:
           application/json:
             schema:
-              $ref: '/customers/components/customer-response.yaml#'
+              $ref: '../customers/components/customer-response.yaml'
       '401':
-        $ref: '/shared/standard-responses.yaml#/401'
+        $ref: '../shared/standard-responses.yaml#/401'
       '403':
-        $ref: '/shared/standard-responses.yaml#/403'
+        $ref: '../shared/standard-responses.yaml#/403'
       '404':
-        $ref: '/shared/standard-responses.yaml#/404'
+        $ref: '../shared/standard-responses.yaml#/404'
       '422':
-        $ref: '/shared/standard-responses.yaml#/422'
+        $ref: '../shared/standard-responses.yaml#/422'
       '429':
-        $ref: '/shared/standard-responses.yaml#/429'
+        $ref: '../shared/standard-responses.yaml#/429'
   delete:
     tags:
       - Customers
@@ -162,6 +162,6 @@ CustomersWithEntityId:
       '204':
         description: The customer was successfully deleted
       '404':
-        $ref: '/shared/standard-responses.yaml#/404'
+        $ref: '../shared/standard-responses.yaml#/404'
       '429':
-        $ref: '/shared/standard-responses.yaml#/429'
+        $ref: '../shared/standard-responses.yaml#/429'

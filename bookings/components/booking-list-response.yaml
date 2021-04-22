@@ -3,4 +3,4 @@ properties:
   bookings:
     type: array
     items:
-      $ref: 'view-booking.yaml#'
+      $ref: './view-booking.yaml'

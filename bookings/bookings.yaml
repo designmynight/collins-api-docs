@@ -3,55 +3,55 @@ BookingsWithoutEntityId:
     summary: Get bookings
     tags:
       - Bookings
-    description: >-
+    description: |
       Returns an array of all bookings which the authenticated user is
       authorised to view. The response will be [paginated](/#tag/Pagination).
     parameters:
-      - $ref: '/bookings/components/booking-filters.yaml#/actual_guests'
-      - $ref: '/bookings/components/booking-filters.yaml#/assigned_area'
-      - $ref: '/bookings/components/booking-filters.yaml#/assigned_to'
-      - $ref: '/bookings/components/booking-filters.yaml#/reference'
-      - $ref: '/bookings/components/booking-filters.yaml#/created_date'
-      - $ref: '/bookings/components/booking-filters.yaml#/created_date_from'
-      - $ref: '/bookings/components/booking-filters.yaml#/created_date_to'
-      - $ref: '/bookings/components/booking-filters.yaml#/current_stage'
-      - $ref: '/bookings/components/booking-filters.yaml#/date'
-      - $ref: '/bookings/components/booking-filters.yaml#/date_from'
-      - $ref: '/bookings/components/booking-filters.yaml#/date_to'
-      - $ref: '/bookings/components/booking-filters.yaml#/email'
-      - $ref: '/bookings/components/booking-filters.yaml#/auto_confirmed'
-      - $ref: '/bookings/components/booking-filters.yaml#/walk_in'
-      - $ref: '/bookings/components/booking-filters.yaml#/follow_up'
-      - $ref: '/bookings/components/booking-filters.yaml#/follow_up_from'
-      - $ref: '/bookings/components/booking-filters.yaml#/follow_up_to'
-      - $ref: '/bookings/components/booking-filters.yaml#/has_preorders'
-      - $ref: '/bookings/components/booking-filters.yaml#/labels'
-      - $ref: '/bookings/components/booking-filters.yaml#/last_updated'
-      - $ref: '/bookings/components/booking-filters.yaml#/last_updated_from'
-      - $ref: '/bookings/components/booking-filters.yaml#/last_updated_to'
-      - $ref: '/bookings/components/booking-filters.yaml#/notifications'
-      - $ref: '/bookings/components/booking-filters.yaml#/num_people'
-      - $ref: '/bookings/components/booking-filters.yaml#/offer'
-      - $ref: '/bookings/components/booking-filters.yaml#/partner_source'
-      - $ref: '/bookings/components/booking-filters.yaml#/pending_deposits'
-      - $ref: '/bookings/components/booking-filters.yaml#/phone'
-      - $ref: '/bookings/components/booking-filters.yaml#/preorders_status'
-      - $ref: '/bookings/components/booking-filters.yaml#/private_hire'
-      - $ref: '/bookings/components/booking-filters.yaml#/query'
-      - $ref: '/bookings/components/booking-filters.yaml#/start_time'
-      - $ref: '/bookings/components/booking-filters.yaml#/status_changed_date'
-      - $ref: '/bookings/components/booking-filters.yaml#/status_changed_date_from'
-      - $ref: '/bookings/components/booking-filters.yaml#/status_changed_date_to'
-      - $ref: '/bookings/components/booking-filters.yaml#/status'
-      - $ref: '/bookings/components/booking-filters.yaml#/time'
-      - $ref: '/bookings/components/booking-filters.yaml#/type'
-      - $ref: '/bookings/components/booking-filters.yaml#/customer_id'
-      - $ref: '/bookings/components/booking-filters.yaml#/venue_id'
-      - $ref: '/bookings/components/booking-filters.yaml#/waitlisted'
-      - $ref: '/bookings/components/booking-filters.yaml#/zone'
-      - $ref: '/shared/pagination-filters.yaml#/limit'
-      - $ref: '/shared/pagination-filters.yaml#/sort'
-      - $ref: '/shared/pagination-filters.yaml#/page'
+      - $ref: "../bookings/components/booking-filters.yaml#/actual_guests"
+      - $ref: "../bookings/components/booking-filters.yaml#/assigned_area"
+      - $ref: "../bookings/components/booking-filters.yaml#/assigned_to"
+      - $ref: "../bookings/components/booking-filters.yaml#/reference"
+      - $ref: "../bookings/components/booking-filters.yaml#/created_date"
+      - $ref: "../bookings/components/booking-filters.yaml#/created_date_from"
+      - $ref: "../bookings/components/booking-filters.yaml#/created_date_to"
+      - $ref: "../bookings/components/booking-filters.yaml#/current_stage"
+      - $ref: "../bookings/components/booking-filters.yaml#/date"
+      - $ref: "../bookings/components/booking-filters.yaml#/date_from"
+      - $ref: "../bookings/components/booking-filters.yaml#/date_to"
+      - $ref: "../bookings/components/booking-filters.yaml#/email"
+      - $ref: "../bookings/components/booking-filters.yaml#/auto_confirmed"
+      - $ref: "../bookings/components/booking-filters.yaml#/walk_in"
+      - $ref: "../bookings/components/booking-filters.yaml#/follow_up"
+      - $ref: "../bookings/components/booking-filters.yaml#/follow_up_from"
+      - $ref: "../bookings/components/booking-filters.yaml#/follow_up_to"
+      - $ref: "../bookings/components/booking-filters.yaml#/has_preorders"
+      - $ref: "../bookings/components/booking-filters.yaml#/labels"
+      - $ref: "../bookings/components/booking-filters.yaml#/last_updated"
+      - $ref: "../bookings/components/booking-filters.yaml#/last_updated_from"
+      - $ref: "../bookings/components/booking-filters.yaml#/last_updated_to"
+      - $ref: "../bookings/components/booking-filters.yaml#/notifications"
+      - $ref: "../bookings/components/booking-filters.yaml#/num_people"
+      - $ref: "../bookings/components/booking-filters.yaml#/offer"
+      - $ref: "../bookings/components/booking-filters.yaml#/partner_source"
+      - $ref: "../bookings/components/booking-filters.yaml#/pending_deposits"
+      - $ref: "../bookings/components/booking-filters.yaml#/phone"
+      - $ref: "../bookings/components/booking-filters.yaml#/preorders_status"
+      - $ref: "../bookings/components/booking-filters.yaml#/private_hire"
+      - $ref: "../bookings/components/booking-filters.yaml#/query"
+      - $ref: "../bookings/components/booking-filters.yaml#/start_time"
+      - $ref: "../bookings/components/booking-filters.yaml#/status_changed_date"
+      - $ref: "../bookings/components/booking-filters.yaml#/status_changed_date_from"
+      - $ref: "../bookings/components/booking-filters.yaml#/status_changed_date_to"
+      - $ref: "../bookings/components/booking-filters.yaml#/status"
+      - $ref: "../bookings/components/booking-filters.yaml#/time"
+      - $ref: "../bookings/components/booking-filters.yaml#/type"
+      - $ref: "../bookings/components/booking-filters.yaml#/customer_id"
+      - $ref: "../bookings/components/booking-filters.yaml#/venue_id"
+      - $ref: "../bookings/components/booking-filters.yaml#/waitlisted"
+      - $ref: "../bookings/components/booking-filters.yaml#/zone"
+      - $ref: "../shared/pagination-filters.yaml#/limit"
+      - $ref: "../shared/pagination-filters.yaml#/sort"
+      - $ref: "../shared/pagination-filters.yaml#/page"
     operationId: GetAllBookings
     responses:
       200:
@@ -59,21 +59,21 @@ BookingsWithoutEntityId:
         content:
           application/json:
             schema:
-              $ref: '/bookings/components/booking-list-response.yaml#'
+              $ref: "./components/booking-list-response.yaml"
       401:
-        $ref: '/shared/standard-responses.yaml#/401'
+        $ref: "../shared/standard-responses.yaml#/401"
       403:
-        $ref: '/shared/standard-responses.yaml#/403'
+        $ref: "../shared/standard-responses.yaml#/403"
       404:
-        $ref: '/shared/standard-responses.yaml#/404'
+        $ref: "../shared/standard-responses.yaml#/404"
       429:
-        $ref: '/shared/standard-responses.yaml#/429'
+        $ref: "../shared/standard-responses.yaml#/429"
 BookingsWithEntityId:
   get:
     summary: Get a booking
     tags:
       - Bookings
-    description: >-
+    description: |
       Returns details about a specific booking
     operationId: GetBooking
     parameters:
@@ -84,28 +84,28 @@ BookingsWithEntityId:
         schema:
           type: string
     responses:
-      200:
-        description: The booking was successfully retrieved.
-        content:
-          application/json:
-            schema:
-              $ref: '/bookings/components/booking-response.yaml#'
+    #   200:
+    #     description: The booking was successfully retrieved.
+    #     content:
+    #       application/json:
+    #         schema:
+    #           $ref: "../bookings/components/booking-response.yaml"
       401:
-        $ref: '/shared/standard-responses.yaml#/401'
+        $ref: "../shared/standard-responses.yaml#/401"
       403:
-        $ref: '/shared/standard-responses.yaml#/403'
+        $ref: "../shared/standard-responses.yaml#/403"
       404:
-        $ref: '/shared/standard-responses.yaml#/404'
+        $ref: "../shared/standard-responses.yaml#/404"
       422:
-        $ref: '/shared/standard-responses.yaml#/422'
+        $ref: "../shared/standard-responses.yaml#/422"
       429:
-        $ref: '/shared/standard-responses.yaml#/429'
+        $ref: "../shared/standard-responses.yaml#/429"
 BookingEntityLinks:
   get:
     summary: Get links for a booking
     tags:
       - Bookings
-    description: >-
+    description: |
       Returns an array of URLs for customer-facing actions relating to a booking
     operationId: GetBookingLinks
     parameters:
@@ -121,23 +121,23 @@ BookingEntityLinks:
         content:
           application/json:
             schema:
-              $ref: '/bookings/components/booking-links-response.yaml#'
+              $ref: "../bookings/components/booking-links-response.yaml"
       401:
-        $ref: '/shared/standard-responses.yaml#/401'
+        $ref: "../shared/standard-responses.yaml#/401"
       403:
-        $ref: '/shared/standard-responses.yaml#/403'
+        $ref: "../shared/standard-responses.yaml#/403"
       404:
-        $ref: '/shared/standard-responses.yaml#/404'
+        $ref: "../shared/standard-responses.yaml#/404"
       422:
-        $ref: '/shared/standard-responses.yaml#/422'
+        $ref: "../shared/standard-responses.yaml#/422"
       429:
-        $ref: '/shared/standard-responses.yaml#/429'
+        $ref: "../shared/standard-responses.yaml#/429"
 BookingEntityAssignedAreas:
   get:
     summary: Get assigned areas (tables) for a booking
     tags:
       - Bookings
-    description: >-
+    description: |
       Returns an array of areas which the booking is assigned to
     operationId: GetAssignedAreas
     parameters:
@@ -153,15 +153,15 @@ BookingEntityAssignedAreas:
         content:
           application/json:
             schema:
-              $ref: '/bookings/components/booking-assigned-areas-response.yaml#'
+              $ref: "../bookings/components/booking-assigned-areas-response.yaml"
       401:
-        $ref: '/shared/standard-responses.yaml#/401'
+        $ref: "../shared/standard-responses.yaml#/401"
       403:
-        $ref: '/shared/standard-responses.yaml#/403'
+        $ref: "../shared/standard-responses.yaml#/403"
       404:
-        $ref: '/shared/standard-responses.yaml#/404'
+        $ref: "../shared/standard-responses.yaml#/404"
       429:
-        $ref: '/shared/standard-responses.yaml#/429'
+        $ref: "../shared/standard-responses.yaml#/429"
   post:
     summary: Replaces the assigned areas of the booking
     tags:
@@ -170,8 +170,8 @@ BookingEntityAssignedAreas:
       Unassigns all areas from the booking and assigns the given ones.
       This request accepts an array of bookable area IDs, which you can retrieve using the Venues endpoint.
 
-      A validation error will be returned if you attempt to assign area(s) to a booking which doesn't have a venue, 
-      or if you attempt to assign area(s) which don't belong to the attached venue. Keep in mind that the request 
+      A validation error will be returned if you attempt to assign area(s) to a booking which doesn't have a venue,
+      or if you attempt to assign area(s) which don't belong to the attached venue. Keep in mind that the request
       *won't* return an error response if you attempt to assign an area which is already assigned to the booking.
 
       If you're looking to append assigned areas rather than replace, see [Appending assigned areas](#operation/AppendAssignedAreas).
@@ -205,17 +205,17 @@ BookingEntityAssignedAreas:
         content:
           application/json:
             schema:
-              $ref: '/bookings/components/booking-assigned-areas-response.yaml#'
+              $ref: "../bookings/components/booking-assigned-areas-response.yaml"
       401:
-        $ref: '/shared/standard-responses.yaml#/401'
+        $ref: "../shared/standard-responses.yaml#/401"
       403:
-        $ref: '/shared/standard-responses.yaml#/403'
+        $ref: "../shared/standard-responses.yaml#/403"
       404:
-        $ref: '/shared/standard-responses.yaml#/404'
+        $ref: "../shared/standard-responses.yaml#/404"
       422:
-        $ref: '/shared/standard-responses.yaml#/422'
+        $ref: "../shared/standard-responses.yaml#/422"
       429:
-        $ref: '/shared/standard-responses.yaml#/429'
+        $ref: "../shared/standard-responses.yaml#/429"
   put:
     summary: Appends to the assigned areas of the booking
     tags:
@@ -225,8 +225,8 @@ BookingEntityAssignedAreas:
 
       This request accepts an array of bookable area IDs, which you can retrieve using the Venues endpoint.
 
-      A validation error will be returned if you attempt to assign area(s) to a booking which doesn't have a venue, 
-      or if you attempt to assign area(s) which don't belong to the attached venue. Keep in mind that the request 
+      A validation error will be returned if you attempt to assign area(s) to a booking which doesn't have a venue,
+      or if you attempt to assign area(s) which don't belong to the attached venue. Keep in mind that the request
       *won't* return an error response if you attempt to assign an area which is already assigned to the booking.
     operationId: AppendAssignedAreas
     parameters:
@@ -258,17 +258,17 @@ BookingEntityAssignedAreas:
         content:
           application/json:
             schema:
-              $ref: '/bookings/components/booking-assigned-areas-response.yaml#'
+              $ref: "../bookings/components/booking-assigned-areas-response.yaml"
       401:
-        $ref: '/shared/standard-responses.yaml#/401'
+        $ref: "../shared/standard-responses.yaml#/401"
       403:
-        $ref: '/shared/standard-responses.yaml#/403'
+        $ref: "../shared/standard-responses.yaml#/403"
       404:
-        $ref: '/shared/standard-responses.yaml#/404'
+        $ref: "../shared/standard-responses.yaml#/404"
       422:
-        $ref: '/shared/standard-responses.yaml#/422'
+        $ref: "../shared/standard-responses.yaml#/422"
       429:
-        $ref: '/shared/standard-responses.yaml#/429'
+        $ref: "../shared/standard-responses.yaml#/429"
   delete:
     summary: Unassigns all areas from the booking
     tags:
@@ -292,15 +292,15 @@ BookingEntityAssignedAreas:
         content:
           application/json:
             schema:
-              $ref: '/bookings/components/booking-assigned-areas-response.yaml#'
+              $ref: "../bookings/components/booking-assigned-areas-response.yaml"
       401:
-        $ref: '/shared/standard-responses.yaml#/401'
+        $ref: "../shared/standard-responses.yaml#/401"
       403:
-        $ref: '/shared/standard-responses.yaml#/403'
+        $ref: "../shared/standard-responses.yaml#/403"
       404:
-        $ref: '/shared/standard-responses.yaml#/404'
+        $ref: "../shared/standard-responses.yaml#/404"
       429:
-        $ref: '/shared/standard-responses.yaml#/429'
+        $ref: "../shared/standard-responses.yaml#/429"
 BookingEntityAssignedAreasWithEntityId:
   delete:
     summary: Unassigns an area from the booking
@@ -333,28 +333,28 @@ BookingEntityAssignedAreasWithEntityId:
         content:
           application/json:
             schema:
-              $ref: '/bookings/components/booking-assigned-areas-response.yaml#'
+              $ref: "../bookings/components/booking-assigned-areas-response.yaml"
       401:
-        $ref: '/shared/standard-responses.yaml#/401'
+        $ref: "../shared/standard-responses.yaml#/401"
       403:
-        $ref: '/shared/standard-responses.yaml#/403'
+        $ref: "../shared/standard-responses.yaml#/403"
       404:
-        $ref: '/shared/standard-responses.yaml#/404'
+        $ref: "../shared/standard-responses.yaml#/404"
       422:
-        $ref: '/shared/standard-responses.yaml#/422'
+        $ref: "../shared/standard-responses.yaml#/422"
       429:
-        $ref: '/shared/standard-responses.yaml#/429'
+        $ref: "../shared/standard-responses.yaml#/429"
 BookingEntityNotifications:
   get:
     summary: Get notifications
     tags:
       - Bookings
-    description: >-
+    description: |
       Returns an array of all notifications for this booking. This includes read notifications.
       If you only want to see unread notifications, you can use the `status` filter.
     parameters:
-      - $ref: '/bookings/components/notification-filters.yaml#/status'
-      - $ref: '/bookings/components/notification-filters.yaml#/type'
+      - $ref: "../bookings/components/notification-filters.yaml#/status"
+      - $ref: "../bookings/components/notification-filters.yaml#/type"
     operationId: GetAllNotifications
     responses:
       200:
@@ -362,21 +362,21 @@ BookingEntityNotifications:
         content:
           application/json:
             schema:
-              $ref: '/bookings/components/notifications-list-response.yaml#'
+              $ref: "../bookings/components/notifications-list-response.yaml"
       401:
-        $ref: '/shared/standard-responses.yaml#/401'
+        $ref: "../shared/standard-responses.yaml#/401"
       403:
-        $ref: '/shared/standard-responses.yaml#/403'
+        $ref: "../shared/standard-responses.yaml#/403"
       404:
-        $ref: '/shared/standard-responses.yaml#/404'
+        $ref: "../shared/standard-responses.yaml#/404"
       429:
-        $ref: '/shared/standard-responses.yaml#/429'
+        $ref: "../shared/standard-responses.yaml#/429"
 BookingEntityNotificationsWithEntityId:
   get:
     summary: Get a notification
     tags:
       - Bookings
-    description: >-
+    description: |
       Returns the notification by the given ID.
     operationId: GetNotification
     responses:
@@ -385,20 +385,20 @@ BookingEntityNotificationsWithEntityId:
         content:
           application/json:
             schema:
-              $ref: '/bookings/components/notification-response.yaml#'
+              $ref: "../bookings/components/notification-response.yaml"
       401:
-        $ref: '/shared/standard-responses.yaml#/401'
+        $ref: "../shared/standard-responses.yaml#/401"
       403:
-        $ref: '/shared/standard-responses.yaml#/403'
+        $ref: "../shared/standard-responses.yaml#/403"
       404:
-        $ref: '/shared/standard-responses.yaml#/404'
+        $ref: "../shared/standard-responses.yaml#/404"
       429:
-        $ref: '/shared/standard-responses.yaml#/429'
+        $ref: "../shared/standard-responses.yaml#/429"
   put:
     summary: Update a notification
     tags:
       - Bookings
-    description: >-
+    description: |
       Updates the given booking notification
     operationId: UpdateNotification
     requestBody:
@@ -414,7 +414,7 @@ BookingEntityNotificationsWithEntityId:
                 enum:
                   - new
                   - read
-                description: >-
+                description: |
                   The status of the message. Unread messages have the status `new` and read messages have the status `read`.
     responses:
       200:
@@ -422,14 +422,14 @@ BookingEntityNotificationsWithEntityId:
         content:
           application/json:
             schema:
-              $ref: '/bookings/components/notification-response.yaml#'
+              $ref: "../bookings/components/notification-response.yaml"
       401:
-        $ref: '/shared/standard-responses.yaml#/401'
+        $ref: "../shared/standard-responses.yaml#/401"
       403:
-        $ref: '/shared/standard-responses.yaml#/403'
+        $ref: "../shared/standard-responses.yaml#/403"
       404:
-        $ref: '/shared/standard-responses.yaml#/404'
+        $ref: "../shared/standard-responses.yaml#/404"
       422:
-        $ref: '/shared/standard-responses.yaml#/422'
+        $ref: "../shared/standard-responses.yaml#/422"
       429:
-        $ref: '/shared/standard-responses.yaml#/429'
+        $ref: "../shared/standard-responses.yaml#/429"

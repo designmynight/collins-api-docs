@@ -7,12 +7,12 @@ VenuesWithoutEntityId:
       Returns an array of all venues which the authenticated user is
       authorised to view. The response will be [paginated](/#tag/Pagination).
     parameters:
-      - $ref: '/venues/components/venue-filters.yaml#/status'
-      - $ref: '/venues/components/venue-filters.yaml#/title'
-      - $ref: '/venues/components/venue-filters.yaml#/venue_group'
-      - $ref: '/shared/pagination-filters.yaml#/limit'
-      - $ref: '/shared/pagination-filters.yaml#/sort'
-      - $ref: '/shared/pagination-filters.yaml#/page'
+      - $ref: '../venues/components/venue-filters.yaml#/status'
+      - $ref: '../venues/components/venue-filters.yaml#/title'
+      - $ref: '../venues/components/venue-filters.yaml#/venue_group'
+      - $ref: '../shared/pagination-filters.yaml#/limit'
+      - $ref: '../shared/pagination-filters.yaml#/sort'
+      - $ref: '../shared/pagination-filters.yaml#/page'
     operationId: GetAllVenues
     responses:
       200:
@@ -20,15 +20,15 @@ VenuesWithoutEntityId:
         content:
           application/json:
             schema:
-              $ref: '/venues/components/venue-list-response.yaml#'
+              $ref: '../venues/components/venue-list-response.yaml'
       401:
-        $ref: '/shared/standard-responses.yaml#/401'
+        $ref: '../shared/standard-responses.yaml#/401'
       403:
-        $ref: '/shared/standard-responses.yaml#/403'
+        $ref: '../shared/standard-responses.yaml#/403'
       404:
-        $ref: '/shared/standard-responses.yaml#/404'
+        $ref: '../shared/standard-responses.yaml#/404'
       429:
-        $ref: '/shared/standard-responses.yaml#/429'
+        $ref: '../shared/standard-responses.yaml#/429'
 VenuesWithEntityId:
   get:
     summary: Get a venue
@@ -50,12 +50,12 @@ VenuesWithEntityId:
         content:
           application/json:
             schema:
-              $ref: '/venues/components/venue-response.yaml#'
+              $ref: '../venues/components/venue-response.yaml'
       401:
-        $ref: '/shared/standard-responses.yaml#/401'
+        $ref: '../shared/standard-responses.yaml#/401'
       403:
-        $ref: '/shared/standard-responses.yaml#/403'
+        $ref: '../shared/standard-responses.yaml#/403'
       404:
-        $ref: '/shared/standard-responses.yaml#/404'
+        $ref: '../shared/standard-responses.yaml#/404'
       429:
-        $ref: '/shared/standard-responses.yaml#/429'
+        $ref: '../shared/standard-responses.yaml#/429'

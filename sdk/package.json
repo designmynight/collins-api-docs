@@ -1,0 +1,15 @@
+{
+  "name": "collins-js-sdk",
+  "version": "1.0.0",
+  "description": "Automatically generated SDK",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/designmynight/collins-api-docs.git"
+  },
+  "author": "The Access Group Ltd",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/designmynight/collins-api-docs/issues"
+  },
+  "homepage": "https://github.com/designmynight/collins-api-docs#readme"
+}

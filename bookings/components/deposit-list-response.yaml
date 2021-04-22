@@ -3,4 +3,4 @@ properties:
   deposits:
     type: array
     items:
-      $ref: 'view-deposit.yaml#'
+      $ref: 'view-deposit.yaml'

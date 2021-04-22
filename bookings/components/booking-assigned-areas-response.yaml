@@ -4,4 +4,4 @@ properties:
     type: array
     description: An array of the areas which this booking is assigned to.
     items:
-      $ref: view-assigned-area.yaml#
+      $ref: "view-assigned-area.yaml"
