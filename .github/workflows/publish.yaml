@@ -8,15 +8,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - run: docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate \
+        -i /local/main.yaml \
+        -g typescript-fetch \
+        -o ./local/sdk
     # Setup .npmrc file to publish to npm
     - uses: actions/setup-node@v2
       with:
         node-version: '12.x'
         registry-url: 'https://registry.npmjs.org'
-    - run: docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate \
-        -i /local/main.yaml \
-        -g typescript-fetch \
-        -o ./local/sdk
     - run: npm publish sdk
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
