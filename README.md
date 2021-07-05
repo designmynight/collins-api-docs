@@ -6,7 +6,10 @@
 
 This repository contains the documentation for the Collins API.
 
-## Dev environment
+## Viewing the docs
+You can find the docs using the following URL: https://docs.collinsbookings.com
+
+## Developing locally 
 
 To make local changes to the documentation, first clone the repository.
 
@@ -22,4 +25,18 @@ $ docker-compose up
 ```
 
 The documentation will be served on localhost at port 8080 - http://localhost:8080
+
+## Publishing
+
+### Publishing the docs
+The latest docs are generated on a push to master
+
+### Publishing the SDK
+On commit to master SDK is automatically published to NPM: https://www.npmjs.com/package/collins-js-sdk. you must increment the version in package.json otherwise the package will not be replaced.
+
+
+
+
+
+
 
