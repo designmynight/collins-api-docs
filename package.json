@@ -1,6 +1,6 @@
 {
   "name": "collins-js-sdk",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Automatically generated SDK",
   "scripts": {
     "create-docss": "echo \"Creating Docs\""

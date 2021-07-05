@@ -235,6 +235,7 @@ properties:
     description: The date and time the booking was last updated.
   waitlisted:
     type: boolean
-    description: Whether the booking was waitlisted. This does not indicate it is on the wait list currently. To determine that, use waitlisted and the status of in_progress
+    description: >-
+      Whether the booking was waitlisted. This does not indicate it is on the wait list currently.
+      To determine that, use `waitlisted = true` and the `status = in_progress'.
     example: true
-
