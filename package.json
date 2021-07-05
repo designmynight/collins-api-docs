@@ -1,7 +1,13 @@
 {
   "name": "collins-js-sdk",
-  "version": "1.0.5",
-  "description": "Automatically generated SDK",
+  "version": "1.0.6",
+  "description": "Automatically generated SDK for the Access Collins booking platform",
+  "keywords": [
+    "Access Collins",
+    "Booking",
+    "Reservations",
+    "Access Group"
+  ],
   "scripts": {
     "create-docss": "echo \"Creating Docs\""
   },
