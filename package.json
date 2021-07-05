@@ -1,9 +1,9 @@
 {
   "name": "collins-sdk",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "<p align=\"center\">   <img width=\"200px\" src=\"https://static.designmynight.com/uploads/2017/01/DesignMyNight-Logo.png\"> </p>",
   "scripts": {
-    "create-docss" : "echo \"Creating Docs\""
+    "create-docss": "echo \"Creating Docs\""
   },
   "repository": {
     "type": "git",
