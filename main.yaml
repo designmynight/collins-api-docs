@@ -7,13 +7,13 @@ info:
   version: 1.0.0
   title: Collins API
   description: |
-    This site provides details on the various ways that you can integrate with Collins.
+    This site provides details on the various ways that you can integrate with Access Collins.
     Not sure you want to be here after all? Check out what’s new on the [London Bar Scene](https://www.designmynight.com/london/new-bar-spy) instead.
   x-logo:
-    url: "https://static.designmynight.com/uploads/2017/01/DesignMyNight-Logo.png"
-    altText: "DesignMyNight"
+    url: "https://static.designmynight.com/images/logos/access_collins.png"
+    altText: "CollinsBookings"
   contact:
-    name: DesignMyNight Tech Team
+    name: Collins Bookings Development Team
     url: https://github.com/designmynight/collins-api-docs
 tags:
   - name: URL
