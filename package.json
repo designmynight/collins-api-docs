@@ -1,7 +1,7 @@
 {
-  "name": "collins-sdk",
+  "name": "collins-js-sdk",
   "version": "1.0.3",
-  "description": "<p align=\"center\">   <img width=\"200px\" src=\"https://static.designmynight.com/uploads/2017/01/DesignMyNight-Logo.png\"> </p>",
+  "description": "Automatically generated SDK",
   "scripts": {
     "create-docss": "echo \"Creating Docs\""
   },
