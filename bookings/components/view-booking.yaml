@@ -239,3 +239,23 @@ properties:
       Whether the booking was waitlisted. This does not indicate it is on the wait list currently.
       To determine that, use `waitlisted = true` and the `status = in_progress'.
     example: true
+  linked_bookings:
+    type: array
+    description: >-
+      An array of linked booking IDs.
+    items:
+      type: object
+      properties:
+        id:
+          description: The ID of the booking
+          example: 525588460df6906334ca1ed7
+  channel:
+    type: string
+    description: >-
+      Indicates how the booking was made. This can be either `collins-call` or `web`.
+    example: 'web'
+  double_confirmed:
+    type: boolean
+    description: >-
+      Whether the booking was double confirmed.
+    example: true
