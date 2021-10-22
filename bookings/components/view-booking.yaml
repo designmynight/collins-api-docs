@@ -249,6 +249,27 @@ properties:
         id:
           description: The ID of the booking
           example: 525588460df6906334ca1ed7
+  comments:
+    type: array
+    description: An array of all run sheet notes added to this booking.
+    items:
+      type: object
+      properties:
+        comment:
+          type: string
+          description: The contents of the note.
+        full_name:
+          type: string
+          description: The full name of the user who added the run sheet note.
+          example: John Doe
+        time:
+          type: string
+          description: The date and time at which the note was added.
+          example: 2021-10-22T14:36:13
+        user_id:
+          type: string
+          description: The ID of the user who added the note.
+          example: 552439867872797140314f70
   channel:
     type: string
     description: >-
