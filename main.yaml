@@ -96,6 +96,7 @@ tags:
         $ curl https://api.collinsbookings.com/api/customers?query=@designmynight.com&page=3
         $ curl https://api.collinsbookings.com/api/customers?query=@designmynight.com&page=4
         ```
+        dddd
 
   - name: Bookings
     description: This endpoint is used for managing bookings
