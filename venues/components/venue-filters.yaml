@@ -8,6 +8,7 @@ status:
       - public
       - private
       - inactive
+      - public,private,inactive
   description: >-
     Filters by the status of the venue.
   example: public
