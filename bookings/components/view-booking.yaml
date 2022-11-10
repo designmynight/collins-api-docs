@@ -283,3 +283,4 @@ properties:
   has_preorders:
     type: boolean
     description: Whether the booking has preorders.
+    example: true
