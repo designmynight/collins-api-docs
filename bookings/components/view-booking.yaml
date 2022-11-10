@@ -280,3 +280,6 @@ properties:
     description: >-
       Whether the booking was double confirmed.
     example: true
+  has_preorders:
+    type: boolean
+    description: Whether the booking has preorders.
