@@ -239,7 +239,7 @@ properties:
       Whether the booking was waitlisted. This does not indicate it is on the wait list currently.
       To determine that, use `waitlisted = true` and the `status = in_progress'.
     example: true
-  waitlist_details
+  waitlist_details:
     type: object
     description: The address of the company for the booking.
     properties:
