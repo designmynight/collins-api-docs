@@ -239,6 +239,27 @@ properties:
       Whether the booking was waitlisted. This does not indicate it is on the wait list currently.
       To determine that, use `waitlisted = true` and the `status = in_progress'.
     example: true
+  waitlist_details
+    type: object
+    description: The address of the company for the booking.
+    properties:
+      area:
+        type: object
+        properties:
+          id:
+            description: The ID of the area.
+            example: 525588460df6906334ca1ed7
+          name:
+            description: The name of the area.
+            example: Table 1
+          zone:
+            description: The ID of the zone this area belongs to.
+            example: 533d59f80df690746c714614
+            nullable: true
+      available_time:
+        type: string
+        description: The available time
+        example: 2021-10-22T14:36:13
   linked_bookings:
     type: array
     description: >-
