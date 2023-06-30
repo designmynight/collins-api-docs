@@ -1,3 +1,4 @@
+---
 type: object
 properties:
   id:
@@ -28,13 +29,13 @@ properties:
     type: string
     format: date-time
     description: The date and time the status was last changed.
-    example: "2019-01-01 13:30:00"
+    example: 2019-01-01 13:30:00
     nullable: true
   follow_up:
     type: string
     format: date-time
     description: The date and time the follow up email should be sent.
-    example: "2019-01-02 13:13:00"
+    example: 2019-01-02 13:13:00
     nullable: true
   reference:
     type: integer
@@ -83,12 +84,12 @@ properties:
     type: string
     format: date
     description: The date the booking takes place.
-    example: '2019-04-08'
+    example: 2019-04-08
     nullable: true
   time:
     type: string
     description: The time the booking starts in a 24 hour format.
-    example: '13:30'
+    example: 13:30
     nullable: true
   duration:
     type: integer
@@ -142,23 +143,23 @@ properties:
   email:
     type: string
     description: The email address for the booking.
-    example: "test@example.com"
+    example: test@example.com
     nullable: true
   additional_emails:
     type: array
     description: An array of additional email addresses for the booking.
     items:
       type: string
-      example: "additional@example.com"
+      example: additional@example.com
   phone:
     type: string
     description: The phone number for the booking.
-    example: 01234567890
+    example: 1234567890
     nullable: true
   alternative_phone:
     type: string
     description: An alternative phone number for the booking.
-    example: 01234567891
+    example: 1234567891
     nullable: true
   company:
     type: string
@@ -180,10 +181,11 @@ properties:
       post_code:
         type: string
         description: The post code of the company
-        example: 'N1 5DL'
+        example: N1 5DL
   deposits:
     type: array
-    description: An array of any deposits or payments made or requested against this booking.
+    description: An array of any deposits or payments made or requested against this
+      booking.
     items:
       $ref: view-deposit.yaml
   refunds:
@@ -197,7 +199,8 @@ properties:
     example: false
   actual_guests:
     type: integer
-    description: The number of guests who arrived at the booking. For no-shows, this will be `0`.
+    description: The number of guests who arrived at the booking. For no-shows, this
+      will be `0`.
     nullable: true
   current_stage:
     type: string
@@ -209,7 +212,7 @@ properties:
     description: An array of labels attached to the booking.
     items:
       type: string
-      example: 'Birthday'
+      example: Birthday
   walk_in:
     type: boolean
     description: Whether the booking was a walk-in.
@@ -226,18 +229,18 @@ properties:
   created_date:
     type: string
     format: date-time
-    example: "2019-01-01 13:30:00"
+    example: 2019-01-01 13:30:00
     description: The date and time the booking was created.
   last_updated:
     type: string
     format: date-time
-    example: "2019-01-01 13:30:00"
+    example: 2019-01-01 13:30:00
     description: The date and time the booking was last updated.
   waitlisted:
     type: boolean
-    description: >-
-      Whether the booking was waitlisted. This does not indicate it is on the wait list currently.
-      To determine that, use `waitlisted = true` and the `status = in_progress'.
+    description: Whether the booking was waitlisted. This does not indicate it is on
+      the wait list currently. To determine that, use `waitlisted = true` and
+      the `status = in_progress'.
     example: true
   waitlist_details:
     type: object
@@ -262,8 +265,7 @@ properties:
         example: 2021-10-22T14:36:13
   linked_bookings:
     type: array
-    description: >-
-      An array of linked booking IDs.
+    description: An array of linked booking IDs.
     items:
       type: object
       properties:
@@ -293,9 +295,9 @@ properties:
           example: 552439867872797140314f70
   channel:
     type: string
-    description: >-
-      Indicates how the booking was made. This can be either `collins-call` or `web`.
-    example: 'web'
+    description: Indicates how the booking was made. This can be either
+      `collins-call` or `web`.
+    example: web
   offer:
     type: object
     description: And offer for the booking.
@@ -304,23 +306,21 @@ properties:
         type: string
         description: The ID of the offer
         example: 552439867872797140314f70
-     title:
+      title:
         type: string
         description: The title of the offer
         example: BOGOF
-     description:
+      description:
         type: string
         description: The description of the offer
         example: Buy one get one free
   notes:
     type: string
-    description: >-
-      A customer note that is added to the booking
+    description: A customer note that is added to the booking
     example: I would like to sit near the window
   double_confirmed:
     type: boolean
-    description: >-
-      Whether the booking was double confirmed.
+    description: Whether the booking was double confirmed.
     example: true
   has_preorders:
     type: boolean
