@@ -296,6 +296,27 @@ properties:
     description: >-
       Indicates how the booking was made. This can be either `collins-call` or `web`.
     example: 'web'
+  offer:
+    type: object
+    description: And offer for the booking.
+    properties:
+      id:
+        type: string
+        description: The ID of the offer
+        example: 552439867872797140314f70
+     title:
+        type: string
+        description: The title of the offer
+        example: BOGOF
+     description:
+        type: string
+        description: The description of the offer
+        example: Buy one get one free
+  notes:
+    type: string
+    description: >-
+      A customer note that is added to the booking
+    example: I would like to sit near the window
   double_confirmed:
     type: boolean
     description: >-
