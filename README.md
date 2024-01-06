@@ -21,10 +21,10 @@ $ cd collins-api-docs
 You can use Docker to host a local development environment of the documentation.
 
 ```shell
-$ docker-compose up
+$ docker-compose up -d
 ```
 
-The documentation will be served on localhost at port 8080 - http://localhost:8080
+The documentation will be served on localhost at port 5050 - http://localhost:5050
 
 ## Publishing
 
