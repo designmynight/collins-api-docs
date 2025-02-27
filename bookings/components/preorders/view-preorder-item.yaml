@@ -59,4 +59,3 @@ quantity:
   type: integer
   description: How many of this item are being ordered.
   example: 3
-  
