@@ -65,7 +65,7 @@ source:
       value:
         - "customer"
 items:
-  type: array
+  type: object
   description: An array of items in the booking.
   properties:
     $ref: "./view-preorder-item.yaml"
