@@ -68,4 +68,4 @@ items:
   type: array
   description: An array of items in the booking.
   properties:
-    $ref: view-preorder-item.yaml
+    $ref: "./view-preorder-item.yaml"
