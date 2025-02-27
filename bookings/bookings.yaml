@@ -49,6 +49,7 @@ BookingsWithoutEntityId:
       - $ref: "../bookings/components/booking-filters.yaml#/venue_id"
       - $ref: "../bookings/components/booking-filters.yaml#/waitlisted"
       - $ref: "../bookings/components/booking-filters.yaml#/zone"
+      - $ref: "../bookings/components/booking-filters.yaml#/include_preorders"
       - $ref: "../shared/pagination-filters.yaml#/limit"
       - $ref: "../shared/pagination-filters.yaml#/sort"
       - $ref: "../shared/pagination-filters.yaml#/page"

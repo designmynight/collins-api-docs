@@ -325,3 +325,9 @@ properties:
     type: boolean
     description: Whether the booking has preorders.
     example: true
+  preorders:
+    type: array
+    description: An array of preorders for the booking.
+    properties:
+      $ref: "preorders/view-preorder.yaml"
+
