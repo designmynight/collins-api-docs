@@ -331,5 +331,5 @@ properties:
       An array of preorders for the booking. This is not included by default, 
       but can be included by setting `include_preorders` to true in the query parameters.
     properties:
-      $ref: "preorders/view-preorder.yaml"
+      $ref: "./preorders/view-preorder.yaml"
 
