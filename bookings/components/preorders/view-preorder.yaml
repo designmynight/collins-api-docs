@@ -1,0 +1,71 @@
+id:
+  type: string
+  description: The ID of this preorder.
+  example: "67b8b35cae32c8000d500a15"
+created_date:
+  type: string
+  format: date
+  description: The date and time this preorder was created.
+  example: "2025-02-21T16:09:49+00:00"
+name:
+  type: string
+  description: The name of the person who made this preorder.
+  example: "OldPerms@CollinsB Hamuda"
+email:
+  type: string
+  format: email
+  description: The email address of the person who made this preorder.
+  example: "hamuda.anfoune+collinsbars@theaccessgroup.com"
+booking_id:
+  type: string
+  description: The ID of the booking this preorder is associated with.
+  example: "67b7150dae32c8004655cfc3"
+venue_id:
+  type: string
+  description: The ID of the venue this preorder is associated with.
+  example: "552435790df5902b7256f238"
+venue_group:
+  type: string
+  description: The ID of the venue group this preorder is associated with.
+  example: "5524371d0df590ad7156f2e9"
+total_cost:
+  type: string
+  description: The total cost of this preorder.
+  example: "180"
+amount_paid:
+  type: string
+  description: The amount paid for this preorder.
+  example: "0"
+service_charge_percentage:
+  type: integer
+  description: The service charge percentage for this preorder.
+  example: 10
+service_charge_amount:
+  type: string
+  description: The service charge amount for this preorder.
+  example: "18"
+status:
+  type: string
+  description: The status of this preorder.
+  example: "complete"
+  enum:
+    - pending
+    - complete
+    - deleted
+source:
+  type: string
+  description: The source of this preorder.
+  examples:
+    admin:
+      summary: The preorder was created by an admin through Collins.
+      value:
+        - "admin"
+    customer:
+      summary: The preorder was created by the customer.
+      value:
+        - "customer"
+items:
+  type: array
+  description: An array of items in the booking.
+  properties:
+    $ref: view-preorder-item.yaml

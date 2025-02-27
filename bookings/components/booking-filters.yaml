@@ -460,3 +460,12 @@ zone:
     If a comma-separated list is passed, bookings assigned to an area in any of
     the given zone IDs will be returned.
   example: 5cab0cd477dd1224215c668a
+include_preorders:
+  name: include_preorders
+  in: query
+  required: false
+  schema:
+    type: boolean
+  description: >-
+    Decide whether to include the pre-orders of the bookings in the response.
+    This defaults to false.

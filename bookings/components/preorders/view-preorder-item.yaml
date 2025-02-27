@@ -1,0 +1,61 @@
+id:
+  name: id
+  type: string
+  description: The ID of this item.
+  example: 5ca1de0628e7ff2356267752
+base_price: 
+  name: base_price
+  type: string
+  description: The base price of this item.
+  example: "13"
+description: 
+  name: description
+  type: string
+  format: HTML
+  description: HTML description of this item.
+  example: "<p>111</p>"
+discount_value: 
+  name: discount_value
+  type: string
+  description: Discounted value for this item, if exists.
+  example: "0"
+name: 
+  name: name
+  type: string
+  description: Name of the item.
+  example: "Classic Burger"
+options_price: 
+  name: options_price
+  type: string
+  description: The price of the options for this item.
+  example: "0"  
+plu: 
+  name: plu
+  type: integer
+  description: PLU code for this item.
+  example: 111  
+sub_type: 
+  name: sub_type
+  type: string
+  description: The sub type of this item.
+  example: "bowl"  
+surcharge: 
+  name: surcharge
+  type: integer
+  description: The surcharge for this item.
+  example: 1
+total: 
+  name: total
+  type: string
+  description: The total price of this item.
+  example: "11100"
+type: 
+  name: type
+  type: string
+  description: The type of this item.
+  example: "food"
+quantity: 
+  name: quantity
+  type: integer
+  description: How many of this item are being ordered.
+  example: 3
