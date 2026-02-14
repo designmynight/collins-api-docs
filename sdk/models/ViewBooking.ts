@@ -12,6 +12,7 @@
  * Do not edit the class manually.
  */
 
+import { CustomFieldsTag } from '../apis/BookingsApi';
 import { exists, mapValues } from '../runtime';
 import {
     ViewBookingAssignedAreas,
@@ -270,6 +271,13 @@ export interface ViewBooking {
      * @memberof ViewBooking
      */
     lastUpdated?: Date;
+    /**
+     * An array of custom fields associated with the booking.
+     * @type {Array<CustomFieldsTag>}
+     * @memberof ViewBooking
+     */
+    tags?: Array<CustomFieldsTag>;
+    
 }
 
 /**

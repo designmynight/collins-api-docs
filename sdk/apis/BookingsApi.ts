@@ -94,6 +94,7 @@ export interface GetAllBookingsRequest {
     status?: Array<GetAllBookingsStatusEnum>;
     time?: string;
     type?: Array<string>;
+    tags?: Array<CustomFieldsTag>;
     customerId?: Array<string>;
     venueId?: Array<string>;
     waitlisted?: boolean;
@@ -101,6 +102,14 @@ export interface GetAllBookingsRequest {
     limit?: number;
     sort?: Array<string>;
     page?: string;
+}
+
+export interface CustomFieldsTag {
+    id: string;
+    type: string;
+    value: any;
+    text?: string;
+    label: string;
 }
 
 export interface GetAllNotificationsRequest {
