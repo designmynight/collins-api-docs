@@ -6,7 +6,7 @@ All requests to the Collins API must be authenticated using a Bearer token.
 
 Collins uses Bearer token authentication. You must include your token in the `Authorization` header of every API request. Tokens are issued by your account manager — there is no self-service token generation.
 
-## Setting the Authorization header
+## Setting the Authorisation header
 
 Set an HTTP `Authorization` header on your request that consists of the prefix `Bearer` followed by your token:
 

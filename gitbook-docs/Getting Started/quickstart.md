@@ -66,7 +66,7 @@ Use the `venue_id` query parameter to retrieve bookings for a specific venue.
 
 ```bash
 curl -H "Authorization: Bearer YOUR_API_TOKEN" \
-  "https://apim.hos.accessacloud.com/collins-api/bookings?venue_id=5cab15dbff3b7aae0090ad44"
+  "https://apim.hos.accessacloud.com/collins-api/bookings?venue_id=5cab15dbff3b7aae0090ad44&date_from=2019-04-01&date_to=2019-04-30"
 ```
 
 ### Response (200)
@@ -74,11 +74,11 @@ curl -H "Authorization: Bearer YOUR_API_TOKEN" \
 ```json
 [
   {
-    "id": "5cab15dbff3b7aae0090ad44",
+    "id": "5d3eaf2b8a1c4e0012abcdef",
     "status": "complete",
     "reference": 12345678,
-    "venue_id": "5c80155a86bb06bc1401ea1e",
-    "venue_group": "5c8015884e68d55f12c7ec9d",
+    "venue_id": "5cab15dbff3b7aae0090ad44",
+    "venue_group": "5cab162d8589744d72dbbc2b",
     "num_people": 2,
     "date": "2019-04-08",
     "time": "13:30",
@@ -119,21 +119,21 @@ Retrieve the full details of a specific booking using its ID.
 
 ```bash
 curl -H "Authorization: Bearer YOUR_API_TOKEN" \
-  "https://apim.hos.accessacloud.com/collins-api/bookings/5cab15dbff3b7aae0090ad44"
+  "https://apim.hos.accessacloud.com/collins-api/bookings/5d3eaf2b8a1c4e0012abcdef"
 ```
 
 ### Response (200)
 
 ```json
 {
-  "id": "5cab15dbff3b7aae0090ad44",
+  "id": "5d3eaf2b8a1c4e0012abcdef",
   "assigned_to": "5cab162d8589744d72dbbc2b",
   "created_by": "5cab162d8589744d72dbbc2b",
   "status": "complete",
   "status_changed_date": "2019-01-01 13:30:00",
   "reference": 12345678,
-  "venue_id": "5c80155a86bb06bc1401ea1e",
-  "venue_group": "5c8015884e68d55f12c7ec9d",
+  "venue_id": "5cab15dbff3b7aae0090ad44",
+  "venue_group": "5cab162d8589744d72dbbc2b",
   "assigned_areas": [
     {
       "id": "525588460df6906334ca1ed7",

@@ -2,7 +2,7 @@
 
 Access Collins provides several integration options for connecting your systems with the Collins platform.
 
-## Overview
+## About Collins
 
 Collins is a hospitality booking management platform that allows venues to manage reservations, customer relationships, and operational workflows. As an integrator, you can interact with Collins programmatically through its APIs or embed a booking experience directly on your website using the booking widget.
 
