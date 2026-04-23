@@ -1,0 +1,56 @@
+name: Sync Collins API spec to APIM
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "main.yaml"
+      - "bookings/**"
+      - "customers/**"
+      - "venues/**"
+      - "venue-groups/**"
+      - "shared/**"
+
+jobs:
+  bundle-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Collins API docs
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Lint OpenAPI spec
+        run: npx @redocly/cli lint main.yaml
+
+      - name: Bundle OpenAPI spec
+        run: |
+          npx @redocly/cli bundle main.yaml -o specification.yaml
+          echo "Bundled specification.yaml successfully"
+
+      - name: Clone APIOps repo and push changes
+        env:
+          AZURE_DEVOPS_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}
+        run: |
+          git clone https://anything:${AZURE_DEVOPS_PAT}@dev.azure.com/access-devops/Hospitality%20Integration%20Experience/_git/Hospitality-Integration-Experience-ApiOps apim-repo
+
+          # Copy the bundled spec
+          cp specification.yaml apim-repo/artifacts/apis/collins-api/specification.yaml
+
+          # Commit and push
+          cd apim-repo
+          git config user.email "github-actions@designmynight.com"
+          git config user.name "Collins API Sync"
+          git add artifacts/apis/collins-api/specification.yaml
+
+          # Only commit and push if there are actual changes
+          if git diff --cached --quiet; then
+            echo "No changes detected in the spec — skipping commit"
+          else
+            git commit -m "chore: sync Collins API spec from designmynight/collins-api-docs@${GITHUB_SHA::7}"
+            git push origin main
+          fi
