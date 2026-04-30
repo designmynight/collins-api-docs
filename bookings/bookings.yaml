@@ -85,12 +85,12 @@ BookingsWithEntityId:
         schema:
           type: string
     responses:
-    #   200:
-    #     description: The booking was successfully retrieved.
-    #     content:
-    #       application/json:
-    #         schema:
-    #           $ref: "../bookings/components/booking-response.yaml"
+      200:
+        description: The booking was successfully retrieved.
+        content:
+          application/json:
+            schema:
+              $ref: "../bookings/components/booking-response.yaml"
       401:
         $ref: "../shared/standard-responses.yaml#/401"
       403:
@@ -354,6 +354,12 @@ BookingEntityNotifications:
       Returns an array of all notifications for this booking. This includes read notifications.
       If you only want to see unread notifications, you can use the `status` filter.
     parameters:
+      - in: path
+        name: bookingId
+        required: true
+        description: The ID of the booking
+        schema:
+          type: string
       - $ref: "../bookings/components/notification-filters.yaml#/status"
       - $ref: "../bookings/components/notification-filters.yaml#/type"
     operationId: GetAllNotifications
@@ -380,6 +386,19 @@ BookingEntityNotificationsWithEntityId:
     description: |
       Returns the notification by the given ID.
     operationId: GetNotification
+    parameters:
+      - in: path
+        name: bookingId
+        required: true
+        description: The ID of the booking
+        schema:
+          type: string
+      - in: path
+        name: notificationId
+        required: true
+        description: The ID of the notification
+        schema:
+          type: string
     responses:
       200:
         description: Notification was successfully retrieved
@@ -402,6 +421,19 @@ BookingEntityNotificationsWithEntityId:
     description: |
       Updates the given booking notification
     operationId: UpdateNotification
+    parameters:
+      - in: path
+        name: bookingId
+        required: true
+        description: The ID of the booking
+        schema:
+          type: string
+      - in: path
+        name: notificationId
+        required: true
+        description: The ID of the notification
+        schema:
+          type: string
     requestBody:
       description: The data the notification should be updated with.
       content:

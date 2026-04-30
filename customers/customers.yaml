@@ -101,13 +101,13 @@ CustomersWithEntityId:
             schema:
               $ref: '../customers/components/customer-response.yaml'
       401:
-        $ref: './shared/standard-responses.yaml#/401'
+        $ref: '../shared/standard-responses.yaml#/401'
       403:
-        $ref: './shared/standard-responses.yaml#/403'
+        $ref: '../shared/standard-responses.yaml#/403'
       404:
-        $ref: './shared/standard-responses.yaml#/404'
+        $ref: '../shared/standard-responses.yaml#/404'
       429:
-        $ref: './shared/standard-responses.yaml#/429'
+        $ref: '../shared/standard-responses.yaml#/429'
   put:
     tags:
       - Customers

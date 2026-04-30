@@ -1,7 +1,6 @@
 openapi: 3.0.0
 servers:
   - url: "https://api.collinsbookings.com/api"
-    variables: {}
   - url: "https://api-playpen.collinsbookings.com/api"
 info:
   version: 1.0.0

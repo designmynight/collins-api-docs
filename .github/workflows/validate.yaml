@@ -1,0 +1,115 @@
+name: Validate OpenAPI Spec
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          npm install -g @redocly/cli
+          pip install pyyaml
+
+      - name: Bundle OpenAPI spec
+        run: redocly bundle main.yaml -o bundled.yaml --force
+
+      - name: Lint OpenAPI spec with Redocly
+        run: redocly lint main.yaml --skip-rule no-unused-components
+        continue-on-error: true
+
+      - name: Validate APIM compatibility
+        run: |
+          python3 << 'EOF'
+          import yaml
+          import re
+          import sys
+
+          errors = []
+
+          with open('bundled.yaml') as f:
+              spec = yaml.safe_load(f)
+
+          # Check all $ref references resolve internally
+          def check_refs(obj, path=""):
+              if isinstance(obj, dict):
+                  if '$ref' in obj:
+                      ref = obj['$ref']
+                      if not ref.startswith('#/'):
+                          errors.append(f"External $ref found at {path}: {ref}")
+                      else:
+                          # Verify internal ref resolves
+                          parts = ref.lstrip('#/').split('/')
+                          target = spec
+                          for part in parts:
+                              if isinstance(target, dict) and part in target:
+                                  target = target[part]
+                              else:
+                                  errors.append(f"Broken internal $ref at {path}: {ref}")
+                                  break
+                  for key, value in obj.items():
+                      check_refs(value, f"{path}/{key}")
+              elif isinstance(obj, list):
+                  for i, item in enumerate(obj):
+                      check_refs(item, f"{path}[{i}]")
+
+          check_refs(spec)
+
+          # Check all operations have at least one 2xx response
+          for path_url, methods in spec.get('paths', {}).items():
+              if not isinstance(methods, dict):
+                  continue
+              for method, details in methods.items():
+                  if method.startswith('x-') or not isinstance(details, dict):
+                      continue
+                  responses = details.get('responses', {})
+                  has_success = any(str(k).startswith('2') for k in responses.keys())
+                  if not has_success:
+                      errors.append(f"Missing 2xx response: {method.upper()} {path_url}")
+
+          # Check all path template variables have parameter definitions
+          for path_url, methods in spec.get('paths', {}).items():
+              if not isinstance(methods, dict):
+                  continue
+              path_level_params = {
+                  p.get('name') for p in methods.get('parameters', [])
+                  if isinstance(p, dict) and p.get('in') == 'path'
+              }
+              for method, details in methods.items():
+                  if method.startswith('x-') or method == 'parameters' or not isinstance(details, dict):
+                      continue
+                  op_params = {
+                      p.get('name') for p in details.get('parameters', [])
+                      if isinstance(p, dict) and p.get('in') == 'path'
+                  }
+                  all_params = path_level_params | op_params
+                  path_vars = set(re.findall(r'\{(\w+)\}', path_url))
+                  missing = path_vars - all_params
+                  if missing:
+                      errors.append(f"Missing path parameter(s) {missing}: {method.upper()} {path_url}")
+
+          # Check servers don't have empty variables
+          for i, server in enumerate(spec.get('servers', [])):
+              if 'variables' in server and not server['variables']:
+                  errors.append(f"Server {i} has empty variables object (APIM incompatible)")
+
+          if errors:
+              print("APIM Compatibility Validation FAILED:")
+              for error in errors:
+                  print(f"  - {error}")
+              sys.exit(1)
+          else:
+              print("APIM Compatibility Validation PASSED")
+              print(f"  - All $ref references resolve correctly")
+              print(f"  - All operations have at least one 2xx response")
+              print(f"  - All path template variables have parameter definitions")
+              print(f"  - No empty server variables objects")
+          EOF
